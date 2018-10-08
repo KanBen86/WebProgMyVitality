@@ -3,6 +3,7 @@ package de.dhbw.myvitality.entities;
 import javax.persistence.*;
 
 @Entity
+@Table
 public class Goal {
 
     @Id
