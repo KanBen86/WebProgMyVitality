@@ -34,7 +34,7 @@ public class TrainingSchedule {
     @Column
     private Integer[] heartFrequency = new Integer[2];
 
-    public TrainingSchedule(String scheduleId, int exerciseNo, String exerciseDesc, int sets, int reps, int breakSec, Integer[] heartFrequency) {
+    public TrainingSchedule(String scheduleId, int exerciseNo, String exerciseDesc, int sets, int reps, int breakSec, FitnessLevel fitnessLevel, Integer[] heartFrequency) {
         this.scheduleId = scheduleId;
         this.exerciseNo = exerciseNo;
         this.exerciseDesc = exerciseDesc;
@@ -45,9 +45,7 @@ public class TrainingSchedule {
         this.heartFrequency = heartFrequency;
     }
 
-    public TrainingSchedule() {
-
-    }
+    public TrainingSchedule() {}
 
     public String getScheduleId() {
         return scheduleId;
