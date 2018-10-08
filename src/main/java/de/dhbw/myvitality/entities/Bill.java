@@ -14,6 +14,7 @@ public class Bill {
     private String billId;
 
     @Column
+    @OneToOne(fetch = FetchType.LAZY)
     private List<Order> order;
 
     @Column
