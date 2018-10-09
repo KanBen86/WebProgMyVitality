@@ -2,7 +2,6 @@ package de.dhbw.myvitality.entities;
 
 import de.dhbw.myvitality.enums.ENUM_SEX;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 

@@ -2,7 +2,7 @@ package de.dhbw.myvitality.entities;
 
 import java.util.List;
 
-public class Customer {
+public class Customer extends Person{
 
     private String customerId;
 
