@@ -46,6 +46,8 @@ public class Person {
     @Column
     private List<Bank> accounts;
 
+    public Person (){}
+
     public Person(String personId, String firstname, String lastname, Address address, LocalDateTime dateOfBirth, String emailAddress, String username, String password, String phoneNo, ENUM_SEX sex, List<Bank> accounts) {
         this.personId = personId;
         this.firstname = firstname;

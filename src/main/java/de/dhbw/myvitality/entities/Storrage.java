@@ -21,6 +21,17 @@ public class Storrage {
     @Column
     private int rackLevel;
 
+    public Storrage(){
+
+    }
+
+    public Storrage(Article articleId, int articleAmount, char rackSector, int rackLevel) {
+        this.articleId = articleId;
+        this.articleAmount = articleAmount;
+        this.rackSector = rackSector;
+        this.rackLevel = rackLevel;
+    }
+
     public Article getArticleId() {
         return articleId;
     }

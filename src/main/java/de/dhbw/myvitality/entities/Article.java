@@ -33,6 +33,19 @@ public class Article {
     @Column
     private List<ENUM_ALLERGEN> allergens;
 
+    public Article() {
+    }
+
+    public Article(String articleId, String description, List<ENUM_INGREDIENTS> ingredients, int barcode, float price, Company supplier, List<ENUM_ALLERGEN> allergens) {
+        this.articleId = articleId;
+        this.description = description;
+        this.ingredients = ingredients;
+        this.barcode = barcode;
+        this.price = price;
+        this.supplier = supplier;
+        this.allergens = allergens;
+    }
+
     public String getArticleId() {
         return articleId;
     }
