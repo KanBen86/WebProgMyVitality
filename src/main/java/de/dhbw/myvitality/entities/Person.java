@@ -21,7 +21,7 @@ public class Person {
     @Column
     private String lastname;
 
-    @Column
+    @JoinColumn(name = "adressID")
     @OneToOne(fetch = FetchType.LAZY)
     private Address address;
 

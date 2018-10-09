@@ -8,8 +8,9 @@ import javax.persistence.*;
 public class Storrage {
 
     @MapsId()
+    @JoinColumn(name = "articleId")
     @OneToOne(fetch = FetchType.LAZY)
-    private String articleId;
+    private Article articleId;
 
     @Column
     private int articleAmount;
@@ -20,11 +21,11 @@ public class Storrage {
     @Column
     private int rackLevel;
 
-    public String getArticleId() {
+    public Article getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(String articleId) {
+    public void setArticleId(Article articleId) {
         this.articleId = articleId;
     }
 
