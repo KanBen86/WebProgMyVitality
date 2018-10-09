@@ -6,7 +6,7 @@ public class Customer {
 
     private String customerId;
 
-    private Address delivieryAddress;
+    private Address deliveryAddress;
 
     private Address billAddress;
 
@@ -18,9 +18,9 @@ public class Customer {
 
     private String preferredTypeOfPayment;
 
-    public Customer(String customerId, Address delivieryAddress, Address billAddress, Goal goal, List<TrainingSchedule> trainingPlan, FitnessLevel fitnessLevel, String preferredTypeOfPayment) {
+    public Customer(String customerId, Address deliveryAddress, Address billAddress, Goal goal, List<TrainingSchedule> trainingPlan, FitnessLevel fitnessLevel, String preferredTypeOfPayment) {
         this.customerId = customerId;
-        this.delivieryAddress = delivieryAddress;
+        this.deliveryAddress = deliveryAddress;
         this.billAddress = billAddress;
         this.goal = goal;
         this.trainingPlan = trainingPlan;
@@ -40,11 +40,11 @@ public class Customer {
     }
 
     public Address getDelivieryAddress() {
-        return delivieryAddress;
+        return deliveryAddress;
     }
 
     public void setDelivieryAddress(Address delivieryAddress) {
-        this.delivieryAddress = delivieryAddress;
+        this.deliveryAddress = delivieryAddress;
     }
 
     public Address getBillAddress() {
