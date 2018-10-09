@@ -4,34 +4,22 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-@Table
 public class Contract {
 
-    @Id
-    @GeneratedValue
-    @Column
     private String contractId;
 
-    @Column
     private String deliveryConditions;
 
-    @Column
     private String paymentConditions;
 
-    @Column
     private String qualityRequirements;
 
-    @Column
     private LocalDate contractPeriod;
 
-    @Column
     private float priceClause;
 
-    @Column
     private LocalDateTime noticePeriod;
 
-    @Column
     private int minimalOrderSize;
 
     public Contract() {

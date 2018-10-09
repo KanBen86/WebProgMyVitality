@@ -3,30 +3,18 @@ package de.dhbw.myvitality.entities;
 
 import javax.persistence.*;
 
-@Entity
-@Table
 public class Company {
 
-    @Id
-    @GeneratedValue
-    @Column
     private String company_Id;
 
-    @Column
     private String name;
 
-    @Column
-    @GeneratedValue
-    @Id
     private String article_Id;
 
-    @Column
     private Address addresse;
 
-    @Column
     private Contract contract;
 
-    @Column
     private Person contactPerson;
 
     public Company(String name, Address addresse, Contract contract, Person contactPerson) {

@@ -2,28 +2,18 @@ package de.dhbw.myvitality.entities;
 
 import javax.persistence.*;
 
-@Entity
-@Table
 public class Goal {
 
-    @Id
-    @GeneratedValue
-    @Column
     private String goal_Id;
 
-    @Column
     private boolean weightLoss;
 
-    @Column
     private boolean gainStrength;
 
-    @Column
     private boolean minimizeWeaknesses;
 
-    @Column
     private boolean metabolicHealth;
 
-    @Column
     private boolean gainEndurance;
 
     public Goal(boolean weightLoss, boolean gainStrength, boolean minimizeWeaknesses, boolean metabolicHealth, boolean gainEndurance) {

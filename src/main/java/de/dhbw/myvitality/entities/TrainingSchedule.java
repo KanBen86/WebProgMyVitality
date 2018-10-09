@@ -3,35 +3,22 @@ package de.dhbw.myvitality.entities;
 import javax.persistence.*;
 import java.time.LocalTime;
 
-@Entity
-@Table
 public class TrainingSchedule {
 
-    @Id
-    @GeneratedValue
-    @Column
     private String scheduleId;
 
-    @Column
     private int exerciseNo;
 
-    @Column
     private String exerciseDesc;
 
-    @Column
     private int sets;
 
-    @Column
     private int reps;
 
-    @Column
     private int breakSec;
 
-    @Column
-    @OneToOne(fetch = FetchType.LAZY)
     private FitnessLevel fitnessLevel;
 
-    @Column
     private Integer[] heartFrequency = new Integer[2];
 
     public TrainingSchedule(String scheduleId, int exerciseNo, String exerciseDesc, int sets, int reps, int breakSec, FitnessLevel fitnessLevel, Integer[] heartFrequency) {

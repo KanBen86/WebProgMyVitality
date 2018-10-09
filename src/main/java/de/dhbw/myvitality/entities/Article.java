@@ -6,31 +6,22 @@ import de.dhbw.myvitality.enums.ENUM_INGREDIENTS;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table
 public class Article {
 
     @Id
     @GeneratedValue()
-    @Column
     private String articleId;
 
-    @Column
     private String description;
 
-    @Column
     private List<ENUM_INGREDIENTS> ingredients;
 
-    @Column
     private int barcode;
 
-    @Column
     private float price;
 
-    @Column
     private Company supplier;
 
-    @Column
     private List<ENUM_ALLERGEN> allergens;
 
     public Article() {

@@ -4,29 +4,18 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
-@Table
 public class Bill {
 
-    @Id
-    @GeneratedValue
-    @Column
     private String billId;
 
-    @Column
-    @OneToOne(fetch = FetchType.LAZY)
     private List<Order> order;
 
-    @Column
     private float partialPayment;
 
-    @Column
     private LocalDateTime dateOfDelivery;
 
-    @Column
     private String salesTaxId;
 
-    @Column
     private LocalDateTime billDate;
 
     public Bill() {

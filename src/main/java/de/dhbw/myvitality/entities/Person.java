@@ -6,44 +6,28 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
-@Table
 public class Person {
 
-    @Id()
-    @GeneratedValue()
-    @Column()
     private String personId;
 
-    @Column
     private String firstname;
 
-    @Column
     private String lastname;
 
-    @JoinColumn(name = "adressID")
-    @OneToOne(fetch = FetchType.LAZY)
     private Address address;
 
-    @Column
     private LocalDateTime dateOfBirth;
 
-    @Column
     private String emailAddress;
 
-    @Column
     private String username;
 
-    @Column
     private String password;
 
-    @Column
     private String phoneNo;
 
-    @Column
     private ENUM_SEX sex;
 
-    @Column
     private List<Bank> accounts;
 
     public Person (){}

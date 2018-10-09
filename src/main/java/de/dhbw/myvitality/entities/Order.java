@@ -4,34 +4,22 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-@Entity
-@Table
 public class Order {
 
-    @Id
-    @GeneratedValue
-    @Column
     private String orderId;
 
-    @Column
     private LocalDateTime orderDate;
 
-    @Column
     private float ShipmentCosts;
 
-    @Column
     private Customer customer;
 
-    @Column
     private Map<Article, Integer> articles;
 
-    @Column
     private TypeOfPayment typeOfPayment;
 
-    @Column
     private String couponNo;
 
-    @Column
     private boolean TermsAndConditionsConfirmed;
 
     public Order(String oderId, LocalDateTime orderDate, float shipmentCosts, Customer customer, Map<Article, Integer> articles, TypeOfPayment typeOfPayment, String couponNo, boolean termsAndConditionsConfirmed) {
