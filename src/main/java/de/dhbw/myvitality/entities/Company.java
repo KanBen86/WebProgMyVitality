@@ -2,19 +2,24 @@ package de.dhbw.myvitality.entities;
 
 
 import javax.persistence.*;
-
+@Entity
 public class Company {
-
+    @Id
+    @GeneratedValue
     private String company_Id;
 
     private String name;
 
     private String article_Id;
 
+    @Transient // TODO
     private Address addresse;
 
+    @OneToOne
+    @JoinColumn(name = "company_id")
     private Contract contract;
 
+    @Transient //TODO
     private Person contactPerson;
 
     public Company(String name, Address addresse, Contract contract, Person contactPerson) {

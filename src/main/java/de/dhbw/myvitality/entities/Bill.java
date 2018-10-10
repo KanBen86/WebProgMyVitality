@@ -3,11 +3,14 @@ package de.dhbw.myvitality.entities;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Entity
 public class Bill {
-
+    @Id
+    @GeneratedValue
     private String billId;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "bill_id")
     private List<Order> order;
 
     private float partialPayment;

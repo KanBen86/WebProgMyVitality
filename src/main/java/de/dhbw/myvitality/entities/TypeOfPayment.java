@@ -1,37 +1,37 @@
 package de.dhbw.myvitality.entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
-
+@Entity
 public class TypeOfPayment {
 
-    private List<PaymentMethod> type;
+    @Id
+    @GeneratedValue
+    private String typeId;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "type_id")
+    private List<PaymentMethod> paymentMethods;
 
     private String paymentEmail;
-
-    private Bank bank;
+    @OneToOne
+    @JoinColumn(name = "preferred_account_id")
+    private Bank preferredAccount;
 
     private String cardNo;
 
     private LocalDate expirationDate;
 
-    public TypeOfPayment(List<PaymentMethod> type, String paymentEmail, Bank bank, String cardNo, LocalDate expirationDate) {
-        this.type = type;
-        this.paymentEmail = paymentEmail;
-        this.bank = bank;
-        this.cardNo = cardNo;
-        this.expirationDate = expirationDate;
-    }
-
     public TypeOfPayment() {
     }
 
-    public List<PaymentMethod> getType() {
-        return type;
+    public List<PaymentMethod> getPaymentMethods() {
+        return paymentMethods;
     }
 
-    public void setType(List<PaymentMethod> type) {
-        this.type = type;
+    public void setPaymentMethods(List<PaymentMethod> paymentMethods) {
+        this.paymentMethods = paymentMethods;
     }
 
     public String getPaymentEmail() {
@@ -40,14 +40,6 @@ public class TypeOfPayment {
 
     public void setPaymentEmail(String paymentEmail) {
         this.paymentEmail = paymentEmail;
-    }
-
-    public Bank getBank() {
-        return bank;
-    }
-
-    public void setBank(Bank bank) {
-        this.bank = bank;
     }
 
     public String getCardNo() {

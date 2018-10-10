@@ -5,7 +5,7 @@ import de.dhbw.myvitality.enums.ENUM_INGREDIENTS;
 
 import javax.persistence.*;
 import java.util.List;
-
+@Entity
 public class Article {
 
     @Id
@@ -14,14 +14,18 @@ public class Article {
 
     private String description;
 
+    @Transient
     private List<ENUM_INGREDIENTS> ingredients;
 
     private int barcode;
 
     private float price;
 
+    @OneToOne
+    @JoinColumn(name = "article_id")
     private Company supplier;
 
+    @Transient //TODO
     private List<ENUM_ALLERGEN> allergens;
 
     public Article() {

@@ -2,32 +2,44 @@ package de.dhbw.myvitality.entities;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
+@Entity
 public class Order {
 
+    @Id
+    @GeneratedValue
     private String orderId;
 
     private LocalDateTime orderDate;
 
     private float ShipmentCosts;
 
+    @OneToOne
+    @JoinColumn(name = "order_customer_id")
     private Customer customer;
 
-    private Map<Article, Integer> articles;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "order_position_id")
+    private List<Position> position;
 
+    @OneToOne
+    @JoinColumn(name = "order_payment_type_id")
     private TypeOfPayment typeOfPayment;
 
     private String couponNo;
 
     private boolean TermsAndConditionsConfirmed;
 
-    public Order(String oderId, LocalDateTime orderDate, float shipmentCosts, Customer customer, Map<Article, Integer> articles, TypeOfPayment typeOfPayment, String couponNo, boolean termsAndConditionsConfirmed) {
-        this.orderId=orderId;
+    public Order() {
+    }
+
+    public Order(LocalDateTime orderDate, float shipmentCosts, Customer customer, List<Position> position, TypeOfPayment typeOfPayment, String couponNo, boolean termsAndConditionsConfirmed) {
         this.orderDate = orderDate;
         ShipmentCosts = shipmentCosts;
         this.customer = customer;
-        this.articles = articles;
+        this.position = position;
         this.typeOfPayment = typeOfPayment;
         this.couponNo = couponNo;
         TermsAndConditionsConfirmed = termsAndConditionsConfirmed;
@@ -65,14 +77,6 @@ public class Order {
         this.customer = customer;
     }
 
-    public Map<Article, Integer> getArticles() {
-        return articles;
-    }
-
-    public void setArticles(Map<Article, Integer> articles) {
-        this.articles = articles;
-    }
-
     public TypeOfPayment getTypeOfPayment() {
         return typeOfPayment;
     }
@@ -95,5 +99,13 @@ public class Order {
 
     public void setTermsAndConditionsConfirmed(boolean termsAndConditionsConfirmed) {
         TermsAndConditionsConfirmed = termsAndConditionsConfirmed;
+    }
+
+    public List<Position> getPosition() {
+        return position;
+    }
+
+    public void setPosition(List<Position> position) {
+        this.position = position;
     }
 }

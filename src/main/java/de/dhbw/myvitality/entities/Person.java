@@ -2,17 +2,18 @@ package de.dhbw.myvitality.entities;
 
 import de.dhbw.myvitality.enums.ENUM_SEX;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
-
+@MappedSuperclass
 public class Person {
-
-    private String personId;
 
     private String firstname;
 
     private String lastname;
 
+    @OneToOne
+    @JoinColumn(name = "address_id")
     private Address address;
 
     private LocalDateTime dateOfBirth;
@@ -27,13 +28,14 @@ public class Person {
 
     private ENUM_SEX sex;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "accounts_id")
     private List<Bank> accounts;
 
     public Person (){}
 
-    public Person(String personId, String firstname, String lastname, Address address, LocalDateTime dateOfBirth, String emailAddress, String username, String password, String phoneNo, ENUM_SEX sex, List<Bank> accounts) {
-        this.personId = personId;
-        this.firstname = firstname;
+    public Person(String firstname, String lastname, Address address, LocalDateTime dateOfBirth, String emailAddress, String username, String password, String phoneNo, ENUM_SEX sex, List<Bank> accounts) {
+    this.firstname = firstname;
         this.lastname = lastname;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
@@ -43,14 +45,6 @@ public class Person {
         this.phoneNo = phoneNo;
         this.sex = sex;
         this.accounts = accounts;
-    }
-
-    public String getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(String personId) {
-        this.personId = personId;
     }
 
     public String getFirstname() {

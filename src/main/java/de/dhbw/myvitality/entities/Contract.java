@@ -3,9 +3,10 @@ package de.dhbw.myvitality.entities;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
+@Entity
 public class Contract {
-
+    @Id
+    @GeneratedValue
     private String contractId;
 
     private String deliveryConditions;

@@ -2,9 +2,10 @@ package de.dhbw.myvitality.entities;
 
 import javax.persistence.*;
 import java.time.LocalTime;
-
+@Entity
 public class TrainingSchedule {
-
+    @Id
+    @GeneratedValue
     private String scheduleId;
 
     private int exerciseNo;
@@ -17,6 +18,8 @@ public class TrainingSchedule {
 
     private int breakSec;
 
+    @OneToOne
+    @JoinColumn(name = "fitness_level_id")
     private FitnessLevel fitnessLevel;
 
     private Integer[] heartFrequency = new Integer[2];

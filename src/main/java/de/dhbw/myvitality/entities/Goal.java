@@ -1,9 +1,11 @@
 package de.dhbw.myvitality.entities;
 
 import javax.persistence.*;
-
+@Entity
 public class Goal {
 
+    @Id
+    @GeneratedValue
     private String goal_Id;
 
     private boolean weightLoss;

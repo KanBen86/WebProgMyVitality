@@ -1,29 +1,40 @@
 package de.dhbw.myvitality.entities;
 
+import javax.persistence.*;
 import java.util.List;
-
+@Entity
 public class Customer extends Person{
-
+    @Id
     private String customerId;
 
+    @OneToOne
+    @JoinColumn(name = "delivery_address_id")
     private Address deliveryAddress;
 
+    @OneToOne
+    @JoinColumn(name = "bill_address_id")
     private Address billAddress;
 
+    @OneToOne
+    @JoinColumn(name = "goal_id")
     private Goal goal;
 
-    private List<TrainingSchedule> trainingPlan;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "customer_schedule_id")
+    private List<TrainingSchedule> trainingSchedules;
 
+    @OneToOne
+    @JoinColumn(name = "fitness_level_id")
     private FitnessLevel fitnessLevel;
 
     private String preferredTypeOfPayment;
 
-    public Customer(String customerId, Address deliveryAddress, Address billAddress, Goal goal, List<TrainingSchedule> trainingPlan, FitnessLevel fitnessLevel, String preferredTypeOfPayment) {
+    public Customer(String customerId, Address deliveryAddress, Address billAddress, Goal goal, List<TrainingSchedule> trainingSchedules, FitnessLevel fitnessLevel, String preferredTypeOfPayment) {
         this.customerId = customerId;
         this.deliveryAddress = deliveryAddress;
         this.billAddress = billAddress;
         this.goal = goal;
-        this.trainingPlan = trainingPlan;
+        this.trainingSchedules = trainingSchedules;
         this.fitnessLevel = fitnessLevel;
         this.preferredTypeOfPayment = preferredTypeOfPayment;
     }
@@ -64,11 +75,11 @@ public class Customer extends Person{
     }
 
     public List<TrainingSchedule> getTrainingPlan() {
-        return trainingPlan;
+        return trainingSchedules;
     }
 
     public void setTrainingPlan(List<TrainingSchedule> trainingPlan) {
-        this.trainingPlan = trainingPlan;
+        this.trainingSchedules = trainingPlan;
     }
 
     public FitnessLevel getFitnessLevel() {
