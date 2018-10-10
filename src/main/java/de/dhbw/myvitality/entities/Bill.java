@@ -10,7 +10,7 @@ public class Bill {
     private String billId;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "bill_id")
+    @JoinColumn(name = "bill_order_id")
     private List<Order> order;
 
     private float partialPayment;

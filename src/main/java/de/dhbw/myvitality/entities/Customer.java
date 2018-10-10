@@ -16,7 +16,7 @@ public class Customer extends Person{
     private Address billAddress;
 
     @OneToOne
-    @JoinColumn(name = "goal_id")
+    @JoinColumn(name = "customer_goal_id")
     private Goal goal;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
@@ -24,7 +24,7 @@ public class Customer extends Person{
     private List<TrainingSchedule> trainingSchedules;
 
     @OneToOne
-    @JoinColumn(name = "fitness_level_id")
+    @JoinColumn(name = "customer_fitness_level_id")
     private FitnessLevel fitnessLevel;
 
     private String preferredTypeOfPayment;

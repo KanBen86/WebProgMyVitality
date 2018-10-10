@@ -22,7 +22,7 @@ public class Article {
     private float price;
 
     @OneToOne
-    @JoinColumn(name = "article_id")
+    @JoinColumn(name = "article_supplier_id")
     private Company supplier;
 
     @Transient //TODO

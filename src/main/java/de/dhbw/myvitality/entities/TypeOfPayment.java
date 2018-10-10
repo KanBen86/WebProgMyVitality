@@ -11,12 +11,12 @@ public class TypeOfPayment {
     private String typeId;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "type_id")
+    @JoinColumn(name = "type_method_id")
     private List<PaymentMethod> paymentMethods;
 
     private String paymentEmail;
     @OneToOne
-    @JoinColumn(name = "preferred_account_id")
+    @JoinColumn(name = "type_preferred_account_id")
     private Bank preferredAccount;
 
     private String cardNo;

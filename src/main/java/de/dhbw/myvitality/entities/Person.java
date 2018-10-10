@@ -13,7 +13,7 @@ public class Person {
     private String lastname;
 
     @OneToOne
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "person_address_id")
     private Address address;
 
     private LocalDateTime dateOfBirth;
@@ -29,7 +29,7 @@ public class Person {
     private ENUM_SEX sex;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "accounts_id")
+    @JoinColumn(name = "person_accounts_id")
     private List<Bank> accounts;
 
     public Person (){}

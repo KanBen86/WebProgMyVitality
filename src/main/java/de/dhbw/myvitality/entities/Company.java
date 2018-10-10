@@ -16,7 +16,7 @@ public class Company {
     private Address addresse;
 
     @OneToOne
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "company_contract_id")
     private Contract contract;
 
     @Transient //TODO

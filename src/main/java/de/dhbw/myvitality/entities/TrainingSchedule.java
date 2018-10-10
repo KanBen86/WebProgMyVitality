@@ -19,7 +19,7 @@ public class TrainingSchedule {
     private int breakSec;
 
     @OneToOne
-    @JoinColumn(name = "fitness_level_id")
+    @JoinColumn(name = "schedule_fitness_level_id")
     private FitnessLevel fitnessLevel;
 
     private Integer[] heartFrequency = new Integer[2];

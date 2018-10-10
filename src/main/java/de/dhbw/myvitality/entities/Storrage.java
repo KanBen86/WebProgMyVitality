@@ -10,7 +10,7 @@ public class Storrage {
     private String storrageId;
 
     @OneToOne
-    @JoinColumn(name = "storrage_id")
+    @JoinColumn(name = "storrage_article_id")
     private Article article;
 
     private char rackSector;
