@@ -6,9 +6,9 @@ import de.dhbw.myvitality.enums.ENUM_SEX;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Entity
 public class Employee extends Person{
 
@@ -16,28 +16,35 @@ public class Employee extends Person{
     private String employeeId;
 
     private ENUM_DEPARTMENT department;
-    // TODO wie kann man diese Liste besser abbilden?
-    @Transient
-    private List<ENUM_ROLL> authorities;
 
-    private String superior; // holds he employeeId of the superior
+    private ENUM_ROLL authorities;
+
+    private String superior; // holds the employeeId of the superior
 
     public Employee() {
     }
 
-    public Employee(String employeeId, ENUM_DEPARTMENT department, List<ENUM_ROLL> authorities, String superior) {
-        this.employeeId = employeeId;
+    public Employee(String employeeId, ENUM_DEPARTMENT department, ENUM_ROLL authorities, String superior) {
+        this.employeeId = "mvu" + employeeId;
         this.department = department;
         this.authorities = authorities;
-        this.superior = superior;
+        this.superior = (superior!=null)?"mvu" + superior : superior;
     }
 
-    public Employee(String firstname, String lastname, Address address, LocalDateTime dateOfBirth, String emailAddress, String username, String password, String phoneNo, ENUM_SEX sex, List<Bank> accounts, String employeeId, ENUM_DEPARTMENT department, List<ENUM_ROLL> authorities, String superior) {
+    public Employee(String firstname, String lastname, Address address, LocalDateTime dateOfBirth, String emailAddress, String username, String password, String phoneNo, ENUM_SEX sex, List<Bank> accounts, String employeeId, ENUM_DEPARTMENT department, ENUM_ROLL authorities, String superior) {
         super(firstname, lastname, address, dateOfBirth, emailAddress, username, password, phoneNo, sex, accounts);
-        this.employeeId = employeeId;
+        this.employeeId = "mvu" + employeeId;
         this.department = department;
         this.authorities = authorities;
-        this.superior = superior;
+        this.superior = (superior!=null)?"mvu" + superior : superior;
+    }
+
+    public ENUM_ROLL getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(ENUM_ROLL authorities) {
+        this.authorities = authorities;
     }
 
     public String getEmployeeId() {
@@ -45,7 +52,7 @@ public class Employee extends Person{
     }
 
     public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+        this.employeeId = "mvu" + employeeId;
     }
 
     public ENUM_DEPARTMENT getDepartment() {
@@ -56,19 +63,21 @@ public class Employee extends Person{
         this.department = department;
     }
 
-    public List<ENUM_ROLL> getAuthorities() {
-        return authorities;
-    }
-
-    public void setAuthorities(List<ENUM_ROLL> authorities) {
-        this.authorities = authorities;
-    }
-
     public String getSuperior() {
         return superior;
     }
 
     public void setSuperior(String superior) {
-        this.superior = superior;
+        this.superior = (superior != null) ? "mvu" + superior : superior;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId='" + employeeId + '\'' +
+                ", department=" + department +
+                ", authorities=" + authorities +
+                ", superior='" + superior + '\'' +
+                '}';
     }
 }
