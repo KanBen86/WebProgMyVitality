@@ -11,7 +11,7 @@ public class Bill {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "bill_order_id")
-    private List<Order> order;
+    private List<Ordering> ordering;
 
     private float partialPayment;
 
@@ -24,8 +24,8 @@ public class Bill {
     public Bill() {
     }
 
-    public Bill(List<Order> order, float partialPayment, LocalDateTime dateOfDelivery, String salesTaxId, LocalDateTime billDate) {
-        this.order = order;
+    public Bill(List<Ordering> ordering, float partialPayment, LocalDateTime dateOfDelivery, String salesTaxId, LocalDateTime billDate) {
+        this.ordering = ordering;
         this.partialPayment = partialPayment;
         this.dateOfDelivery = dateOfDelivery;
         this.salesTaxId = salesTaxId;
@@ -40,12 +40,12 @@ public class Bill {
         this.billId = billId;
     }
 
-    public List<Order> getOrder() {
-        return order;
+    public List<Ordering> getOrdering() {
+        return ordering;
     }
 
-    public void setOrder(List<Order> order) {
-        this.order = order;
+    public void setOrdering(List<Ordering> ordering) {
+        this.ordering = ordering;
     }
 
     public float getPartialPayment() {

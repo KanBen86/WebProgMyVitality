@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 @Entity
-public class Order {
+public class Ordering {
 
     @Id
     @GeneratedValue
@@ -17,25 +17,25 @@ public class Order {
     private float ShipmentCosts;
 
     @OneToOne
-    @JoinColumn(name = "order_customer_id")
+    @JoinColumn(name = "ordering_customer_id")
     private Customer customer;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "order_position_id")
+    @JoinColumn(name = "ordering_position_id")
     private List<Position> position;
 
     @OneToOne
-    @JoinColumn(name = "order_payment_type_id")
+    @JoinColumn(name = "ordering_payment_type_id")
     private TypeOfPayment typeOfPayment;
 
     private String couponNo;
 
     private boolean TermsAndConditionsConfirmed;
 
-    public Order() {
+    public Ordering() {
     }
 
-    public Order(LocalDateTime orderDate, float shipmentCosts, Customer customer, List<Position> position, TypeOfPayment typeOfPayment, String couponNo, boolean termsAndConditionsConfirmed) {
+    public Ordering(LocalDateTime orderDate, float shipmentCosts, Customer customer, List<Position> position, TypeOfPayment typeOfPayment, String couponNo, boolean termsAndConditionsConfirmed) {
         this.orderDate = orderDate;
         ShipmentCosts = shipmentCosts;
         this.customer = customer;
