@@ -1,7 +1,7 @@
 package de.dhbw.myvitality.enums;
 
 public enum ENUM_ROLL {
-    ADMIN("Administrator", "The Administrator can do anything");
+    ADMIN("Administrator", "Administrator der alle Aktionen im Programm ausführen darf"), USER("Benutzer", "Standardbenutzer mit eingeschränkten Rechten");
 
     private String name;
     private String description;
