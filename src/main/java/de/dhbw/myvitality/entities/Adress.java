@@ -1,5 +1,7 @@
 package de.dhbw.myvitality.entities;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,7 +17,8 @@ public class Adress {
 
     //Felder
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String adressID;
 
     private String street;
@@ -23,6 +26,8 @@ public class Adress {
     private String houseNo;
 
     private String zipCode;
+
+    private String city;
 
     private String state;
 
@@ -45,6 +50,14 @@ public class Adress {
 
     public void setZipCode(String zipCode) { this.zipCode = zipCode; }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getState() { return state; }
 
     public void setState(String state) { this.state = state; }
@@ -54,10 +67,11 @@ public class Adress {
     public void setCountry(String country) { this.country = country; }
 
     //Konstruktoren
-    public Adress(String street, String houseNo, String zipCode, String state, String country) {
+    public Adress(String street, String houseNo, String zipCode, String city, String state, String country) {
         this.street = street;
         this.houseNo = houseNo;
         this.zipCode = zipCode;
+        this.city = city;
         this.state = state;
         this.country = country;
     }
@@ -74,6 +88,7 @@ public class Adress {
                 ", street='" + street + '\'' +
                 ", houseNo='" + houseNo + '\'' +
                 ", zipCode='" + zipCode + '\'' +
+                ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", country='" + country + '\'' +
                 '}';
@@ -88,12 +103,13 @@ public class Adress {
                 Objects.equals(getStreet(), adress.getStreet()) &&
                 Objects.equals(getHouseNo(), adress.getHouseNo()) &&
                 Objects.equals(getZipCode(), adress.getZipCode()) &&
+                Objects.equals(getZipCode(), adress.getCity()) &&
                 Objects.equals(getState(), adress.getState()) &&
                 Objects.equals(getCountry(), adress.getCountry());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getAdressID(), getStreet(), getHouseNo(), getZipCode(), getState(), getCountry());
+        return Objects.hash(getAdressID(), getStreet(), getHouseNo(), getCity(), getZipCode(), getState(), getCountry());
     }
 }

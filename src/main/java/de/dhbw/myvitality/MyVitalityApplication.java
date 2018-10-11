@@ -3,6 +3,7 @@ package de.dhbw.myvitality;
 import de.dhbw.myvitality.entities.*;
 import de.dhbw.myvitality.enums.ENUM_DEPARTMENT;
 import de.dhbw.myvitality.enums.ENUM_ROLL;
+import de.dhbw.myvitality.repositories.AdressRepository;
 import de.dhbw.myvitality.repositories.CustomerRepository;
 import de.dhbw.myvitality.repositories.EmployeeRepository;
 import org.slf4j.Logger;
@@ -81,4 +82,21 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             log.info(customer.get().toString());
         };
     }
+
+    @Bean
+    public CommandLineRunner demoAdress(AdressRepository adressRepository){
+	    return (args) ->{
+	        // DemoAdresse erzeugen und in der Datenbank speichern
+            log.info("Erzeuge Adresse und spiechere sie");
+            log.info("----------------------------------");
+            adressRepository.save(new Adress("Musterstrasse", "2b", "00138", "Musterstadt", "MusterBayern", "Musterland"));
+            // Adresse aus der Datenbank auslesen und ausgeben
+            log.info("Adresse mit Query suchen");
+            log.info("----------------------------------");
+            Optional<Adress> adress = adressRepository.findAdressByQuery("Musterstrasse", "2b", "00138");
+            log.info(adress.get().toString());
+            log.info("----------------------------------");
+        };
+    }
+
 }
