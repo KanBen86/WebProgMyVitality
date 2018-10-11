@@ -7,6 +7,7 @@
     <title>MyVitalityApp</title>
     <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/favicon32.ico" sizes="32x32">
 </head>
 
     <body>
