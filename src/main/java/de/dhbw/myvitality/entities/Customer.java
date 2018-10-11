@@ -19,7 +19,7 @@ public class Customer extends Person{
     @JoinColumn(name = "customer_goal_id")
     private Goal goal;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "customer_schedule_id")
     private List<TrainingSchedule> trainingSchedules;
 
@@ -74,12 +74,12 @@ public class Customer extends Person{
         this.goal = goal;
     }
 
-    public List<TrainingSchedule> getTrainingPlan() {
+    public List<TrainingSchedule> getTrainingSchedules() {
         return trainingSchedules;
     }
 
-    public void setTrainingPlan(List<TrainingSchedule> trainingPlan) {
-        this.trainingSchedules = trainingPlan;
+    public void setTrainingSchedules(List<TrainingSchedule> trainingSchedules) {
+        this.trainingSchedules = trainingSchedules;
     }
 
     public FitnessLevel getFitnessLevel() {
@@ -96,5 +96,18 @@ public class Customer extends Person{
 
     public void setPreferredTypeOfPayment(String preferredTypeOfPayment) {
         this.preferredTypeOfPayment = preferredTypeOfPayment;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerId='" + customerId + '\'' +
+                ", deliveryAddress=" + deliveryAddress +
+                ", billAddress=" + billAddress +
+                ", goal=" + goal +
+                ", trainingSchedules=" + trainingSchedules +
+                ", fitnessLevel=" + fitnessLevel +
+                ", preferredTypeOfPayment='" + preferredTypeOfPayment + '\'' +
+                '}';
     }
 }
