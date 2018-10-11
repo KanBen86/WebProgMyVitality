@@ -9,11 +9,11 @@ public class Customer extends Person{
 
     @OneToOne
     @JoinColumn(name = "delivery_address_id")
-    private Address deliveryAddress;
+    private Adress deliveryAdress;
 
     @OneToOne
     @JoinColumn(name = "bill_address_id")
-    private Address billAddress;
+    private Adress billAdress;
 
     @OneToOne
     @JoinColumn(name = "customer_goal_id")
@@ -29,10 +29,10 @@ public class Customer extends Person{
 
     private String preferredTypeOfPayment;
 
-    public Customer(String customerId, Address deliveryAddress, Address billAddress, Goal goal, List<TrainingSchedule> trainingSchedules, FitnessLevel fitnessLevel, String preferredTypeOfPayment) {
+    public Customer(String customerId, Adress deliveryAdress, Adress billAdress, Goal goal, List<TrainingSchedule> trainingSchedules, FitnessLevel fitnessLevel, String preferredTypeOfPayment) {
         this.customerId = customerId;
-        this.deliveryAddress = deliveryAddress;
-        this.billAddress = billAddress;
+        this.deliveryAdress = deliveryAdress;
+        this.billAdress = billAdress;
         this.goal = goal;
         this.trainingSchedules = trainingSchedules;
         this.fitnessLevel = fitnessLevel;
@@ -50,20 +50,20 @@ public class Customer extends Person{
         this.customerId = customerId;
     }
 
-    public Address getDelivieryAddress() {
-        return deliveryAddress;
+    public Adress getDelivieryAddress() {
+        return deliveryAdress;
     }
 
-    public void setDelivieryAddress(Address delivieryAddress) {
-        this.deliveryAddress = delivieryAddress;
+    public void setDelivieryAddress(Adress delivieryAdress) {
+        this.deliveryAdress = delivieryAdress;
     }
 
-    public Address getBillAddress() {
-        return billAddress;
+    public Adress getBillAdress() {
+        return billAdress;
     }
 
-    public void setBillAddress(Address billAddress) {
-        this.billAddress = billAddress;
+    public void setBillAdress(Adress billAdress) {
+        this.billAdress = billAdress;
     }
 
     public Goal getGoal() {
@@ -102,8 +102,8 @@ public class Customer extends Person{
     public String toString() {
         return "Customer{" +
                 "customerId='" + customerId + '\'' +
-                ", deliveryAddress=" + deliveryAddress +
-                ", billAddress=" + billAddress +
+                ", deliveryAdress=" + deliveryAdress +
+                ", billAdress=" + billAdress +
                 ", goal=" + goal +
                 ", trainingSchedules=" + trainingSchedules +
                 ", fitnessLevel=" + fitnessLevel +

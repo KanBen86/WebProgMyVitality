@@ -14,7 +14,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -35,6 +34,12 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 		return application.sources(MyVitalityApplication.class);
 	}
 
+	/****
+	 * DEV
+	 * DB Load/Reload
+	 * @param empRepos
+	 * @return
+	 */
 	@Bean
 	public CommandLineRunner demoEmployee(EmployeeRepository empRepos){
 		return (args) -> {

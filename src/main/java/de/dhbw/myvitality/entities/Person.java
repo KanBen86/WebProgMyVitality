@@ -14,7 +14,7 @@ public class Person {
 
     @OneToOne
     @JoinColumn(name = "person_address_id")
-    private Address address;
+    private Adress adress;
 
     private LocalDateTime dateOfBirth;
 
@@ -34,10 +34,10 @@ public class Person {
 
     public Person (){}
 
-    public Person(String firstname, String lastname, Address address, LocalDateTime dateOfBirth, String emailAddress, String username, String password, String phoneNo, ENUM_SEX sex, List<Bank> accounts) {
+    public Person(String firstname, String lastname, Adress adress, LocalDateTime dateOfBirth, String emailAddress, String username, String password, String phoneNo, ENUM_SEX sex, List<Bank> accounts) {
     this.firstname = firstname;
         this.lastname = lastname;
-        this.address = address;
+        this.adress = adress;
         this.dateOfBirth = dateOfBirth;
         this.emailAddress = emailAddress;
         this.username = username;
@@ -63,12 +63,12 @@ public class Person {
         this.lastname = lastname;
     }
 
-    public Address getAddress() {
-        return address;
+    public Adress getAdress() {
+        return adress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAdress(Adress adress) {
+        this.adress = adress;
     }
 
     public LocalDateTime getDateOfBirth() {

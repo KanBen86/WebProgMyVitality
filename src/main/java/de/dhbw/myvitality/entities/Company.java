@@ -13,7 +13,7 @@ public class Company {
     private String article_Id;
 
     @Transient // TODO
-    private Address addresse;
+    private Adress addresse;
 
     @OneToOne
     @JoinColumn(name = "company_contract_id")
@@ -22,7 +22,7 @@ public class Company {
     @Transient //TODO
     private Person contactPerson;
 
-    public Company(String name, Address addresse, Contract contract, Person contactPerson) {
+    public Company(String name, Adress addresse, Contract contract, Person contactPerson) {
         this.name = name;
         this.addresse = addresse;
         this.contract = contract;
@@ -53,11 +53,11 @@ public class Company {
         this.article_Id = article_Id;
     }
 
-    public Address getAddresse() {
+    public Adress getAddresse() {
         return addresse;
     }
 
-    public void setAddresse(Address addresse) {
+    public void setAddresse(Adress addresse) {
         this.addresse = addresse;
     }
 

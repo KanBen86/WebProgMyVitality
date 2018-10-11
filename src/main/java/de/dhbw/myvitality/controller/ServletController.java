@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * ServletController: Mappt die Http Anfragen auf eine JSP
  * @author tamino.fischer
- *
  */
 @Controller
 public class ServletController {
