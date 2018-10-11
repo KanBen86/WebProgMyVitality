@@ -4,6 +4,7 @@ import de.dhbw.myvitality.entities.*;
 import de.dhbw.myvitality.enums.ENUM_DEPARTMENT;
 import de.dhbw.myvitality.enums.ENUM_ROLL;
 import de.dhbw.myvitality.repositories.AdressRepository;
+import de.dhbw.myvitality.repositories.BankRepository;
 import de.dhbw.myvitality.repositories.CustomerRepository;
 import de.dhbw.myvitality.repositories.EmployeeRepository;
 import org.slf4j.Logger;
@@ -95,6 +96,22 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             log.info("----------------------------------");
             Optional<Adress> adress = adressRepository.findAdressByQuery("Musterstrasse", "2b", "00138");
             log.info(adress.get().toString());
+            log.info("----------------------------------");
+        };
+    }
+
+    @Bean
+    public CommandLineRunner demoBank(BankRepository bankRepository){
+        return (args) -> {
+            //DemoBank erzeugen und in der Datenbank abspeichern
+            log.info("Erzeuge Demobank");
+            log.info("----------------------------------");
+            bankRepository.save(new Bank("demoiban", "demobic", "demoInhaber", "demoInstutut"));
+            //Demobamk aus der Datenbank auslesen und ausgeben
+            log.info("Bank mit Query suchen");
+            log.info("----------------------------------");
+            Optional<Bank> bank = bankRepository.findBankByQuery("demoiban", "demobic");
+            log.info(bank.get().toString());
             log.info("----------------------------------");
         };
     }
