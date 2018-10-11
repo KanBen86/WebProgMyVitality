@@ -1,4 +1,4 @@
-package de.dhbw.myvitality;
+package de.dhbw.myvitality.Controller;
 
 import java.io.IOException;
 
