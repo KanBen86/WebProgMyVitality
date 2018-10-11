@@ -53,7 +53,7 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 			log.info(employee.get().toString());
 			log.info("----------------------------");
 			log.info("Update the field superior of Employee mvu11111");
-			employee.get().setSuperior("mvu00000");
+			employee.get().setSuperior("00000");
 			empRepos.save(employee.get());
 			log.info("----------------------------");
 			log.info("Employee nach dem Update");

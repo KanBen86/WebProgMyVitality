@@ -22,4 +22,10 @@ public class ServletController {
 		request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
 	}
 
+	//Login Page
+	@RequestMapping("/login")
+	public void getLoginPage(HttpServletRequest request, HttpServletResponse response) throws  ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+	}
+
 }
