@@ -3,10 +3,7 @@ package de.dhbw.myvitality;
 import de.dhbw.myvitality.entities.*;
 import de.dhbw.myvitality.enums.ENUM_DEPARTMENT;
 import de.dhbw.myvitality.enums.ENUM_ROLL;
-import de.dhbw.myvitality.repositories.AdressRepository;
-import de.dhbw.myvitality.repositories.BankRepository;
-import de.dhbw.myvitality.repositories.CustomerRepository;
-import de.dhbw.myvitality.repositories.EmployeeRepository;
+import de.dhbw.myvitality.repositories.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -16,6 +13,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -115,5 +113,17 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             log.info("----------------------------------");
         };
     }
+/*
+    public CommandLineRunner demoSuppConfig(SupplementConfigurationRepository supplementConfigurationRepository){
+	    return (args) ->{
+	        //DemoSupps erzeugen und in die Datenbank abspeichern
+            log.info("Erzeuge DemoSuppsConfig");
+            log.info("----------------------------------");
+            ArrayList<Article> list = new ArrayList<Article>();
+            list.add(new Article("test", ))
 
+
+            supplementConfigurationRepository.save(new SupplementConfiguration());
+        };
+    }*/
 }
