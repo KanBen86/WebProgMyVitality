@@ -1,8 +1,9 @@
 package de.dhbw.myvitality;
 
-import de.dhbw.myvitality.entities.Employee;
+import de.dhbw.myvitality.entities.*;
 import de.dhbw.myvitality.enums.ENUM_DEPARTMENT;
 import de.dhbw.myvitality.enums.ENUM_ROLL;
+import de.dhbw.myvitality.repositories.CustomerRepository;
 import de.dhbw.myvitality.repositories.EmployeeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -34,7 +36,7 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 	}
 
 	@Bean
-	public CommandLineRunner demo(EmployeeRepository empRepos){
+	public CommandLineRunner demoEmployee(EmployeeRepository empRepos){
 		return (args) -> {
 			// save a couple of employees
 			log.info("Erzeuge Employees und speichere sie");
@@ -60,4 +62,18 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 			log.info(empRepos.findById(employee.get().getEmployeeId()).toString());
 		};
 	}
+
+	@Bean
+    public CommandLineRunner demoCustomer(CustomerRepository customerRepository){
+	    return (args) -> {
+	        //save a couple of customers
+            log.info("Erzeuge Customer und speichere sie");
+            log.info("----------------------------------");
+            customerRepository.save(new Customer("11111", null, null, null, null, null, "Banküberweisung"));
+            log.info("Customer nach Id suchen");
+            log.info("----------------------------------");
+            Optional<Customer> customer = customerRepository.findById("11111");
+            log.info(customer.get().toString());
+        };
+    }
 }
