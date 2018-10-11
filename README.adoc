@@ -1,0 +1,15 @@
+"Beschreibung des  MyVitality Konfigurators"
+
+IMPORTANT: Zum Starten der Anwendung bitte folgende Schritte beachten:
+
+    1) H2 Datenbank downloaden und installieren
+    http://www.h2database.com/html/download.html
+
+    2) ZipFile entpacken
+
+    3) mvn package
+       cd /target/
+       java -jar Telefonbuch-0.0.1-SNAPSHOT.jar
+
+
+Zum Beenden einfach den Prozess mit crtl
