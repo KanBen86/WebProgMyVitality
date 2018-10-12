@@ -1,0 +1,38 @@
+button {
+    display: block;
+    height: 4rem;
+}
+
+@media (max-width: 480px){
+    button {
+        width: 100%;
+    }
+    div {
+        display: block;
+        padding: 0;
+    }
+    .formular{
+        display: block;
+    }
+    .btnShowStorrage{
+    }
+    .storrageOverview {
+        display: none;
+    }
+    .warehouseMain {
+        display: block;
+    }
+    .addArticle {
+        display: none;
+    }
+    .btnAddArticle {
+        background-color: lightgrey;
+        color: black;
+    }
+    .btnSave {
+        display: block;
+        background-color: lightblue;
+        color: black;
+    }
+}
+
