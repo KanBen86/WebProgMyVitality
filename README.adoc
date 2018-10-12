@@ -9,7 +9,7 @@ IMPORTANT: Zum Starten der Anwendung bitte folgende Schritte beachten:
 
     3) mvn package
        cd /target/
-       java -jar Telefonbuch-0.0.1-SNAPSHOT.jar
+       java -jar MyVitality-0.0.1-SNAPSHOT.jar
 
 
-Zum Beenden einfach den Prozess mit crtl
+Zum Beenden einfach den Prozess mit crtl + c abbrechen.

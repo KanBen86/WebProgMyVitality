@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public interface SupplementConfigurationRepository extends CrudRepository<SupplementConfiguration, String> {
-/*
+
     @Query("SELECT s from SupplementConfiguration s where s.articleList = :list")
-    public Optional<SupplementConfiguration> findByQuery(@Param("list")ArrayList<SupplementConfiguration> list);*/
+    public Optional<SupplementConfiguration> findByQuery(@Param("list")ArrayList<SupplementConfiguration> list);
 
 }

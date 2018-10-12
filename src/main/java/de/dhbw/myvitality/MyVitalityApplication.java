@@ -113,17 +113,17 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             log.info("----------------------------------");
         };
     }
-/*
+/**
     public CommandLineRunner demoSuppConfig(SupplementConfigurationRepository supplementConfigurationRepository){
 	    return (args) ->{
 	        //DemoSupps erzeugen und in die Datenbank abspeichern
             log.info("Erzeuge DemoSuppsConfig");
             log.info("----------------------------------");
             ArrayList<Article> list = new ArrayList<Article>();
-            list.add(new Article("test", ))
+            list.add(new Article("test", null, null, null, null, ))
 
 
             supplementConfigurationRepository.save(new SupplementConfiguration());
         };
-    }*/
+    }**/
 }

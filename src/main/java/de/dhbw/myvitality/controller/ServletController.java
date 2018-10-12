@@ -33,4 +33,9 @@ public class ServletController {
 		request.getRequestDispatcher("/WEB-INF/jsp/warehouse.jsp").forward(request, response);
 	}
 
+	@RequestMapping("/test")
+	public void getTestPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/jsp/templateTest.jsp").forward(request, response);
+	}
+
 }
