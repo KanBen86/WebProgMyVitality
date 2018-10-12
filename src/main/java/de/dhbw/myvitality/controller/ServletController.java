@@ -27,4 +27,10 @@ public class ServletController {
 		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 	}
 
+	//Warehouse Page
+	@RequestMapping("/warehouse")
+	public void getWarehousePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/jsp/warehouse.jsp").forward(request, response);
+	}
+
 }
