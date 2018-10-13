@@ -5,10 +5,19 @@
 <template:base>
     <jsp:attribute name="header">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/mySupplements.css"/>
-        <script src="../../resources/js/mySupplements.js"></script>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript" src="../../resources/js/mySupplements.js"></script>
+
+
+
+
     </jsp:attribute>
 
     <jsp:attribute name="body">
-        <h1>Hello World</h1>
+    <h1>Ihre Nahrungsergänzungsmittel</h1>
+
+    <div id="piechart"></div>
+
     </jsp:attribute>
 </template:base>
