@@ -12,7 +12,7 @@
         <jsp:invoke fragment="head"/>
         <meta charset="utf-8"/>
         <title>MyVitalityApp</title>
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css"/>
+        <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css"/>-->
         <script src="../../resources/js/main.js"></script>
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/favicon32.ico" sizes="32x32">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
