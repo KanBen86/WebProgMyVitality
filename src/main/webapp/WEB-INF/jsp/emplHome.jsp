@@ -3,6 +3,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <template:base>
+    <jsp:attribute name="header">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/emplHome.css"/>
+        <script src="../../resources/js/emplHome.js"></script>
+    </jsp:attribute>
+
     <jsp:attribute name="body">
         <h1>Hello World</h1>
     </jsp:attribute>

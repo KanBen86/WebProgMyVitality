@@ -1,5 +1,6 @@
 <%@tag pageEncoding="UTF-8"%>
 
+<%@attribute name="head" fragment="true" %>
 <%@attribute name="header" fragment="true" %>
 <%@attribute name="body" fragment="true" %>
 <%@attribute name="footer" fragment="true" %>
@@ -7,6 +8,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Platzhalter für den Head-Inhalt -->
+        <jsp:invoke fragment="head"/>
         <meta charset="utf-8"/>
         <title>MyVitalityApp</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css"/>
