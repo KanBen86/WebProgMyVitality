@@ -33,6 +33,25 @@ public class ServletController {
 		request.getRequestDispatcher("/WEB-INF/jsp/warehouse.jsp").forward(request, response);
 	}
 
+    //Customer Home Page
+    @RequestMapping("/customerhome")
+    public void getCustomerHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/jsp/custHome.jsp").forward(request, response);
+    }
+
+    //Employee Home Page
+    @RequestMapping("/employeehome")
+    public void getEmployeeHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/jsp/emplHome.jsp").forward(request, response);
+    }
+
+    //My Supplements Page
+    @RequestMapping("/mysupplements")
+    public void getMySupplementsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/jsp/mySupplements.jsp").forward(request, response);
+    }
+
+	// Zum ausprobieren
 	@RequestMapping("/test")
 	public void getTestPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/jsp/templateTest.jsp").forward(request, response);

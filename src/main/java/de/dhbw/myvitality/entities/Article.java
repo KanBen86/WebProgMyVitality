@@ -2,20 +2,27 @@ package de.dhbw.myvitality.entities;
 
 import de.dhbw.myvitality.enums.ENUM_ALLERGEN;
 import de.dhbw.myvitality.enums.ENUM_INGREDIENTS;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 @Entity
 public class Article {
 
+    //Felder der Klasse
+
     @Id
-    @GeneratedValue()
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String articleId;
 
     private String description;
 
     @Transient
-    private List<ENUM_INGREDIENTS> ingredients;
+    private ArrayList<ENUM_INGREDIENTS> ingredients;
 
     private int barcode;
 
@@ -26,13 +33,14 @@ public class Article {
     private Company supplier;
 
     @Transient //TODO
-    private List<ENUM_ALLERGEN> allergens;
+    private ArrayList<ENUM_ALLERGEN> allergens;
+
+    //Konstruktoren
 
     public Article() {
     }
 
-    public Article(String articleId, String description, List<ENUM_INGREDIENTS> ingredients, int barcode, float price, Company supplier, List<ENUM_ALLERGEN> allergens) {
-        this.articleId = articleId;
+    public Article(String description, ArrayList<ENUM_INGREDIENTS> ingredients, int barcode, float price, Company supplier, ArrayList<ENUM_ALLERGEN> allergens) {
         this.description = description;
         this.ingredients = ingredients;
         this.barcode = barcode;
@@ -40,6 +48,8 @@ public class Article {
         this.supplier = supplier;
         this.allergens = allergens;
     }
+
+    //Getter & Setter
 
     public String getArticleId() {
         return articleId;
@@ -61,7 +71,7 @@ public class Article {
         return ingredients;
     }
 
-    public void setIngredients(List<ENUM_INGREDIENTS> ingredients) {
+    public void setIngredients(ArrayList<ENUM_INGREDIENTS> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -93,7 +103,41 @@ public class Article {
         return allergens;
     }
 
-    public void setAllergens(List<ENUM_ALLERGEN> allergens) {
+    public void setAllergens(ArrayList<ENUM_ALLERGEN> allergens) {
         this.allergens = allergens;
+    }
+
+    //Override Methoden toString, hashCode, equals
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "articleId='" + articleId + '\'' +
+                ", description='" + description + '\'' +
+                ", ingredients=" + ingredients +
+                ", barcode=" + barcode +
+                ", price=" + price +
+                ", supplier=" + supplier +
+                ", allergens=" + allergens +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Article)) return false;
+        Article article = (Article) o;
+        return getBarcode() == article.getBarcode() &&
+                Float.compare(article.getPrice(), getPrice()) == 0 &&
+                Objects.equals(getArticleId(), article.getArticleId()) &&
+                Objects.equals(getDescription(), article.getDescription()) &&
+                Objects.equals(getIngredients(), article.getIngredients()) &&
+                Objects.equals(getSupplier(), article.getSupplier()) &&
+                Objects.equals(getAllergens(), article.getAllergens());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getArticleId(), getDescription(), getIngredients(), getBarcode(), getPrice(), getSupplier(), getAllergens());
     }
 }

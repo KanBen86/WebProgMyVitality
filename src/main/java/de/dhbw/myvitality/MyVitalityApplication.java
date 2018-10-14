@@ -113,17 +113,36 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             log.info("----------------------------------");
         };
     }
-/**
-    public CommandLineRunner demoSuppConfig(SupplementConfigurationRepository supplementConfigurationRepository){
+
+    @Bean
+    public CommandLineRunner demoArtikel(ArticleRepository articleRepository){
+	    return (args) -> {
+            log.info("Erzeuge Demoartikel");
+            log.info("----------------------------------");
+            articleRepository.save(new Article("Protein", null, 1, 1, null, null));
+            log.info("Artikel mit Query suchen");
+            log.info("----------------------------------");
+            Optional<Article> article = articleRepository.findByQuery("Protein");
+            log.info(article.get().toString());
+            log.info("----------------------------------");
+        };
+    }
+
+    @Bean
+    public CommandLineRunner demoSuppConfig(SupplementConfigurationRepository supplementConfigurationRepository, ArticleRepository articleRepository){
 	    return (args) ->{
 	        //DemoSupps erzeugen und in die Datenbank abspeichern
             log.info("Erzeuge DemoSuppsConfig");
             log.info("----------------------------------");
             ArrayList<Article> list = new ArrayList<Article>();
-            list.add(new Article("test", null, null, null, null, ))
+            list.add(articleRepository.findByQuery("Protein").get());
+            supplementConfigurationRepository.save(new SupplementConfiguration(list,"11111" ));
+            log.info("Supplement Configuration mit Query suchen");
+            log.info("----------------------------------");
 
-
-            supplementConfigurationRepository.save(new SupplementConfiguration());
+            Optional<SupplementConfiguration> supplementConfiguration = supplementConfigurationRepository.findByQuery("11111");
+            log.info(supplementConfiguration.get().toString());
+            log.info("----------------------------------");
         };
-    }**/
+    }
 }
