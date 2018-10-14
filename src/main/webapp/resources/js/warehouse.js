@@ -1,6 +1,7 @@
 function addArticleClicked(element){
     element.parentElement.style.display = "none";
-    ducument.getElementById("addArticle").style.display = "block";
+    var addArticle = ducument.getElementById("addArticle");
+    addArticle.style.display = "block";
 }
 
 function showStorrageClicked(element) {
