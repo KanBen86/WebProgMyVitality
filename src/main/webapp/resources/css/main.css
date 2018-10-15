@@ -1,7 +1,7 @@
 html {
     display: block;
     padding: 0;
-    background-color: black;
+    background-color: blue;
     color: antiquewhite;
 }
 .logo {
@@ -12,28 +12,7 @@ html {
     width: auto;
     max-width: 250px;
 }
-button {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: darkgreen;
-    color: antiquewhite;
-}
-.construction{
-    padding: 1rem;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    height: auto;
-    width: 50%;
-    max-width: 500px;
+header {
+    height: 10%;
 }
 
-h1 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: sans-serif;
-    font-size: medium;
-    text-align: center;
-}
