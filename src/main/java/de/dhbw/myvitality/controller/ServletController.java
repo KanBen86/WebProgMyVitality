@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ServletController {
+
 	//Index Page
 	@RequestMapping("/")
 	public void getIndexPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,34 +52,40 @@ public class ServletController {
         request.getRequestDispatcher("/WEB-INF/jsp/mySupplements.jsp").forward(request, response);
     }
 
-	// Zum ausprobieren
+	//Zum ausprobieren
 	@RequestMapping("/test")
 	public void getTestPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/jsp/templateTest.jsp").forward(request, response);
 	}
 
-	// traingsSchedule Page
+	//traingsSchedule Page
 	@RequestMapping("/traingsschedule")
 	public void getTraingsSchedulePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/jsp/traingsSchedule.jsp").forward(request, response);
 	}
 
-	// preexerciselevel Page
+	//preexerciselevel Page
 	@RequestMapping("/preexerciselevel")
 	public void getPreExerciseLevelPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/jsp/preexerciselevel.jsp").forward(request, response);
 	}
 
-	// scheduleOverview Page
+	//scheduleOverview Page
 	@RequestMapping("/scheduleoverview")
 	public void getTraingsScheduleOverview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/jsp/scheduleOverview1.jsp").forward(request, response);
 	}
 
-	// 	profileSettings Page
+	//profileSettings Page
 	@RequestMapping("/profilesettings")
 	public void getProfileSettingsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/jsp/profileSettings.jsp").forward(request, response);
+	}
+
+	//registration Page
+	@RequestMapping("/registration")
+	public void getRegistrationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp").forward(request, response);
 	}
 
 }
