@@ -69,4 +69,10 @@ public class ServletController {
 		request.getRequestDispatcher("/WEB-INF/jsp/preexerciselevel.jsp").forward(request, response);
 	}
 
+	// 	profileSettings Page
+	@RequestMapping("/profilesettings")
+	public void getProfileSettingsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/jsp/profileSettings.jsp").forward(request, response);
+	}
+
 }
