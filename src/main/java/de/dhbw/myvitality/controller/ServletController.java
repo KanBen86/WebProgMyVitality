@@ -57,4 +57,10 @@ public class ServletController {
 		request.getRequestDispatcher("/WEB-INF/jsp/templateTest.jsp").forward(request, response);
 	}
 
+	// traingsSchedule Page
+	@RequestMapping("/traingsschedule")
+	public void getTraingsSchedulePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/jsp/traingsSchedule.jsp").forward(request, response);
+	}
+
 }
