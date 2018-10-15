@@ -69,6 +69,12 @@ public class ServletController {
 		request.getRequestDispatcher("/WEB-INF/jsp/preexerciselevel.jsp").forward(request, response);
 	}
 
+	// scheduleOverview Page
+	@RequestMapping("/scheduleoverview")
+	public void getTraingsScheduleOverview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/jsp/scheduleOverview1.jsp").forward(request, response);
+	}
+
 	// 	profileSettings Page
 	@RequestMapping("/profilesettings")
 	public void getProfileSettingsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
