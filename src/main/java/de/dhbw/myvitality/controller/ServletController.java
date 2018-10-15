@@ -63,4 +63,10 @@ public class ServletController {
 		request.getRequestDispatcher("/WEB-INF/jsp/traingsSchedule.jsp").forward(request, response);
 	}
 
+	// preexerciselevel Page
+	@RequestMapping("/preexerciselevel")
+	public void getPreExerciseLevelPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/WEB-INF/jsp/preexerciselevel.jsp").forward(request, response);
+	}
+
 }
