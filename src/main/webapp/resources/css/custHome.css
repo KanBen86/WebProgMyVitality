@@ -2,9 +2,6 @@ img{
     display: block;
     width: 100%;
     height: 100%;
-    border-color: black;
-    border-style: solid;
-    border-width: 1em;
 }
 .card-title{
     margin-top: 1em;
@@ -18,10 +15,12 @@ img{
 }
 .card-title{
     font-weight: bold;
-    font-size: inherit;
+    font-size: 2vw;
     display: flow;
 }
-
+.card{
+    border: none;
+}
 .row{
     margin: auto;
 

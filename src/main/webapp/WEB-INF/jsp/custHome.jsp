@@ -15,29 +15,27 @@
 
             <div class="row">
 
-                <div class="col-lg">
+                <div class="col-lg-4">
                     <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico">
+                        <img src="${pageContext.request.contextPath}/resources/img/profileSettings.png">
                         <div class="card-body">
                             <h3 class="card-title">Account bearbeiten</h3>
                         </div>
                     </div>
                 </div>
 
-
-
-                <div class="col-lg">
+                <div class="col-lg-4">
                     <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico">
+                        <img src="${pageContext.request.contextPath}/resources/img/supplements.png">
                         <div class="card-body">
                             <h3 class="card-title">Nahrungsergänzung</h3>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg">
+                <div class="col-lg-4">
                     <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico">
+                        <img src="${pageContext.request.contextPath}/resources/img/trainingsscedule.png">
                         <div class="card-body">
                             <h3 class="card-title">Fitness Level</h3>
                         </div>
