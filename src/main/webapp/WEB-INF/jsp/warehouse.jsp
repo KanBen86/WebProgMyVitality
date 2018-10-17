@@ -4,8 +4,9 @@
 <template:base>
     <jsp:attribute name="head">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/warehouse.css">
+        <script type="application/javascript" src="../../resources/js/warehouse.js"></script>
     </jsp:attribute>
-    <jsp:attribute name="body">
+    <jsp:attribute name="main">
         <div class="main">
             <img src="${pageContext.request.contextPath}/resources/img/under-construction_geek_man_01.png" class="construction">
             <h1>Dies ist die Seite f&uumlr die Lagerverwaltung</h1>
