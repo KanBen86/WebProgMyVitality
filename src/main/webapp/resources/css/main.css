@@ -20,6 +20,7 @@ body {
     font-size: 11pt;
     line-height: 1.5;
     color: antiquewhite;
+
 }
 
 header {
@@ -74,6 +75,8 @@ footer {
         align-items: stretch;
         justify-content: center;
         flex-direction: column;
+        align-self: center;
+        justify-self: center;
     }
 }
 
