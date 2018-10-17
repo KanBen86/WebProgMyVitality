@@ -112,8 +112,8 @@ public class Article {
     @Override
     public String toString() {
         return "Article{" +
-                "articleId='" + articleId + '\'' +
-                ", description='" + description + '\'' +
+                "articleId='" + articleId +
+                ", description='" + description +
                 ", ingredients=" + ingredients +
                 ", barcode=" + barcode +
                 ", price=" + price +

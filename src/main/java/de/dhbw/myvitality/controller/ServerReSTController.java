@@ -4,6 +4,7 @@ import de.dhbw.myvitality.entities.Article;
 import de.dhbw.myvitality.enums.ENUM_ALLERGEN;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -37,10 +38,11 @@ public class ServerReSTController {
      *
      * Diese Methode stellt eine ReST-Schnitstelle zur Verfügung, auf die der WebClient zugraifen kann, um einen Artikel in die Datenbank zu speichern.
      */
-    @RequestMapping(value = "/set/article/{article}")
-    public boolean setArticle (@PathVariable final Article article){
+    @RequestMapping(value = "/set/article/{article}", method = RequestMethod.POST)
+    public String setArticle (@PathVariable final Article article){
         // hier kann man einen Artikel in das System spreichern
-        return true;
+        System.out.println(article.toString());
+        return article.toString();
     }
 
 }
