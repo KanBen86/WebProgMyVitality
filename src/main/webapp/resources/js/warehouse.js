@@ -1,7 +1,7 @@
 function showStorrageClicked(element){
-    window.location.replace("warehouse/showStock");
+    window.location.replace("/showStock");
 }
 
 function addArticleClicked(element) {
-    window.location.replace("/warehouse/addArticle");
+    window.location.replace("/addArticle");
 }

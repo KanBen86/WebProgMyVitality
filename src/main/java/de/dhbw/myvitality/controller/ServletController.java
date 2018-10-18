@@ -35,13 +35,13 @@ public class ServletController {
 	}
 
 	// AddArticle Page
-	@RequestMapping("/warehouse/addArticle")
+	@RequestMapping("/addArticle")
 	public void getAddArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.getRequestDispatcher("/WEB-INF/jsp/addArticle.jsp").forward(request, response);
 	}
 
 	// ShowStock Page
-	@RequestMapping("/warehouse/showStock")
+	@RequestMapping("/showStock")
 	public void getShowStockPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.getRequestDispatcher("/WEB-INF/jsp/showStock.jsp").forward(request, response);
 	}

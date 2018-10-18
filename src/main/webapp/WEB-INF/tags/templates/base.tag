@@ -32,9 +32,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="">
+                    <a class="navbar-brand" href="/">
                             <img src="../../../resources/img/Logo_MV.png" class="img-responsive"
-                                 alt="Logo" width="100px">
+                                 alt="Logo" style="max-width: 100px">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">

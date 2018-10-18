@@ -1,6 +1,9 @@
 html{
     background-color: black;
 }
+body {
+    min-height: 100%;
+}
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
     padding-top: 15px;
