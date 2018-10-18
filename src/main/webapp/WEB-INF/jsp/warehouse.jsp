@@ -8,14 +8,15 @@
     </jsp:attribute>
     <jsp:attribute name="main">
         <div class="main">
-            <img src="${pageContext.request.contextPath}/resources/img/under-construction_geek_man_01.png" class="construction">
-            <h1>Dies ist die Seite f&uumlr die Lagerverwaltung</h1>
-            <div class="col-md-8" id="auswahlfenster">
+            <div class="row">
                 <div class="card">
-                    <img src="../../resources/img/Barcode.png" class="col-md-4" onclick="addArticleClicked(this)"sizes="64x64">
+                    <img src="../../resources/img/Barcode.png" class="col-md-4 img-responsive"
+                         onclick="addArticleClicked(this)">
                 </div>
                 <div class="card">
-                    <img src="../../resources/img/Storrage_icon.png" class="col-md-4" onclick="showStorrageClicked(this)" sizes="64x64">
+                    <img src="../../resources/img/Storrage_icon.png"
+                         class="col-md-4 img-respronsive"
+                         onclick="showStorrageClicked(this)">
                 </div>
             </div>
         </div>

@@ -12,8 +12,9 @@
         <label>Index-Page</label>
     </jsp:attribute>
     <jsp:attribute name="main">
-            <img
-                    src="${pageContext.request.contextPath}/resources/img/under-construction_geek_man_01.png">
-            <h1>Baustelle: Hier entsteht eine neue App! Bald k&oumlnnen Sie hier Ihr pers&oumlnliches Fitness-Level verbessern!</h1>
+        <div class="col-md">
+            <h1 class="col-md text-center">Baustelle: Hier entsteht eine neue App! Bald k&oumlnnen
+                Sie hier Ihr pers&oumlnliches Fitness-Level verbessern!</h1>
+        </div>
     </jsp:attribute>
 </template:base>

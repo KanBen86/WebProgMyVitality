@@ -7,7 +7,7 @@
     <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/login.css"/>
     </jsp:attribute>
-    <jsp:attribute name="body">
+    <jsp:attribute name="main">
         <div class="col-md">
             <div class="col-md">
                 <label class="col-md-4">Benutzername: <input class="col-md-4" id="username"></label>

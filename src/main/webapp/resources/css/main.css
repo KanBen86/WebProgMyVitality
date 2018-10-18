@@ -1,94 +1,52 @@
-* {
-    box-sizing: border-box;
-}
-
 html{
-    align-content: center;
-    align-items: center;
+    background-color: black;
+}
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+    background-color: olivedrab;
 }
 
-html, body {
-    padding: 0;
-    margin: 0;
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 450px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+    padding-top: 20px;
+    background-color: darkseagreen;
     height: 100%;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: "DejaVu Sans", sans-serif;
-    font-size: 11pt;
-    line-height: 1.5;
+/* Set main background color, and text*/
+.background-darkolivegreen {
+    background-color: darkolivegreen;
     color: antiquewhite;
-
+    padding: 15px;
 }
 
-header {
-    align-self: stretch;
-    background-color: darkolivegreen;
-    
+.background-olivedrab{
+    background-color: olivedrab;
+    color: antiquewhite;
 }
 
-main {
-    align-self: stretch;
-    background-color: darkgreen;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
+/* Set black background color, white text and some padding */
 footer {
-    align-self: stretch;
-    background-color: darkolivegreen;
+    background-color: #555;
+    color: white;
+    padding: 15px;
 }
 
-@media screen and (min-width: 768px){
-    body {
-        font-size: 12pt;
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
     }
+    .row.content {height:auto;}
 }
-
-@media screen and (min-width: 992px){
-    body {
-        font-size: 13pt;
-    }
-}
-
-@media screen and (min-width: 1200px){
-    body {
-        font-size: 13pt;
-    }
-}
-
-/*
- * Einstellungen für gr0ße Bildschirme
- */
-
-@media (min-width: 85rem){
-    html {
-        background-image: url(../img/background.jpg);
-        background-attachment: fixed;
-        background-size: cover;
-        background-position: center;
-    }
-    body {
-        display: flex;
-        align-items: stretch;
-        justify-content: center;
-        flex-direction: column;
-        align-self: center;
-        justify-self: center;
-    }
-}
-
-/**
- * Hilfsklassen die benötigt werden
- */
-
-.hidden {
-    display: none;
-}
-
-.padding {
-    padding: 0.5125rem;
-}
-

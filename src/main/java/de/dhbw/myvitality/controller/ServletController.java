@@ -34,6 +34,18 @@ public class ServletController {
 		request.getRequestDispatcher("/WEB-INF/jsp/warehouse.jsp").forward(request, response);
 	}
 
+	// AddArticle Page
+	@RequestMapping("/warehouse/addArticle")
+	public void getAddArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.getRequestDispatcher("/WEB-INF/jsp/addArticle.jsp").forward(request, response);
+	}
+
+	// ShowStock Page
+	@RequestMapping("/warehouse/showStock")
+	public void getShowStockPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.getRequestDispatcher("/WEB-INF/jsp/showStock.jsp").forward(request, response);
+	}
+
     //Customer Home Page
     @RequestMapping("/customerhome")
     public void getCustomerHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
