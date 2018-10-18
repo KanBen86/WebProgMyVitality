@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import de.dhbw.myvitality.services.SupplementConfigurationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ServletController {
+
+    @Autowired
+    private SupplementConfigurationService supplementConfigurationService;
 
 	//Index Page
 	@RequestMapping("/")
@@ -61,6 +66,7 @@ public class ServletController {
     //My Supplements Page
     @RequestMapping("/mysupplements")
     public void getMySupplementsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    request.setAttribute("list",supplementConfigurationService.findArticleListByCustomerId("11111"));
         request.getRequestDispatcher("/WEB-INF/jsp/mySupplements.jsp").forward(request, response);
     }
 

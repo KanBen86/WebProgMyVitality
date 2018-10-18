@@ -4,12 +4,12 @@
 
 <template:base>
 
-    <jsp:attribute name="header">
+    <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/emplHome.css"/>
         <script src="../../resources/js/emplHome.js"></script>
     </jsp:attribute>
 
-    <jsp:attribute name="body">
+    <jsp:attribute name="main">
 
         <div class="container-fluid">
 

@@ -119,10 +119,26 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 	    return (args) -> {
             log.info("Erzeuge Demoartikel");
             log.info("----------------------------------");
+            articleRepository.save(new Article("Salz", null, 1, 1, null, null));
             articleRepository.save(new Article("Protein", null, 1, 1, null, null));
+            articleRepository.save(new Article("Kreatin", null, 1, 1, null, null));
+            articleRepository.save(new Article("Fischöl", null, 1, 1, null, null));
+            articleRepository.save(new Article("Testo", null, 1, 1, null, null));
             log.info("Artikel mit Query suchen");
             log.info("----------------------------------");
-            Optional<Article> article = articleRepository.findByQuery("Protein");
+            Optional<Article> article = articleRepository.findByQuery("Salz");
+            log.info(article.get().toString());
+            log.info("----------------------------------");
+            article = articleRepository.findByQuery("Protein");
+            log.info(article.get().toString());
+            log.info("----------------------------------");
+            article = articleRepository.findByQuery("Kreatin");
+            log.info(article.get().toString());
+            log.info("----------------------------------");
+            article = articleRepository.findByQuery("Fischöl");
+            log.info(article.get().toString());
+            log.info("----------------------------------");
+            article = articleRepository.findByQuery("Testo");
             log.info(article.get().toString());
             log.info("----------------------------------");
         };
@@ -131,11 +147,14 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
     @Bean
     public CommandLineRunner demoSuppConfig(SupplementConfigurationRepository supplementConfigurationRepository, ArticleRepository articleRepository){
 	    return (args) ->{
-	        //DemoSupps erzeugen und in die Datenbank abspeichern
             log.info("Erzeuge DemoSuppsConfig");
             log.info("----------------------------------");
             ArrayList<Article> list = new ArrayList<Article>();
+            list.add(articleRepository.findByQuery("Salz").get());
             list.add(articleRepository.findByQuery("Protein").get());
+            list.add(articleRepository.findByQuery("Kreatin").get());
+            list.add(articleRepository.findByQuery("Fischöl").get());
+            list.add(articleRepository.findByQuery("Testo").get());
             supplementConfigurationRepository.save(new SupplementConfiguration(list,"11111" ));
             log.info("Supplement Configuration mit Query suchen");
             log.info("----------------------------------");
