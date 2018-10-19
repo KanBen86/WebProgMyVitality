@@ -8,5 +8,5 @@ import org.springframework.stereotype.Service;
 public class CustomerService {
 
     @Autowired
-    private CustomerRepository customerRepository;
+    public CustomerRepository customerRepository;
 }

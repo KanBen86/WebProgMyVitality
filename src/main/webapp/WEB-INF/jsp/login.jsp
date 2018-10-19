@@ -9,11 +9,24 @@
     </jsp:attribute>
     <jsp:attribute name="main">
         <div class="col-md">
-            <div class="col-md">
-                <label class="col-md-4">Benutzername: <input class="col-md-4" id="username"></label>
-            </div>
-            <div class="col-md">
-                <label class="col-md-4">Passwort: <input class="col-md-4" type="password" id="password"></label>
+
+            <form method="POST" onsubmit="validateForm(event)">
+
+                <div class="col-md">
+                    <label class="col-md-4">Benutzername: <input class="col-md-4" id="username" name="username"></label>
+                </div>
+                <div class="col-md">
+                    <label class="col-md-4">Passwort: <input class="col-md-4" type="password" id="password" name="password"></label>
+                </div>
+                <div class="col-md">
+                    <input id="btn" type="submit" value="Login">
+                </div>
+
+            </form>
+
+            <div id="error">
+                ${error}
+
             </div>
         </div>
     </jsp:attribute>

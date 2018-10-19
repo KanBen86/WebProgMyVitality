@@ -47,6 +47,7 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 			log.info("Erzeuge Employees und speichere sie");
 			Employee e = new Employee("44444", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, "11111");
 			e.setUsername("Max93");
+			e.setPassword("123");
 			empRepos.save(new Employee("11111", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, null));
 			empRepos.save(new Employee("22222", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, "11111"));
 			empRepos.save(new Employee("33333", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, "11111"));
@@ -86,11 +87,20 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 	        //save a couple of customers
             log.info("Erzeuge Customer und speichere sie");
             log.info("----------------------------------");
+            Customer c = new Customer("22222", null, null, null, null, null, "Banküberweisung");
+            c.setUsername("StaplerfahrerKlaus");
+            c.setPassword("123");
             customerRepository.save(new Customer("11111", null, null, null, null, null, "Banküberweisung"));
+            customerRepository.save(c);
             log.info("Customer nach Id suchen");
             log.info("----------------------------------");
             Optional<Customer> customer = customerRepository.findById("11111");
             log.info(customer.get().toString());
+
+            log.info("StaplerfahrerKlaus suchen");
+            log.info("----------------------------------");
+            Optional<Customer> customer2 = customerRepository.findCustomerByQuery("StaplerfahrerKlaus");
+            log.info(customer2.get().toString());
         };
     }
 
