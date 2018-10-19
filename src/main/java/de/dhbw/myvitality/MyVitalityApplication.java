@@ -45,9 +45,12 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 		return (args) -> {
 			// save a couple of employees
 			log.info("Erzeuge Employees und speichere sie");
+			Employee e = new Employee("44444", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, "11111");
+			e.setUsername("Max93");
 			empRepos.save(new Employee("11111", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, null));
 			empRepos.save(new Employee("22222", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, "11111"));
 			empRepos.save(new Employee("33333", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, "11111"));
+			empRepos.save(e);
 			// fetch all customers
 			log.info("Employee found with findAll:");
 			log.info("----------------------------");
@@ -65,6 +68,15 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 			log.info("----------------------------");
 			log.info("Employee nach dem Update");
 			log.info(empRepos.findById(employee.get().getEmployeeId()).toString());
+
+            log.info("finde mit Query Max93");
+			log.info("----------------------------");
+			Optional<Employee> empl = empRepos.findEmployeeByQuery("Max93");
+			log.info(empl.toString());
+            log.info("----------------------------");
+
+
+
 		};
 	}
 
