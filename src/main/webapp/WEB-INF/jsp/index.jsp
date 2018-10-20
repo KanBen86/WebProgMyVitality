@@ -12,9 +12,11 @@
         <label>Index-Page</label>
     </jsp:attribute>
     <jsp:attribute name="main">
-        <div class="col-md">
-            <h1 class="col-md text-center">Baustelle: Hier entsteht eine neue App! Bald k&oumlnnen
-                Sie hier Ihr pers&oumlnliches Fitness-Level verbessern!</h1>
+
+        <h1>OUR PAIN YOUR GAIN!</h1>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://giphy.com/embed/1iTH1WIUjM0VATSw" allowfullscreen></iframe>
         </div>
+
     </jsp:attribute>
 </template:base>
