@@ -79,7 +79,24 @@
         <footer class="container-fluid text-center">
             <!-- Platzhalter für den Footer-Inhalt -->
             <jsp:invoke fragment="footer"/>
-            <p>Footer Text</p>
+            <nav class="navbar navbar-inverse" style="background-color: #555555">
+                <div class="container-fluid">
+                    <div class="navbar-footer">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbarFooter">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbarFooter">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">Impressum</a></li>
+                            <li><a href="#">AGB</a></li>
+                            <li><a href="#">Social Media</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </footer>
 
     </body>
