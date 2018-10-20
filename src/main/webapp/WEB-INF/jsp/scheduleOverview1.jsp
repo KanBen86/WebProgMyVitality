@@ -3,14 +3,17 @@
 <%@page pageEncoding="UTF-8" %>
 
 <template:base>
-    <jsp:attribute name="header">
+    <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/scheduleOverview.css"/>
         <script src="../../resources/js/scheduleOverview.js.js"></script>
     </jsp:attribute>
 
-    <jsp:attribute name="body">
-        <div>
-            <h2> trainingsplanübersicht 123 </h2>
-        </div>
+    <jsp:attribute name="main">
+
+
+
+
+
+
     </jsp:attribute>
 </template:base>
