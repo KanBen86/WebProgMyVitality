@@ -23,8 +23,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" onclick="mySupplementsClicked(this)">
-                    <div class="card">
+                <div class="col-md-4" >
+                    <div class="card" onclick="mySupplementsClicked(this)">
                         <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico" alt="Avatar" style="width:100%">
                         <div class="container">
                             <h4><b>Nahrungsergänzung</b></h4>
