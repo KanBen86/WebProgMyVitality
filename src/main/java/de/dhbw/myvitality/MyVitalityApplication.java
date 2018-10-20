@@ -69,15 +69,12 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 			log.info("----------------------------");
 			log.info("Employee nach dem Update");
 			log.info(empRepos.findById(employee.get().getEmployeeId()).toString());
-
+            log.info("----------------------------------");
             log.info("finde mit Query Max93");
 			log.info("----------------------------");
 			Optional<Employee> empl = empRepos.findEmployeeByQuery("Max93");
 			log.info(empl.toString());
             log.info("----------------------------");
-
-
-
 		};
 	}
 
@@ -95,7 +92,7 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             log.info("----------------------------------");
             Optional<Customer> customer = customerRepository.findById("11111");
             log.info(customer.get().toString());
-
+            log.info("----------------------------------");
             log.info("StaplerfahrerKlaus suchen");
             log.info("----------------------------------");
             Optional<Customer> customer2 = customerRepository.findCustomerByQuery("StaplerfahrerKlaus");
