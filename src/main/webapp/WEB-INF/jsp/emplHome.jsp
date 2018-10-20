@@ -15,7 +15,7 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card" onclick="trainingsScheduleClicked(this)">
                         <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico" alt="Avatar" style="width:100%">
                         <div class="container">
                             <h4><b>Trainingsplan</b></h4>
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card" onclick="warehouseClicked(this)">
                         <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico" alt="Avatar" style="width:100%">
                         <div class="container">
                             <h4><b>Warenwirtschaft</b></h4>
