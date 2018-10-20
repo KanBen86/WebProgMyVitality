@@ -15,11 +15,13 @@ function refreshTable(){
 
 
 
+
+
     /**
      * Synchroner REST call
      * @type {XMLHttpRequest}
      */
-    let socket = '172.16.65.238:8080';
+    let socket = 'localhost:8080';
     var request = new XMLHttpRequest();
     request.open('GET', 'http://' + socket + '/supplementconfiguration/11111', false);  //
     request.send(null);

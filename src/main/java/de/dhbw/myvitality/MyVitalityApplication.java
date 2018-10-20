@@ -87,10 +87,9 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 	        //save a couple of customers
             log.info("Erzeuge Customer und speichere sie");
             log.info("----------------------------------");
-            Customer c = new Customer("22222", null, null, null, null, null, "Banküberweisung");
+            Customer c = new Customer("11111", null, null, null, null, null, "Banküberweisung");
             c.setUsername("StaplerfahrerKlaus");
             c.setPassword("123");
-            customerRepository.save(new Customer("11111", null, null, null, null, null, "Banküberweisung"));
             customerRepository.save(c);
             log.info("Customer nach Id suchen");
             log.info("----------------------------------");

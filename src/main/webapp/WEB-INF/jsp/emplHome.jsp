@@ -14,25 +14,24 @@
         <div class="container-fluid">
 
             <div class="row">
-
-                <div class="col-lg">
+                <div class="col-md-4">
                     <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico">
-                        <div class="card-body">
-                            <h3 class="card-title">Trainingsplan</h3>
+                        <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico" alt="Avatar" style="width:100%">
+                        <div class="container">
+                            <h4><b>Profil</b></h4>
+                            <p>Ändere dein Profil!</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg">
+                <div class="col-md-4">
                     <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico">
-                        <div class="card-body">
-                            <h3 class="card-title">Warenwirtschaft</h3>
+                        <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico" alt="Avatar" style="width:100%">
+                        <div class="container">
+                            <h4><b>Nahrungsergänzung</b></h4>
+                            <p>Was nimmst du?</p>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>

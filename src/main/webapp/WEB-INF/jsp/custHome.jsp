@@ -14,34 +14,33 @@
         <div class="container-fluid">
 
             <div class="row">
-
-                <div class="col-lg-4">
-                    <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/img/profileSettings.png">
-                        <div class="card-body">
-                            <h3 class="card-title">Account bearbeiten</h3>
+                <div class="col-md-4">
+                    <div class="card" onclick="myProfileClicked(this)">
+                        <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico" alt="Avatar" style="width:100%">
+                        <div class="container">
+                            <h4><b>Profil</b></h4>
+                            <p>Ändere dein Profil!</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-4">
+                <div class="col-md-4" onclick="mySupplementsClicked(this)">
                     <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/img/supplements.png">
-                        <div class="card-body">
-                            <h3 class="card-title">Nahrungsergänzung</h3>
+                        <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico" alt="Avatar" style="width:100%">
+                        <div class="container">
+                            <h4><b>Nahrungsergänzung</b></h4>
+                            <p>Was nimmst du?</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-4">
-                    <div class="card">
-                        <img src="${pageContext.request.contextPath}/resources/img/trainingsscedule.png">
-                        <div class="card-body">
-                            <h3 class="card-title">Fitness Level</h3>
+                <div class="col-md-4">
+                    <div class="card" onclick="myTrainingsScheduleClicked(this)">
+                        <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico" alt="Avatar" style="width:100%">
+                        <div class="container">
+                            <h4><b>Trainingsplan</b></h4>
+                            <p>Wie ist dein Plan?</p>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
