@@ -18,8 +18,8 @@
                     <div class="card">
                         <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico" alt="Avatar" style="width:100%">
                         <div class="container">
-                            <h4><b>Profil</b></h4>
-                            <p>Ändere dein Profil!</p>
+                            <h4><b>Trainingsplan</b></h4>
+                            <p>Erstelle Trainingsplan!</p>
                         </div>
                     </div>
                 </div>
@@ -27,8 +27,8 @@
                     <div class="card">
                         <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico" alt="Avatar" style="width:100%">
                         <div class="container">
-                            <h4><b>Nahrungsergänzung</b></h4>
-                            <p>Was nimmst du?</p>
+                            <h4><b>Warenwirtschaft</b></h4>
+                            <p>Verwalte die Waren!</p>
                         </div>
                     </div>
                 </div>
