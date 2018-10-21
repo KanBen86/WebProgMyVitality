@@ -4,12 +4,12 @@
 
 <template:base>
 
-    <jsp:attribute name="header">
+    <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/profileSettings.css"/>
         <script src="../../resources/js/profileSettings.js"></script>
     </jsp:attribute>
 
-    <jsp:attribute name="body">
+    <jsp:attribute name="main">
         TestBodyasdasd123
 
     </jsp:attribute>
