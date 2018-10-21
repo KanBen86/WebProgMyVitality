@@ -5,12 +5,16 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import de.dhbw.myvitality.entities.Customer;
 import de.dhbw.myvitality.entities.Employee;
 import de.dhbw.myvitality.services.CustomerService;
 import de.dhbw.myvitality.services.EmployeeService;
 import de.dhbw.myvitality.services.SupplementConfigurationService;
+import de.dhbw.myvitality.services.UserAuthentificationService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +35,12 @@ public class ServletController {
     private EmployeeService employeeService;
 
     @Autowired
+    private UserAuthentificationService userAuthentificationService;
+
+    @Autowired
     private SupplementConfigurationService supplementConfigurationService;
+
+    private static final Logger log = LoggerFactory.getLogger(ServletController.class);
 
     //Index Page
     @RequestMapping("/")
@@ -48,51 +57,31 @@ public class ServletController {
     //Login Daten senden und verarbeiten
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public void postLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //Dev
-        System.out.println(request.getParameter("rememberMe"));
-        System.out.println(request.getParameter("username"));
-        System.out.println(request.getParameter("password"));
+        log.info("Post logincredentials");
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("username", request.getParameter("username"));
+        httpSession.setAttribute("password", request.getParameter("password"));
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        //Suche Customer mit Query, ist keiner gefunden, suche im catch-Block nach Employee
-        //Überprüfe username und password
-        try{
-
-            //CustomerService.customerLogin(username, password);
-
-            Customer customer = customerService.customerRepository.findCustomerByQuery(username).get();
-            System.out.println(customer.toString());
-
-            if (username.equals(customer.getUsername()) && password.equals(customer.getPassword())){
+        boolean[] authentification = userAuthentificationService.userAuthentification(httpSession);
+        if(authentification[0]){
+            if (authentification[1]){
+                httpSession.setAttribute("token", "active");
+                log.info("Setze Token aus active");
+                httpSession.setAttribute("userType", "customer");
+                log.info("setze userType auf customer");
                 response.sendRedirect("/customerhome");
-            }else{
-                //Sind username und password nicht korrekt, gebe Meldung aus.
-                request.setAttribute("error", "Falscher Nutzername oder Passwort");
-                request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
             }
-        }catch (Exception ex){
-            try {
-                Employee employee = employeeService.employeeRepository.findEmployeeByQuery(username).get();
-                System.out.println(employee.toString());
-
-                //Ist der Employee nicht leer, überprüfe username und password.
-                if (username.equals(employee.getUsername()) && password.equals(employee.getPassword())){
-                    //Sind username und password korrekt, leite auf die Mitarbeiterseite weiter.
-                    response.sendRedirect("/employeehome");
-                }
-                else{
-                    //Sind username und password nicht korrekt, gebe Meldung aus.
-                    request.setAttribute("error", "Falscher Nutzername oder Passwort");
-                    request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
-                }
-
-            }catch (Exception e){
-                //Benutzer ist nicht vorhanden in der Datenbank
-                request.setAttribute("error", "Falscher Nutzername oder Passwort");
-                request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+            else {
+                httpSession.setAttribute("token", "active");
+                log.info("setze token auf active");
+                httpSession.setAttribute("userType", "employee");
+                log.info("setze userType auf employee");
+                response.sendRedirect("employeehome");
             }
+        }
+        else {
+            request.setAttribute("error", "Falscher Username oder falsches Passwort");
+            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
         }
 
     }
@@ -118,13 +107,24 @@ public class ServletController {
     //Customer Home Page
     @RequestMapping("/customerhome")
     public void getCustomerHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/custHome.jsp").forward(request, response);
+        if (request.getSession().getAttribute("token") == "active" && request.getSession().getAttribute("userType") == "customer" ){
+            request.getRequestDispatcher("/WEB-INF/jsp/custHome.jsp").forward(request, response);
+        }
+        else {
+            response.sendRedirect("login");
+        }
     }
 
     //Employee Home Page
     @RequestMapping("/employeehome")
     public void getEmployeeHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/emplHome.jsp").forward(request, response);
+
+        if (request.getSession().getAttribute("token") == "active" && request.getSession().getAttribute("userType") == "employee" ){
+            request.getRequestDispatcher("/WEB-INF/jsp/emplHome.jsp").forward(request, response);
+        }
+        else {
+            response.sendRedirect("login");
+        }
     }
 
     //My Supplements Page
