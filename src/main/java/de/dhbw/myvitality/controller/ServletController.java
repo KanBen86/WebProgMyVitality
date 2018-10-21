@@ -137,7 +137,7 @@ public class ServletController {
     }
 
     //traingsSchedule Page
-    @RequestMapping("/traingsschedule")
+    @RequestMapping("/trainingsschedule")
     public void getTraingsSchedulePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/jsp/traingsSchedule.jsp").forward(request, response);
     }
