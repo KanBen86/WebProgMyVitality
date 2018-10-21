@@ -49,6 +49,7 @@ public class ServletController {
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public void postLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Dev
+        System.out.println(request.getParameter("rememberMe"));
         System.out.println(request.getParameter("username"));
         System.out.println(request.getParameter("password"));
 
@@ -58,6 +59,9 @@ public class ServletController {
         //Suche Customer mit Query, ist keiner gefunden, suche im catch-Block nach Employee
         //Überprüfe username und password
         try{
+
+            //CustomerService.customerLogin(username, password);
+
             Customer customer = customerService.customerRepository.findCustomerByQuery(username).get();
             System.out.println(customer.toString());
 
