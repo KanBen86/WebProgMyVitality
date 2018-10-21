@@ -1,4 +1,29 @@
 /**
+ * Den Pie Chart bauen
+ */
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['Task', 'Percentages'],
+        ['Salz', 8],
+        ['Protein', 2],
+        ['Keratin', 4],
+        ['Fischöl', 2],
+        ['Testo', 8]
+    ]);
+
+    // Optional; add a title and set the width and height of the chart
+    var options = {backgroundColor: 'transparent','title':'Deine Zusammensetzung', 'width':'auto', 'height':'auto'};
+
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+}
+
+/**
  * Wenn die Funktion aufgerufen wird soll folgende passieren:
  *      -Alter HTML table löschen
  *      -Rest API callen und aktuellen Datensatz holen
@@ -13,10 +38,6 @@ function refreshTable(){
     let oldTable = document.getElementById("table");
     oldTable.remove();
 
-
-
-
-
     /**
      * Synchroner REST call
      * @type {XMLHttpRequest}
@@ -29,7 +50,7 @@ function refreshTable(){
     if (request.status === 200) {
         let btn = document.getElementById("aktualisieren");
         articleArray = JSON.parse(request.responseText);
-        btn.innerText = articleArray[0].articleId;
+        /*btn.innerText = articleArray[0].articleId;*/
     }
 
 

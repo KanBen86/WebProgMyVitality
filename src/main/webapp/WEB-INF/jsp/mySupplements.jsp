@@ -5,13 +5,18 @@
 <template:base>
     <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/mySupplements.css"/>
+
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript" src="../../resources/js/mySupplements.js"></script>
 
     </jsp:attribute>
 
     <jsp:attribute name="main">
+
     <h1>Deine Nahrungserzänzung</h1>
+
+        <div id="piechart"></div>
+
         <div id="tableArea">
             <table id="table">
                 <tr>
