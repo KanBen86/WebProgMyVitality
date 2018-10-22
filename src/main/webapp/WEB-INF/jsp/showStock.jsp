@@ -13,22 +13,19 @@
         <script type="application/javascript" src="../../resources/js/warehouse.js"></script>
     </jsp:attribute>
     <jsp:attribute name="main">
-            <table class="w3-table w3-bordered w3-responsive w3-small">
+            <table class="w3-table w3-bordered w3-responsive w3-small w3-center" id="storrage">
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Points</th>
+                    <th>ID</th>
+                    <th>Bezeichnug</th>
+                    <th>Lagermenge</th>
                 </tr>
-                <tr class="w3-hoverable">
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>50</td>
-                </tr>
-                <tr class="w3-hoverable">
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>102</td>
-                </tr>
+                <c:forEach items="${map}" var="map">
+                        <tr>
+                            <td>${map.value.getArticleId()}</td>
+                            <td>${map.value.getDescription()}</td>
+                            <td>${map.key.getAmout()}</td>
+                        </tr>
+                </c:forEach>
             </table>
             <button class="w3-button">Zurück</button>
 

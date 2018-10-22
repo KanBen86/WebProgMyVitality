@@ -7,10 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import de.dhbw.myvitality.services.CustomerService;
-import de.dhbw.myvitality.services.EmployeeService;
-import de.dhbw.myvitality.services.SupplementConfigurationService;
-import de.dhbw.myvitality.services.UserAuthentificationService;
+import de.dhbw.myvitality.services.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +30,9 @@ public class ServletController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private StorrageService storrageService;
 
     private static final Logger log = LoggerFactory.getLogger(ServletController.class);
 
@@ -166,9 +166,19 @@ public class ServletController {
     }
 
     // ShowStock Page
+
+    /**
+     * Diese Methode liefert die Tabelle mit dem Lagerinhalt in Form einer jsp
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @RequestMapping("/showStock")
     public void getShowStockPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/showStock.jsp").forward(request, response);
+        request.setAttribute("map", storrageService.findAll());
+        getPage(request, response, "employee", "showStock.jsp");
     }
 
     /***

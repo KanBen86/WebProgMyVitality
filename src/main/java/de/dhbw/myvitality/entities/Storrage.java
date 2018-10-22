@@ -7,9 +7,9 @@ public class Storrage {
 
     @Id
     @GeneratedValue
-    private String storrageId;
+    private long storrageId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "storrage_article_id")
     private Article article;
 
@@ -18,6 +18,8 @@ public class Storrage {
     private char rackcorridor;
 
     private byte level;
+
+    private int amount;
 
     public Storrage() {
     }
@@ -29,11 +31,19 @@ public class Storrage {
         this.level = level;
     }
 
-    public String getStorrageId() {
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public long getStorrageId() {
         return storrageId;
     }
 
-    public void setStorrageId(String storrageId) {
+    public void setStorrageId(long storrageId) {
         this.storrageId = storrageId;
     }
 
