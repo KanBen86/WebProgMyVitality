@@ -9,20 +9,23 @@
     <jsp:attribute name="main">
         <div class="main">
             <div class="row">
-                <div class="w3-card-4 col-md-6 w3-hover-shadow w3-center">
-                    <img src="../../resources/img/Barcode.png"
-                         onclick="addArticleClicked(this)" alt="Barcode">
-                    <div class="w3-container w3-center">
-                        <p>Artikel hinzufügen</p>
+                <a href="/addArticle">
+                    <div class="w3-card-4 col-md-6 w3-hover-shadow w3-center">
+                        <img src="../../resources/img/Barcode.png" alt="Barcode">
+                        <div class="w3-container w3-center">
+                            <p>Artikel hinzufügen</p>
+                        </div>
                     </div>
-                </div>
-                <div class="w3-card-4 col-md-6 w3-center">
-                    <img src="../../resources/img/Storrage_icon.png"
-                         onclick="showStorrageClicked(this)" alt="Lager">
-                    <div class="w3-container w3-center">
-                        <p>Lagerinhalt anzeigen</p>
+                </a>
+                <a href="/showStock">
+                    <div class="w3-card-4 col-md-6 w3-center">
+                        <img src="../../resources/img/Storrage_icon.png"
+                             onclick="showStorrageClicked(this)" alt="Lager">
+                        <div class="w3-container w3-center">
+                            <p>Lagerinhalt anzeigen</p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </jsp:attribute>
