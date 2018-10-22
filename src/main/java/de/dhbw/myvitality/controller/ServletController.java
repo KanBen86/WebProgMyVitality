@@ -31,6 +31,9 @@ public class ServletController {
     @Autowired
     private SupplementConfigurationService supplementConfigurationService;
 
+    @Autowired
+    private CustomerService customerService;
+
     private static final Logger log = LoggerFactory.getLogger(ServletController.class);
 
     private static final String webInfJspPath = "/WEB-INF/jsp/";
@@ -76,9 +79,30 @@ public class ServletController {
         request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp").forward(request, response);
     }
 
+    //registration Page
+    @RequestMapping(method = RequestMethod.POST, value = "/registration")
+    public void postRegistrationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        log.info(username);
+        String password = request.getParameter("password");
+        log.info(password);
+
+        if(customerService.registerCustomer(username, password)){
+            response.sendRedirect("/login");
+        }
+        else {
+            request.setAttribute("error", "Username bereits vergeben!");
+            request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp").forward(request, response);
+        }
+    }
+
     //Login Page senden
     @RequestMapping("/login")
     public void getLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        //Wenn Remeber me angehakt ist -> remove nicht
+        //Wenn Remember me nicht angehakt ist-> remove
+
         request.getSession().removeAttribute("username");
         request.getSession().removeAttribute("password");
         request.getSession().removeAttribute("token");

@@ -34,7 +34,7 @@
                 </div>
                 <div class="row">
                     <label class="col-md-4">
-                        <a href="">Registrieren</a>
+                        <a href="/registration">Registrieren</a>
                         <a href="">Passwort vergessen?</a>
                     </label>
                 </div>

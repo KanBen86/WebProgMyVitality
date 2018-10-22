@@ -9,10 +9,43 @@
     </jsp:attribute>
     <jsp:attribute name="main">
         <h1>Konto anlegen</h1>
-        <div class="col-md">
-            <label class="col-md-4">Vollständiger Name: <input class="col-md-4" id="name"></label>
-            <label class="col-md-4">E-Mail Adresse: <input class="col-md-4" id="mailadress"></label>
-        </div>
+
+        <form method="POST" onsubmit="validateForm(event)">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Benutzername</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="username" name="username">
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Passwort</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="password" name="password">
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <input id="btn" type="submit" value="Registrieren"/>
+                    </div>
+                    <div id="error">${error}</div>
+                </div>
+
+                <br>
+
+            </div>
+        </form>
 
     </jsp:attribute>
 </template:base>
