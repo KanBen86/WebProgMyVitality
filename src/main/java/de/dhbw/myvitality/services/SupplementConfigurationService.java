@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+/***
+ * Anwendungslogik für die individuelle Nahrungsergänzungsmittelkonfiguration inkl. Datenbankzugriff per Repository
+ * @author Tamino Fischer alias CodeKeks
+ */
 @Service
 public class SupplementConfigurationService {
 

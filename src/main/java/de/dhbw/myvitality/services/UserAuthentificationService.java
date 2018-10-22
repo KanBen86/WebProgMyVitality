@@ -1,6 +1,5 @@
 package de.dhbw.myvitality.services;
 
-import de.dhbw.myvitality.MyVitalityApplication;
 import de.dhbw.myvitality.entities.Customer;
 import de.dhbw.myvitality.entities.Employee;
 import org.slf4j.Logger;
@@ -9,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-
+/***
+ * Anwendungslogik für die Userauthentifikation inkl. Datenbankzugriff per Repository
+ * @author Tamino Fischer alias CodeKeks
+ */
 @Service
 public class UserAuthentificationService {
 

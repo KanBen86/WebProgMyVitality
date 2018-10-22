@@ -4,6 +4,10 @@ import de.dhbw.myvitality.repositories.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/***
+ * Anwendungslogik für Unternehmen inkl. Datenbankzugriff per Repository
+ * @author Tamino Fischer alias CodeKeks
+ */
 @Service
 public class CompanyService {
 

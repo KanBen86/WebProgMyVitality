@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+/***
+ * Mappt die Http Anfragen auf eine Serviceinstanz
+ * @author Tamino Fischer alias CodeKeks
+ */
 @RestController
 public class SupplementConfigurationController {
 

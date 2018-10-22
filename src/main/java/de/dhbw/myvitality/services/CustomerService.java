@@ -5,6 +5,10 @@ import de.dhbw.myvitality.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/***
+ * Anwendungslogik für Kunden inkl. Datenbankzugriff per Repository
+ * @author Tamino Fischer alias CodeKeks
+ */
 @Service
 public class CustomerService {
 
