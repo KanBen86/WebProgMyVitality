@@ -14,9 +14,12 @@ import java.util.ArrayList;
 @RestController
 public class SupplementConfigurationController {
 
+    //CURD Repository, welches den DB-Zugriff regelt
     @Autowired
     private SupplementConfigurationService supplementConfigurationService;
 
+    //Wird eine Http GET Anfrage an diese URL gestellt, so wird eine Liste von Artikeln zurückgegeben
+    //Die Liste wird über die entsprechende Custimer Id gefunden
     @RequestMapping("/supplementconfiguration/{customerId}")
     public ArrayList<Article> findArticleListByCustomerId(@PathVariable("customerId") String customerId){
         return supplementConfigurationService.findArticleListByCustomerId(customerId);

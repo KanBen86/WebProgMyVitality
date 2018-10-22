@@ -1,3 +1,8 @@
+/**
+ * JS Datei für Browserseitige Logik
+ * @author Tamino Fischer alias CodeKeks
+ * */
+
 function myProfileClicked(element){
     window.location.replace("profilesettings");
 }

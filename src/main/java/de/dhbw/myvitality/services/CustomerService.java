@@ -12,12 +12,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerService {
 
+    //CRUD Repository, welches den DB-Zufriff regelt
     @Autowired
     public CustomerRepository customerRepository;
 
-    @Autowired
-    private CustomerService customerService;
-
+    // Sucht einen Kunden in der Datenbank und gibt ihn als Instanz einer Entityklasse zurück
     public Customer findCustomerByUsername(String username){
         try {
             return customerRepository.findCustomerByQuery(username).get();
