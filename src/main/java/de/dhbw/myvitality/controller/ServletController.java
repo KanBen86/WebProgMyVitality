@@ -26,12 +26,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ServletController {
 
     @Autowired
-    private CustomerService customerService;
-
-    @Autowired
-    private EmployeeService employeeService;
-
-    @Autowired
     private UserAuthentificationService userAuthentificationService;
 
     @Autowired
