@@ -10,6 +10,16 @@ import java.util.Optional;
 
 public interface EmployeeRepository extends CrudRepository<Employee, String> {
 
+    /**
+     *
+     * Abfrage der Übereinstimmung vom übergebenen und in der Datenbank "Employee" vorhandenen Nutzernamen.
+     *
+     * @param username
+     * @return
+     *
+     * @author Sven Hornung
+     */
+
     @Query("select e from Employee e Where e.username = :username")
     public Optional<Employee> findEmployeeByQuery(@Param("username") String username);
 }

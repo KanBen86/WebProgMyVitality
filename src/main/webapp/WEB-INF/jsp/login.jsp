@@ -11,13 +11,15 @@
         <div class="col-md">
 
             <p>
-                <img src="/resources/img/Logo_MV.png" class="img-responsive" id="loginLogo" style="max-width: 128px">
+                <!--<img src="/resources/img/Logo_MV.png" class="img-responsive" id="loginLogo" style="max-width: 382px">-->
+                <img src="/resources/img/Logo_MV.png" class="img-fluid" alt="Responsive image">
             </p>
 
             <form method="POST" onsubmit="validateForm(event)">
 
-                <div id="error">${error}</div>
-
+                <div class="col-md">
+                    <label class="col-md-4"><div id="error">${error}</div></label>
+                </div>
                 <div class="col-md">
                     <label class="col-md-4">Benutzername: <input class="col-md-4" id="username" name="username"></label>
                 </div>

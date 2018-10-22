@@ -3,7 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <template:base>
-    <jsp:attribute name="body">
+    <jsp:attribute name="main">
         <h1>Hello World</h1>
     </jsp:attribute>
 </template:base>

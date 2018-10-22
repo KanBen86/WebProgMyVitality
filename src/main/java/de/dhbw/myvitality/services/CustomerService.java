@@ -18,6 +18,16 @@ public class CustomerService {
     @Autowired
     private CustomerService customerService;
 
+    /**
+     *
+     * Mit dem CustomerRepository als Datenbankschnittstelle den Nuternamen eines Kunden abfragen und mit return zurückgeben
+     *
+     * @param username
+     * @return
+     *
+     * @author Sven Hornung
+     */
+
     public Customer findCustomerByUsername(String username){
         try {
             return customerRepository.findCustomerByQuery(username).get();

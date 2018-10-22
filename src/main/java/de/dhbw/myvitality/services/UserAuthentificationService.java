@@ -22,12 +22,26 @@ public class UserAuthentificationService {
     private CustomerService customerService;
 
     private static final Logger log = LoggerFactory.getLogger(UserAuthentificationService.class);
+
+
+    /**
+     *
+     * Dieser Service dient dem Absoeichern der Logindaten in der aktuellen HTTP-Session.
+     * Das dafür verwendete boolean Array und dessen Belegung wird im folgenden Kommentarschrift aufgefüht-
+     *
+     * @param httpSession
+     * @return
+     *
+     * @author Sven Hornung
+     */
+
     /**
      * [0] == true -> Authentifikation erfolgreich
      * [0] == false -> Authentifikation nicht erfolgreich
      * [1] == true -> Customer
      * [1] == false -> Employee
      */
+
     public boolean[] userAuthentification(HttpSession httpSession){
         log.info("Starte Authentifizierung");
         log.info("----------------------------");
@@ -67,5 +81,4 @@ public class UserAuthentificationService {
         log.info(list.toString());
         return list;
     }
-
 }

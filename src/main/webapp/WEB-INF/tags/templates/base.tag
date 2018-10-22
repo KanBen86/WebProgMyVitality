@@ -50,6 +50,7 @@
                         <li><a href="#">Contact</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <!--Darstellung der Loginfunktion mit einem Icon + variables Textfeld durch JavaExpressionLanguage-->
                         <li><a href="/login" id="login-text" onclick="loginLogout()"><span
                                 class="glyphicon glyphicon-log-in"></span>
                             ${loginLogoutText}

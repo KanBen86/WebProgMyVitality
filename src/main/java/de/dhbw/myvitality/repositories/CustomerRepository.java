@@ -10,6 +10,16 @@ import java.util.Optional;
 
 public interface CustomerRepository extends CrudRepository<Customer, String> {
 
+    /**
+     *
+     * Abfrage der Übereinstimmung vom übergebenen und in der Datenbank "Customer" vorhandenen Nutzernamen.
+     *
+     * @param username
+     * @return
+     *
+     * @author Sven Hornung
+     */
+
     @Query("select c from Customer c Where c.username = :username")
     public Optional<Customer> findCustomerByQuery(@Param("username") String username);
 }
