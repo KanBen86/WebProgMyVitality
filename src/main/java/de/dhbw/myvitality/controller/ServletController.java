@@ -45,12 +45,18 @@ public class ServletController {
     //Index Page
     @RequestMapping("/")
     public void getIndexPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("loginLogoutText", "Login");
         request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
     }
 
     //Login Page senden
     @RequestMapping("/login")
     public void getLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().removeAttribute("username");
+        request.getSession().removeAttribute("password");
+        request.getSession().removeAttribute("token");
+        request.getSession().removeAttribute("userType");
+        request.setAttribute("loginLogoutText", "Login");
         request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
     }
 
@@ -108,6 +114,7 @@ public class ServletController {
     @RequestMapping("/customerhome")
     public void getCustomerHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("token") == "active" && request.getSession().getAttribute("userType") == "customer" ){
+            request.setAttribute("loginLogoutText", "Logout");
             request.getRequestDispatcher("/WEB-INF/jsp/custHome.jsp").forward(request, response);
         }
         else {
@@ -120,6 +127,7 @@ public class ServletController {
     public void getEmployeeHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (request.getSession().getAttribute("token") == "active" && request.getSession().getAttribute("userType") == "employee" ){
+            request.setAttribute("loginLogoutText", "Logout");
             request.getRequestDispatcher("/WEB-INF/jsp/emplHome.jsp").forward(request, response);
         }
         else {

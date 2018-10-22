@@ -47,7 +47,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/login" id="login-text" onclick="loginLogout()"><span
                                 class="glyphicon glyphicon-log-in"></span>
-                            Login
+                            ${loginLogoutText}
                         </a></li>
                     </ul>
                 </div>
