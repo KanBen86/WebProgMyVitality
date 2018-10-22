@@ -6,46 +6,60 @@
 <template:base>
     <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/registration.css"/>
+        <script type="application/javascript" src="../../resources/js/registration.js"></script>
     </jsp:attribute>
     <jsp:attribute name="main">
-        <h1>Konto anlegen</h1>
+        <div class="col-md">
 
-        <form method="POST" onsubmit="validateForm(event)">
-            <div class="container-fluid">
+            <h1>Konto anlegen</h1>
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <label>Benutzername</label>
+            <form name="RegistrationForm" onsubmit="return validateForm()" method="POST">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Benutzername</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="username" name="username" required>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <input id="username" name="username">
-                    </div>
-                </div>
 
-                <br>
+                    <!--<br>-->
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <label>Passwort</label>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Passwort</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="password" name="password" required>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <input id="password" name="password">
-                    </div>
-                </div>
 
-                <br>
+                    <!--<br>-->
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <input id="btn" type="submit" value="Registrieren"/>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Passwort wiederholen</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="passwordRE" name="passwordRE" required>
+                        </div>
                     </div>
+
+                    <!--<br>-->
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input id="btn" type="submit" value="Registrieren"/>
+                        </div>
+                    </div>
+
                     <div id="error">${error}</div>
+
                 </div>
-
-                <br>
-
-            </div>
-        </form>
-
+            </form>
+        </div>
     </jsp:attribute>
 </template:base>

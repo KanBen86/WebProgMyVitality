@@ -6,41 +6,71 @@
 <template:base>
     <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/login.css"/>
+        <script type="application/javascript" src="../../resources/js/login.js"></script>
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     </jsp:attribute>
     <jsp:attribute name="main">
-        <div class="col-md">
+        <!--<div onload="myFunction()" style="margin:0;">-->
 
-            <p>
+            <!--<div id="loader"></div>-->
+
+            <!--<div style="display:none;" id="myDiv" class="animate-bottom">-->
+
+                <p>
                 <img src="/resources/img/Logo_MV.png" class="img-responsive" id="loginLogo" style="max-width: 245px">
-                <!--<img src="/resources/img/Logo_MV.png" class="img-fluid" alt="Responsive image">-->
-            </p>
+                </p>
 
-            <form method="POST" onsubmit="validateForm(event)">
+                <form name="LoginForm" onsubmit="validateForm(event)" method="POST">
 
-                <div class="row">
-                    <label class="col-md-4"><div id="error">${error}</div></label>
+                    <div class="container-fluid">
 
-                    <label class="col-md-4">Benutzername: <input class="col-md-4" id="username" name="username"></label>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Benutzername</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input id="username" name="username" required>
+                            </div>
+                        </div>
 
-                    <label class="col-md-4">Passwort: <input class="col-md-4" type="password" id="password" name="password"></label>
-                </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Passwort</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="password" id="password" name="password" required>
+                            </div>
+                        </div>
 
-                <div class="row">
-                    <label class="col-md-4"><input type="checkbox" id="rememberMe" name="rememberMe">Remember me</label>
-                </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="checkbox" id="rememberMe" name="rememberMe">Remember me</label>
+                            </div>
+                        </div>
 
-                <div class="row">
-                    <label class="col-md-4"><input id="btn" type="submit" value="Login"></label>
-                </div>
-                <div class="row">
-                    <label class="col-md-4">
-                        <a href="/registration">Registrieren</a>
-                        <a href="">Passwort vergessen?</a>
-                    </label>
-                </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input id="btn" type="submit" value="Login">
+                            </div>
+                        </div>
 
-            </form>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a href="/registration">Registrieren</a>
+                            </div>
+                        </div>
 
-        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a href="">Passwort vergessen?</a>
+                            </div>
+                        </div>
+
+                        <div id="error">${error}</div>
+
+                    </div>
+                </form>
+           <!--</div>-->
+        <!--</div>-->
     </jsp:attribute>
 </template:base>
