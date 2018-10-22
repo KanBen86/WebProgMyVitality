@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import de.dhbw.myvitality.entities.Customer;
-import de.dhbw.myvitality.entities.Employee;
 import de.dhbw.myvitality.services.CustomerService;
 import de.dhbw.myvitality.services.EmployeeService;
 import de.dhbw.myvitality.services.SupplementConfigurationService;
@@ -22,8 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * ServletController: Mappt die Http Anfragen auf eine JSP
- *
- * @author tamino.fischer
+ * @author Tamino Fischer alias CodeKeks
  */
 @Controller
 public class ServletController {
@@ -41,6 +38,36 @@ public class ServletController {
     private SupplementConfigurationService supplementConfigurationService;
 
     private static final Logger log = LoggerFactory.getLogger(ServletController.class);
+
+    private static final String webInfJspPath = "/WEB-INF/jsp/";
+
+
+    /***
+     * Diese Methode realisiert den eigentlichen Seitenaufruf
+     * Bevor dies geschieht wird jedoch überprüft:
+     *      - handelt es sich um einen Angemeldeten User
+     *      - hat der Angemeldete User den richtigen UserType,
+     *      sodass Kunden nur auf Kundenseiten gelangen und Mitarbeiter nur auf Mitarbeiterseiten
+     *
+     * Hat die Überprüfung ein positives Ergebnis, so wird die Page aufgerufen
+     *
+     * @param request
+     * @param response
+     * @param userType
+     * @param jsp
+     * @throws ServletException
+     * @throws IOException
+     *
+     * @author Tamino Fischer alias CodeKeks
+     */
+    private void getPage(HttpServletRequest request, HttpServletResponse response, String userType, String jsp) throws ServletException, IOException {
+        if (request.getSession().getAttribute("token") == "active" && request.getSession().getAttribute("userType") == userType) {
+            request.setAttribute("loginLogoutText", "Logout");
+            request.getRequestDispatcher(webInfJspPath + jsp).forward(request, response);
+        } else {
+            response.sendRedirect("login");
+        }
+    }
 
     //Index Page
     @RequestMapping("/")
@@ -67,7 +94,7 @@ public class ServletController {
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("username", request.getParameter("username"));
         httpSession.setAttribute("password", request.getParameter("password"));
-
+        //Aufruf der Serviceklasse "UserAuthentificationService", welche die Authentifizierung durchführt
         boolean[] authentification = userAuthentificationService.userAuthentification(httpSession);
         if(authentification[0]){
             if (authentification[1]){
@@ -89,7 +116,6 @@ public class ServletController {
             request.setAttribute("error", "Falscher Username oder falsches Passwort");
             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
         }
-
     }
 
     /**
@@ -121,42 +147,52 @@ public class ServletController {
         request.getRequestDispatcher("/WEB-INF/jsp/showStock.jsp").forward(request, response);
     }
 
-    //Customer Home Page
+    /***
+     * Diese Methode mappt die Http Anfrage GET hostname:port/customerhome auf die customerhome.jsp
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     *
+     * @author Tamino Fischer alias CodeKeks
+     */
     @RequestMapping("/customerhome")
     public void getCustomerHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("token") == "active" && request.getSession().getAttribute("userType") == "customer" ){
-            request.setAttribute("loginLogoutText", "Logout");
-            request.getRequestDispatcher("/WEB-INF/jsp/custHome.jsp").forward(request, response);
-        }
-        else {
-            response.sendRedirect("login");
-        }
+        getPage(request, response, "customer", "custHome.jsp");
     }
 
-    //Employee Home Page
+
+    /***
+     * Diese Methode mappt die Http Anfrage GET hostname:port/employeehome auf die employeehome.jsp Page
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     *
+     * @author Tamino Fischer alias CodeKeks
+     */
     @RequestMapping("/employeehome")
     public void getEmployeeHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        if (request.getSession().getAttribute("token") == "active" && request.getSession().getAttribute("userType") == "employee" ){
-            request.setAttribute("loginLogoutText", "Logout");
-            request.getRequestDispatcher("/WEB-INF/jsp/emplHome.jsp").forward(request, response);
-        }
-        else {
-            response.sendRedirect("login");
-        }
+        getPage(request, response, "employee", "/WEB-INF/jsp/emplHome.jsp");
     }
 
-    //My Supplements Page
+    /***
+     * Diese Methode mappt die Http Anfrage GET hostname:port/mysupplements auf die mysupplements.jsp Page
+     * Dabei wird dem Request als Attribut die jeweilige Liste Nahrungserzänzungsmitteln übergeben, die angezeigt werden sollen
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     *
+     * @author Tamino Fischer alias CodeKeks
+     */
     @RequestMapping("/mysupplements")
     public void getMySupplementsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("list", supplementConfigurationService.findArticleListByCustomerId("11111"));
         request.getRequestDispatcher("/WEB-INF/jsp/mySupplements.jsp").forward(request, response);
-    }
-
-    //Zum ausprobieren
-    @RequestMapping("/test")
-    public void getTestPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/templateTest.jsp").forward(request, response);
     }
 
     //traingsSchedule Page

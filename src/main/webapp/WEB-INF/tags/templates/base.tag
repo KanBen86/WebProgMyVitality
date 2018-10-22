@@ -22,6 +22,11 @@
         <jsp:invoke fragment="head"/>
         <!-- Icon für den Tabreiter des Browsers -->
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}resources/img/favicon32.ico" sizes="32x32">
+
+
+
+
+
     </head>
     <body class="container" id="app">
         <nav class="navbar navbar-inverse">
