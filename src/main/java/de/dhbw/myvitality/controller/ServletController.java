@@ -92,9 +92,21 @@ public class ServletController {
 
     }
 
+    /**
+     *
+     * Dies ist der Empfänger des <b>http-request</b> für die warehouse-Seite
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     *
+     * @author KANBEN86
+     */
     //Warehouse Page
     @RequestMapping("/warehouse")
     public void getWarehousePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Sendet die durch den Request angeforderte jsp an den Browser
         request.getRequestDispatcher("/WEB-INF/jsp/warehouse.jsp").forward(request, response);
     }
 
