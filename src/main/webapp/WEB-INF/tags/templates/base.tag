@@ -54,7 +54,7 @@
             </div>
         </nav>
 
-        <div class="container-fluid text-center background-olivedrab">
+        <div class="container-fluid text-center background-olivedrab" id="content-area">
             <div class="row content">
                 <div class="col-sm-2 sidenav">
                     <p><a href="#">Link</a></p>
