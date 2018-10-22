@@ -14,6 +14,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -24,64 +25,65 @@ import java.util.Optional;
 @SpringBootApplication
 public class MyVitalityApplication extends SpringBootServletInitializer {
 
-	private static final Logger log = LoggerFactory.getLogger(MyVitalityApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(MyVitalityApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication.run(MyVitalityApplication.class, args);
-	}
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(MyVitalityApplication.class);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MyVitalityApplication.class, args);
+    }
 
-	/****
-	 * DEV
-	 * DB Load/Reload
-	 * @param empRepos
-	 * @return
-	 */
-	@Bean
-	public CommandLineRunner demoEmployee(EmployeeRepository empRepos){
-		return (args) -> {
-			// save a couple of employees
-			log.info("Erzeuge Employees und speichere sie");
-			Employee e = new Employee("44444", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, "11111");
-			e.setUsername("Max93");
-			e.setPassword("123");
-			empRepos.save(new Employee("11111", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, null));
-			empRepos.save(new Employee("22222", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, "11111"));
-			empRepos.save(new Employee("33333", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, "11111"));
-			empRepos.save(e);
-			// fetch all customers
-			log.info("Employee found with findAll:");
-			log.info("----------------------------");
-			for (Employee employee : empRepos.findAll()){
-				log.info(employee.toString());
-			}
-			Optional<Employee> employee = empRepos.findById("mvu11111");
-			log.info("----------------------------");
-			log.info("Employee found with findById");
-			log.info(employee.get().toString());
-			log.info("----------------------------");
-			log.info("Update the field superior of Employee mvu11111");
-			employee.get().setSuperior("00000");
-			empRepos.save(employee.get());
-			log.info("----------------------------");
-			log.info("Employee nach dem Update");
-			log.info(empRepos.findById(employee.get().getEmployeeId()).toString());
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(MyVitalityApplication.class);
+    }
+
+    /****
+     * DEV
+     * DB Load/Reload
+     * @param empRepos
+     * @return
+     */
+    @Bean
+    public CommandLineRunner demoEmployee(EmployeeRepository empRepos) {
+        return (args) -> {
+            // save a couple of employees
+            log.info("Erzeuge Employees und speichere sie");
+            Employee e = new Employee("44444", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, "11111");
+            e.setUsername("Max93");
+            e.setPassword("123");
+            empRepos.save(new Employee("11111", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, null));
+            empRepos.save(new Employee("22222", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, "11111"));
+            empRepos.save(new Employee("33333", ENUM_DEPARTMENT.CONTROLLING, ENUM_ROLL.ADMIN, "11111"));
+            empRepos.save(e);
+            // fetch all customers
+            log.info("Employee found with findAll:");
+            log.info("----------------------------");
+            for (Employee employee : empRepos.findAll()) {
+                log.info(employee.toString());
+            }
+            Optional<Employee> employee = empRepos.findById("mvu11111");
+            log.info("----------------------------");
+            log.info("Employee found with findById");
+            log.info(employee.get().toString());
+            log.info("----------------------------");
+            log.info("Update the field superior of Employee mvu11111");
+            employee.get().setSuperior("00000");
+            empRepos.save(employee.get());
+            log.info("----------------------------");
+            log.info("Employee nach dem Update");
+            log.info(empRepos.findById(employee.get().getEmployeeId()).toString());
             log.info("----------------------------------");
             log.info("finde mit Query Max93");
-			log.info("----------------------------");
-			Optional<Employee> empl = empRepos.findEmployeeByQuery("Max93");
-			log.info(empl.toString());
             log.info("----------------------------");
-		};
-	}
+            Optional<Employee> empl = empRepos.findEmployeeByQuery("Max93");
+            log.info(empl.toString());
+            log.info("----------------------------");
+        };
+    }
 
-	@Bean
-    public CommandLineRunner demoCustomer(CustomerRepository customerRepository){
-	    return (args) -> {
-	        //save a couple of customers
+    @Bean
+    public CommandLineRunner demoCustomer(CustomerRepository customerRepository) {
+        return (args) -> {
+            //save a couple of customers
             log.info("Erzeuge Customer und speichere sie");
             log.info("----------------------------------");
             Customer c = new Customer("11111", null, null, null, null, null, "Banküberweisung");
@@ -101,9 +103,9 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
     }
 
     @Bean
-    public CommandLineRunner demoAdress(AdressRepository adressRepository){
-	    return (args) ->{
-	        // DemoAdresse erzeugen und in der Datenbank speichern
+    public CommandLineRunner demoAdress(AdressRepository adressRepository) {
+        return (args) -> {
+            // DemoAdresse erzeugen und in der Datenbank speichern
             log.info("Erzeuge Adresse und spiechere sie");
             log.info("----------------------------------");
             adressRepository.save(new Adress("Musterstrasse", "2b", "00138", "Musterstadt", "MusterBayern", "Musterland"));
@@ -117,7 +119,7 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
     }
 
     @Bean
-    public CommandLineRunner demoBank(BankRepository bankRepository){
+    public CommandLineRunner demoBank(BankRepository bankRepository) {
         return (args) -> {
             //DemoBank erzeugen und in der Datenbank abspeichern
             log.info("Erzeuge Demobank");
@@ -133,8 +135,8 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
     }
 
     @Bean
-    public CommandLineRunner demoArtikel(ArticleRepository articleRepository){
-	    return (args) -> {
+    public CommandLineRunner demoArtikel(ArticleRepository articleRepository) {
+        return (args) -> {
             log.info("Erzeuge Demoartikel");
             log.info("----------------------------------");
             articleRepository.save(new Article("Salz", null, 1, 1, null, null));
@@ -163,8 +165,8 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
     }
 
     @Bean
-    public CommandLineRunner demoSuppConfig(SupplementConfigurationRepository supplementConfigurationRepository, ArticleRepository articleRepository){
-	    return (args) ->{
+    public CommandLineRunner demoSuppConfig(SupplementConfigurationRepository supplementConfigurationRepository, ArticleRepository articleRepository) {
+        return (args) -> {
             log.info("Erzeuge DemoSuppsConfig");
             log.info("----------------------------------");
             ArrayList<Article> list = new ArrayList<Article>();
@@ -173,12 +175,32 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             list.add(articleRepository.findByQuery("Kreatin").get());
             list.add(articleRepository.findByQuery("Fischöl").get());
             list.add(articleRepository.findByQuery("Testo").get());
-            supplementConfigurationRepository.save(new SupplementConfiguration(list,"11111" ));
+            supplementConfigurationRepository.save(new SupplementConfiguration(list, "11111"));
             log.info("Supplement Configuration mit Query suchen");
             log.info("----------------------------------");
             Optional<SupplementConfiguration> supplementConfiguration = supplementConfigurationRepository.findByQuery("11111");
             log.info(supplementConfiguration.get().toString());
             log.info("----------------------------------");
+        };
+    }
+
+    @Bean
+    public CommandLineRunner demoStorrage(ArticleRepository articleRepository,
+                                          StorrageRepository storrageRepository) {
+        return args -> {
+            log.info("Auslesen der bestehenden Artikel aus der Datenbank");
+            log.info("----------------------------------");
+            for (Article article : articleRepository.findAll()) {
+                log.info("Für jeden Artikel wir ein Storrage-Feld angelegt.");
+                Storrage storrage = new Storrage();
+                storrage.setArticle(article);
+                storrage.setLevel((byte)1);
+                storrage.setRackcorridor('A');
+                storrage.setRackSector('B');
+                storrage.setAmount(100);
+                log.info("Speichern des Storrage Eintrages: " + storrage.toString());
+                storrageRepository.save(storrage);
+            }
         };
     }
 }
