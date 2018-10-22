@@ -15,13 +15,19 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card" onclick="trainingsScheduleClicked(this)">
-                        <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico" alt="Avatar" style="width:100%">
-                        <div class="container">
-                            <h4><b>Trainingsplan</b></h4>
-                            <p>Erstelle Trainingsplan!</p>
+
+
+                    <a href="/trainingsschedule">
+                        <div class="card" >
+                            <img src="${pageContext.request.contextPath}/resources/img/favicon32.ico" alt="Avatar" style="width:100%">
+                            <div class="container">
+                                <h4><b>Trainingsplan</b></h4>
+                                <p>Erstelle Trainingsplan!</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
+
                 </div>
                 <div class="col-md-4">
                     <div class="card" onclick="warehouseClicked(this)">
