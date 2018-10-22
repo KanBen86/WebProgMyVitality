@@ -103,7 +103,6 @@ public class ServletController {
      *
      * @author KANBEN86
      */
-    //Warehouse Page
     @RequestMapping("/warehouse")
     public void getWarehousePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Sendet die durch den Request angeforderte jsp an den Browser
