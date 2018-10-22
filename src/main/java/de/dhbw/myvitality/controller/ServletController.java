@@ -76,6 +76,12 @@ public class ServletController {
         request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
     }
 
+    //registration Page
+    @RequestMapping("/registration")
+    public void getRegistrationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp").forward(request, response);
+    }
+
     //Login Page senden
     @RequestMapping("/login")
     public void getLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -131,14 +137,14 @@ public class ServletController {
      */
     @RequestMapping("/warehouse")
     public void getWarehousePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Sendet die durch den Request angeforderte jsp an den Browser
-        request.getRequestDispatcher("/WEB-INF/jsp/warehouse.jsp").forward(request, response);
+        getPage(request, response, "employee", "warehouse.jsp");
     }
 
     // AddArticle Page
     @RequestMapping("/addArticle")
     public void getAddArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/addArticle.jsp").forward(request, response);
+        getPage(request, response, "employee", "addArticle.jsp");
+        //request.getRequestDispatcher("/WEB-INF/jsp/addArticle.jsp").forward(request, response);
     }
 
     // ShowStock Page
@@ -175,7 +181,7 @@ public class ServletController {
      */
     @RequestMapping("/employeehome")
     public void getEmployeeHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getPage(request, response, "employee", "/WEB-INF/jsp/emplHome.jsp");
+        getPage(request, response, "employee", "emplHome.jsp");
     }
 
     /***
@@ -192,37 +198,30 @@ public class ServletController {
     @RequestMapping("/mysupplements")
     public void getMySupplementsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("list", supplementConfigurationService.findArticleListByCustomerId("11111"));
-        request.getRequestDispatcher("/WEB-INF/jsp/mySupplements.jsp").forward(request, response);
+        getPage(request, response, "customer", "mySupplements.jsp");
     }
 
     //traingsSchedule Page
     @RequestMapping("/trainingsschedule")
     public void getTraingsSchedulePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/traingsSchedule.jsp").forward(request, response);
+        getPage(request, response, "employee", "traingsSchedule.jsp");
     }
 
     //preexerciselevel Page
     @RequestMapping("/preexerciselevel")
     public void getPreExerciseLevelPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/preexerciselevel.jsp").forward(request, response);
+        getPage(request, response, "customer","preexerciselevel.jsp");
     }
 
     //scheduleOverview Page
     @RequestMapping("/scheduleoverview")
     public void getTraingsScheduleOverview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/scheduleOverview1.jsp").forward(request, response);
+        getPage(request, response, "customer","scheduleOverview1.jsp");
     }
 
     //profileSettings Page
     @RequestMapping("/profilesettings")
     public void getProfileSettingsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/profileSettings.jsp").forward(request, response);
+        getPage(request, response, "customer","profileSettings.jsp");
     }
-
-    //registration Page
-    @RequestMapping("/registration")
-    public void getRegistrationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp").forward(request, response);
-    }
-
 }
