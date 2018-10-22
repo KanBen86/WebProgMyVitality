@@ -1,4 +1,10 @@
 /**
+ * JS Datei für Browserseitige Logik
+ * @author Tamino Fischer alias CodeKeks
+ * */
+
+
+/**
  * Den Pie Chart bauen
  */
 google.charts.load('current', {'packages':['corechart']});

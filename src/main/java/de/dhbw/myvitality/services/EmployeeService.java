@@ -12,19 +12,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmployeeService {
 
+    //CRUD Repository, welches den DB-Zufriff regelt
     @Autowired
     public EmployeeRepository employeeRepository;
 
-    /**
-     *
-     * Mit dem EmployeeRepository als Datenbankschnittstelle den Nuternamen eines Mitarbeiters  abfragen und mit return zurückgeben
-     *
-     * @param username
-     * @return
-     *
-     * @author Sven Hornung
-     */
-
+    // Sucht einen Mitarbeiter in der Datenbank und gibt ihn als Instanz einer Entityklasse zurück
     public Employee findEmployeeByUsername(String username){
         try {
             return employeeRepository.findEmployeeByQuery(username).get();
