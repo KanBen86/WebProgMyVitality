@@ -1,8 +1,22 @@
-<!-- CSS fuer die Trainingsplanübersicht-->
+/*Kommentar*/
 
 h1 {
     font-family: Arial;
     font-weight: 600;
     text-align: center;
-    color: red;
+    color: black;
+}
+
+.btn.btn-primary.dropdown-toggle{
+    background-color: lightgreen;
+    border-color: lightgreen;
+}
+.btn.btn-primary.dropdown-toggle:hover{
+    background-color: green;
+    border-color: green;
+}
+
+table, th, td{
+    border: 1px solid black;
+    text-align: center;
 }
