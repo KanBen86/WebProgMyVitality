@@ -11,28 +11,28 @@
         <div class="col-md">
 
             <p>
-                <!--<img src="/resources/img/Logo_MV.png" class="img-responsive" id="loginLogo" style="max-width: 382px">-->
-                <img src="/resources/img/Logo_MV.png" class="img-fluid" alt="Responsive image">
+                <img src="/resources/img/Logo_MV.png" class="img-responsive" id="loginLogo" style="max-width: 245px">
+                <!--<img src="/resources/img/Logo_MV.png" class="img-fluid" alt="Responsive image">-->
             </p>
 
             <form method="POST" onsubmit="validateForm(event)">
 
-                <div class="col-md">
+                <div class="row">
                     <label class="col-md-4"><div id="error">${error}</div></label>
-                </div>
-                <div class="col-md">
+
                     <label class="col-md-4">Benutzername: <input class="col-md-4" id="username" name="username"></label>
-                </div>
-                <div class="col-md">
+
                     <label class="col-md-4">Passwort: <input class="col-md-4" type="password" id="password" name="password"></label>
                 </div>
-                <div class="col-md">
+
+                <div class="row">
                     <label class="col-md-4"><input type="checkbox" id="rememberMe" name="rememberMe">Remember me</label>
                 </div>
-                <div class="col-md">
+
+                <div class="row">
                     <label class="col-md-4"><input id="btn" type="submit" value="Login"></label>
                 </div>
-                <div class="col-md">
+                <div class="row">
                     <label class="col-md-4">
                         <a href="">Registrieren</a>
                         <a href="">Passwort vergessen?</a>
