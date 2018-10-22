@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import de.dhbw.myvitality.entities.Customer;
-import de.dhbw.myvitality.entities.Employee;
 import de.dhbw.myvitality.services.CustomerService;
 import de.dhbw.myvitality.services.EmployeeService;
 import de.dhbw.myvitality.services.SupplementConfigurationService;
@@ -22,8 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * ServletController: Mappt die Http Anfragen auf eine JSP
- *
- * @author tamino.fischer
+ * @author Tamino Fischer alias CodeKeks
  */
 @Controller
 public class ServletController {
@@ -42,6 +39,36 @@ public class ServletController {
 
     private static final Logger log = LoggerFactory.getLogger(ServletController.class);
 
+    private static final String webInfJspPath = "/WEB-INF/jsp/";
+
+
+    /***
+     * Diese Methode realisiert den eigentlichen Seitenaufruf
+     * Bevor dies geschieht wird jedoch überprüft:
+     *      - handelt es sich um einen Angemeldeten User
+     *      - hat der Angemeldete User den richtigen UserType,
+     *      sodass Kunden nur auf Kundenseiten gelangen und Mitarbeiter nur auf Mitarbeiterseiten
+     *
+     * Hat die Überprüfung ein positives Ergebnis, so wird die Page aufgerufen
+     *
+     * @param request
+     * @param response
+     * @param userType
+     * @param jsp
+     * @throws ServletException
+     * @throws IOException
+     *
+     * @author Tamino Fischer alias CodeKeks
+     */
+    private void getPage(HttpServletRequest request, HttpServletResponse response, String userType, String jsp) throws ServletException, IOException {
+        if (request.getSession().getAttribute("token") == "active" && request.getSession().getAttribute("userType") == userType) {
+            request.setAttribute("loginLogoutText", "Logout");
+            request.getRequestDispatcher(webInfJspPath + jsp).forward(request, response);
+        } else {
+            response.sendRedirect("login");
+        }
+    }
+
     //Index Page
     @RequestMapping("/")
     public void getIndexPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,70 +76,23 @@ public class ServletController {
         request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
     }
 
-    /**
-     *
-     * Dies ist der Empfänger des HTTP-Request für die login-Seite
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     *
-     * @author Sven Hornung
-     */
-     //Login Page senden
-     @RequestMapping("/login")
-     public void getLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     request.getSession().removeAttribute("username");
-     request.getSession().removeAttribute("password");
-     request.getSession().removeAttribute("token");
-     request.getSession().removeAttribute("userType");
-     request.setAttribute("loginLogoutText", "Login");
-     request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
-     }
+    //registration Page
+    @RequestMapping("/registration")
+    public void getRegistrationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp").forward(request, response);
+    }
 
-    /**
-     *
-     * Dies ist der Sender und Bearbeiter der eingegegebenen Daten der login-Seite
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     *
-     * @author Sven Hornung
-     */
-     //Login Daten senden und verarbeiten
-     @RequestMapping(method = RequestMethod.POST, value = "/login")
-     public void postLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         log.info("Post logincredentials");
-         HttpSession httpSession = request.getSession();
-         httpSession.setAttribute("username", request.getParameter("username"));
-         httpSession.setAttribute("password", request.getParameter("password"));
-         //Aufruf der Serviceklasse "UserAuthentificationService", welche die Authentifizierung durchführt
-         boolean[] authentification = userAuthentificationService.userAuthentification(httpSession);
-         if(authentification[0]){
-             if (authentification[1]){
-                 httpSession.setAttribute("token", "active");
-                 log.info("Setze Token aus active");
-                 httpSession.setAttribute("userType", "customer");
-                 log.info("setze userType auf customer");
-                 response.sendRedirect("/customerhome");
-             }
-             else {
-                 httpSession.setAttribute("token", "active");
-                 log.info("setze token auf active");
-                 httpSession.setAttribute("userType", "employee");
-                 log.info("setze userType auf employee");
-                 response.sendRedirect("employeehome");
-             }
-         }
-         else {
-             request.setAttribute("error", "Falscher Username oder falsches Passwort");
-             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
-         }
+    //Login Page senden
+    @RequestMapping("/login")
+    public void getLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().removeAttribute("username");
+        request.getSession().removeAttribute("password");
+        request.getSession().removeAttribute("token");
+        request.getSession().removeAttribute("userType");
+        request.setAttribute("loginLogoutText", "Login");
+        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+    }
 
-     }
     //Login Daten senden und verarbeiten
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public void postLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -157,14 +137,14 @@ public class ServletController {
      */
     @RequestMapping("/warehouse")
     public void getWarehousePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Sendet die durch den Request angeforderte jsp an den Browser
-        request.getRequestDispatcher("/WEB-INF/jsp/warehouse.jsp").forward(request, response);
+        getPage(request, response, "employee", "warehouse.jsp");
     }
 
     // AddArticle Page
     @RequestMapping("/addArticle")
     public void getAddArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/addArticle.jsp").forward(request, response);
+        getPage(request, response, "employee", "addArticle.jsp");
+        //request.getRequestDispatcher("/WEB-INF/jsp/addArticle.jsp").forward(request, response);
     }
 
     // ShowStock Page
@@ -201,7 +181,7 @@ public class ServletController {
      */
     @RequestMapping("/employeehome")
     public void getEmployeeHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getPage(request, response, "employee", "/WEB-INF/jsp/emplHome.jsp");
+        getPage(request, response, "employee", "emplHome.jsp");
     }
 
     /***
@@ -218,47 +198,30 @@ public class ServletController {
     @RequestMapping("/mysupplements")
     public void getMySupplementsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("list", supplementConfigurationService.findArticleListByCustomerId("11111"));
-        request.getRequestDispatcher("/WEB-INF/jsp/mySupplements.jsp").forward(request, response);
+        getPage(request, response, "customer", "mySupplements.jsp");
     }
 
     //traingsSchedule Page
     @RequestMapping("/trainingsschedule")
     public void getTraingsSchedulePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/traingsSchedule.jsp").forward(request, response);
+        getPage(request, response, "employee", "traingsSchedule.jsp");
     }
 
     //preexerciselevel Page
     @RequestMapping("/preexerciselevel")
     public void getPreExerciseLevelPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/preexerciselevel.jsp").forward(request, response);
+        getPage(request, response, "customer","preexerciselevel.jsp");
     }
 
     //scheduleOverview Page
     @RequestMapping("/scheduleoverview")
     public void getTraingsScheduleOverview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/scheduleOverview1.jsp").forward(request, response);
+        getPage(request, response, "customer","scheduleOverview1.jsp");
     }
 
     //profileSettings Page
     @RequestMapping("/profilesettings")
     public void getProfileSettingsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/profileSettings.jsp").forward(request, response);
+        getPage(request, response, "customer","profileSettings.jsp");
     }
-
-    /**
-     *
-     * Dies ist der Empfänger des HTTP-Request für die registration-Seite
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     *
-     * @author Sven Hornung
-     */
-    //registration Page
-    @RequestMapping("/registration")
-    public void getRegistrationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp").forward(request, response);
-    }
-
 }
