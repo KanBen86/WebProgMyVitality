@@ -1,8 +1,15 @@
 package de.dhbw.myvitality.entities;
 
 import javax.persistence.*;
+
+/**
+ * Entityklasse für die Ziele
+ * @author Fabian Lieb
+ */
 @Entity
 public class Goal {
+
+    //Felder der Klasse
 
     @Id
     @GeneratedValue
@@ -18,6 +25,8 @@ public class Goal {
 
     private boolean gainEndurance;
 
+    //Konstruktoren
+
     public Goal(boolean weightLoss, boolean gainStrength, boolean minimizeWeaknesses, boolean metabolicHealth, boolean gainEndurance) {
         this.weightLoss = weightLoss;
         this.gainStrength = gainStrength;
@@ -25,6 +34,8 @@ public class Goal {
         this.metabolicHealth = metabolicHealth;
         this.gainEndurance = gainEndurance;
     }
+
+    //Getter & Setter
 
     public String getGoal_Id() {
         return goal_Id;

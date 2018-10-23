@@ -5,8 +5,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Entityklasse für die Bestellungen
+ * @author Fabian Lieb
+ */
 @Entity
 public class Ordering {
+
+    //Felder der Klasse
 
     @Id
     @GeneratedValue
@@ -32,6 +38,8 @@ public class Ordering {
 
     private boolean TermsAndConditionsConfirmed;
 
+    //Konstruktoren
+
     public Ordering() {
     }
 
@@ -44,6 +52,8 @@ public class Ordering {
         this.couponNo = couponNo;
         TermsAndConditionsConfirmed = termsAndConditionsConfirmed;
     }
+
+    //Getter & Setter
 
     public String getOrderId() {
         return orderId;

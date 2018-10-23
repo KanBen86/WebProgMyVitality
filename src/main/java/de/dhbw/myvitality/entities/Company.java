@@ -2,8 +2,16 @@ package de.dhbw.myvitality.entities;
 
 
 import javax.persistence.*;
+
+/**
+ * Entityklasse für das Unternehmen
+ * @author Fabian Lieb
+ */
 @Entity
 public class Company {
+
+    //Felder der Klasse
+
     @Id
     @GeneratedValue
     private String company_Id;
@@ -22,12 +30,16 @@ public class Company {
     @Transient //TODO
     private Person contactPerson;
 
+    //Konstruktoren
+
     public Company(String name, Adress addresse, Contract contract, Person contactPerson) {
         this.name = name;
         this.addresse = addresse;
         this.contract = contract;
         this.contactPerson = contactPerson;
     }
+
+    //Getter & Setter
 
     public String getCompany_Id() {
         return company_Id;

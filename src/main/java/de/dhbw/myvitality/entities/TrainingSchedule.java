@@ -2,8 +2,16 @@ package de.dhbw.myvitality.entities;
 
 import javax.persistence.*;
 import java.time.LocalTime;
+
+/**
+ * Entityklasse für den Trainingsplan
+ * @author Fabian Lieb
+ */
 @Entity
 public class TrainingSchedule {
+
+    //Felder der Klasse
+
     @Id
     @GeneratedValue
     private String scheduleId;
@@ -24,6 +32,8 @@ public class TrainingSchedule {
 
     private Integer[] heartFrequency = new Integer[2];
 
+    //Konstruktoren
+
     public TrainingSchedule(String scheduleId, int exerciseNo, String exerciseDesc, int sets, int reps, int breakSec, FitnessLevel fitnessLevel, Integer[] heartFrequency) {
         this.scheduleId = scheduleId;
         this.exerciseNo = exerciseNo;
@@ -36,6 +46,8 @@ public class TrainingSchedule {
     }
 
     public TrainingSchedule() {}
+
+    //Getter & Setter
 
     public String getScheduleId() {
         return scheduleId;
