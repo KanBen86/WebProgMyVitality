@@ -1,6 +1,7 @@
 package de.dhbw.myvitality.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Storrage {
@@ -77,5 +78,35 @@ public class Storrage {
 
     public void setLevel(byte level) {
         this.level = level;
+    }
+
+    @Override
+    public String toString() {
+        return "Storrage{" +
+                "storrageId=" + storrageId +
+                ", article=" + article +
+                ", rackSector=" + rackSector +
+                ", rackcorridor=" + rackcorridor +
+                ", level=" + level +
+                ", amount=" + amount +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Storrage storrage = (Storrage) o;
+        return storrageId == storrage.storrageId &&
+                rackSector == storrage.rackSector &&
+                rackcorridor == storrage.rackcorridor &&
+                level == storrage.level &&
+                amount == storrage.amount &&
+                Objects.equals(article, storrage.article);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(storrageId, article, rackSector, rackcorridor, level, amount);
     }
 }

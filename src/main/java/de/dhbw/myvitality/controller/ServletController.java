@@ -7,11 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import de.dhbw.myvitality.entities.Article;
+import de.dhbw.myvitality.entities.Storrage;
 import de.dhbw.myvitality.services.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,6 +36,10 @@ public class ServletController {
 
     @Autowired
     private StorrageService storrageService;
+
+    @Autowired
+    private ArticleService articleService;
+
 
     private static final Logger log = LoggerFactory.getLogger(ServletController.class);
 
@@ -158,14 +165,43 @@ public class ServletController {
         getPage(request, response, "employee", "warehouse.jsp");
     }
 
-    // AddArticle Page
+    /**
+     * Diese Mehode liefert die Seite addArticle zu einem bestimmten Artikel
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @author Benjamin Kanzler
+     */
     @RequestMapping("/addArticle")
-    public void getAddArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void getArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         getPage(request, response, "employee", "addArticle.jsp");
-        //request.getRequestDispatcher("/WEB-INF/jsp/addArticle.jsp").forward(request, response);
     }
 
-    // ShowStock Page
+
+    /**
+     * Diese Mehode liefert die Seite addArticle zu einem bestimmten Artikel
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @author Benjamin Kanzler
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/addArticle")
+    public void postArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String articleId = request.getParameter("articleId");
+        Article article = null;
+        if (articleId != null){
+            article = new Article();
+            article = articleService.findById(articleId).get();
+        }
+        request.setAttribute("article", article);
+        getPage(request, response, "employee", "addArticle.jsp");
+    }
+
 
     /**
      * Diese Methode liefert die Tabelle mit dem Lagerinhalt in Form einer jsp
@@ -174,10 +210,10 @@ public class ServletController {
      * @param response
      * @throws ServletException
      * @throws IOException
+     * @author Benjamin Kanzler
      */
     @RequestMapping("/showStock")
     public void getShowStockPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("map", storrageService.findAll());
         getPage(request, response, "employee", "showStock.jsp");
     }
 
