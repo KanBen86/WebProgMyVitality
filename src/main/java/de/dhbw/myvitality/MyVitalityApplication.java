@@ -139,11 +139,11 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
         return (args) -> {
             log.info("Erzeuge Demoartikel");
             log.info("----------------------------------");
-            articleRepository.save(new Article("Salz", null, 1, 1, null, null));
-            articleRepository.save(new Article("Protein", null, 1, 1, null, null));
-            articleRepository.save(new Article("Kreatin", null, 1, 1, null, null));
-            articleRepository.save(new Article("Fischöl", null, 1, 1, null, null));
-            articleRepository.save(new Article("Testo", null, 1, 1, null, null));
+            articleRepository.save(new Article("Salz",100.0, "Nach dem Trainng nehmen", null, 1, 1, null, null));
+            articleRepository.save(new Article("Protein",100.0, "Nach dem Trainng nehmen", null, 1, 1, null, null));
+            articleRepository.save(new Article("Kreatin",100.0, "Nach dem Trainng nehmen", null, 1, 1, null, null));
+            articleRepository.save(new Article("Fischöl",100.0, "Nach dem Trainng nehmen", null, 1, 1, null, null));
+            articleRepository.save(new Article("Testo",100.0, "Nach dem Trainng nehmen", null, 1, 1, null, null));
             log.info("Artikel mit Query suchen");
             log.info("----------------------------------");
             Optional<Article> article = articleRepository.findByQuery("Salz");

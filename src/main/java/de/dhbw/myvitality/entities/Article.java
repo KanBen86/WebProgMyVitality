@@ -24,6 +24,10 @@ public class Article {
 
     private String description;
 
+    private double quantity;
+
+    private String information;
+
     @Transient
     private ArrayList<ENUM_INGREDIENTS> ingredients;
 
@@ -43,8 +47,10 @@ public class Article {
     public Article() {
     }
 
-    public Article(String description, ArrayList<ENUM_INGREDIENTS> ingredients, int barcode, float price, Company supplier, ArrayList<ENUM_ALLERGEN> allergens) {
+    public Article(String description, Double quantity, String information, ArrayList<ENUM_INGREDIENTS> ingredients, int barcode, float price, Company supplier, ArrayList<ENUM_ALLERGEN> allergens) {
         this.description = description;
+        this.quantity = quantity;
+        this.information = information;
         this.ingredients = ingredients;
         this.barcode = barcode;
         this.price = price;
@@ -68,6 +74,22 @@ public class Article {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getInformation() {
+        return information;
+    }
+
+    public void setInformation(String information) {
+        this.information = information;
     }
 
     public List<ENUM_INGREDIENTS> getIngredients() {
@@ -112,11 +134,14 @@ public class Article {
 
     //Override Methoden toString, hashCode, equals
 
+
     @Override
     public String toString() {
         return "Article{" +
-                "articleId='" + articleId +
-                ", description='" + description +
+                "articleId='" + articleId + '\'' +
+                ", description='" + description + '\'' +
+                ", quantity=" + quantity +
+                ", information='" + information + '\'' +
                 ", ingredients=" + ingredients +
                 ", barcode=" + barcode +
                 ", price=" + price +
@@ -130,10 +155,12 @@ public class Article {
         if (this == o) return true;
         if (!(o instanceof Article)) return false;
         Article article = (Article) o;
-        return getBarcode() == article.getBarcode() &&
+        return Double.compare(article.getQuantity(), getQuantity()) == 0 &&
+                getBarcode() == article.getBarcode() &&
                 Float.compare(article.getPrice(), getPrice()) == 0 &&
                 Objects.equals(getArticleId(), article.getArticleId()) &&
                 Objects.equals(getDescription(), article.getDescription()) &&
+                Objects.equals(getInformation(), article.getInformation()) &&
                 Objects.equals(getIngredients(), article.getIngredients()) &&
                 Objects.equals(getSupplier(), article.getSupplier()) &&
                 Objects.equals(getAllergens(), article.getAllergens());
@@ -141,6 +168,6 @@ public class Article {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getArticleId(), getDescription(), getIngredients(), getBarcode(), getPrice(), getSupplier(), getAllergens());
+        return Objects.hash(getArticleId(), getDescription(), getQuantity(), getInformation(), getIngredients(), getBarcode(), getPrice(), getSupplier(), getAllergens());
     }
 }
