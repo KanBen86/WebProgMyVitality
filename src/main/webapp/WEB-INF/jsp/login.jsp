@@ -6,21 +6,16 @@
 <template:base>
     <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/login.css"/>
-        <script type="application/javascript" src="../../resources/js/login.js"></script>
-        <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+        <script type="application/javascript" src="${pageContext.request.contextPath}/resources/js/login.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </jsp:attribute>
     <jsp:attribute name="main">
-        <!--<div onload="myFunction()" style="margin:0;">-->
-
-            <!--<div id="loader"></div>-->
-
-            <!--<div style="display:none;" id="myDiv" class="animate-bottom">-->
 
                 <p>
                 <img src="/resources/img/Logo_MV.png" class="img-responsive" id="loginLogo" style="max-width: 245px">
                 </p>
 
-                <form name="LoginForm" onsubmit="validateForm(event)" method="POST">
+                <form name="LoginForm" onsubmit="validateLoginForm()" method="POST">
 
                     <div class="container-fluid">
 
@@ -29,7 +24,7 @@
                                 <label>Benutzername</label>
                             </div>
                             <div class="col-md-4">
-                                <input id="username" name="username" required>
+                                <input class="w3-input w3-border w3-light-green" id="username" name="username" required>
                             </div>
                         </div>
 
@@ -38,7 +33,7 @@
                                 <label>Passwort</label>
                             </div>
                             <div class="col-md-4">
-                                <input type="password" id="password" name="password" required>
+                                <input type="password" class="w3-input w3-border w3-light-green" id="password" name="password" required>
                             </div>
                         </div>
 
@@ -55,21 +50,20 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <a href="/registration">Registrieren</a>
+                                <a class="links" href="/registration">Registrieren</a>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
-                                <a href="">Passwort vergessen?</a>
+                                <a class="links" href="">Passwort vergessen?</a>
                             </div>
                         </div>
 
-                        <div id="error">${error}</div>
+                        <div id="loaderLogin"></div>
 
+                        <div id="error">${error}</div>
                     </div>
                 </form>
-           <!--</div>-->
-        <!--</div>-->
     </jsp:attribute>
 </template:base>

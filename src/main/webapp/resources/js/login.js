@@ -1,10 +1,11 @@
-let myVar;
+function validateLoginForm(){
 
-function myFunction() {
-    myVar = setTimeout(showPage, 2000);
+    let timerLoad;
+
+    timerLoad = setTimeout(showLoader, 3000);
+
 }
 
-function showPage() {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("myDiv").style.display = "block";
+function showLoader() {
+    document.getElementById("loaderLogin").style.display = "block";
 }

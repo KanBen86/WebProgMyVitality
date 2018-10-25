@@ -76,16 +76,45 @@ public class ServletController {
     //Index Page
     @RequestMapping("/")
     public void getIndexPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("loginLogoutText", "Login");
+        //In der HHTP-Session abfragen ob der Benutzer der Website angemeldet ist
+        if (request.getSession().getAttribute("token") == "active") {
+            request.setAttribute("loginLogoutText", "Logout");
+        } else {
+            request.setAttribute("loginLogoutText", "Login");
+        }
         request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
     }
 
+    /**
+     * Diese Methode bearbeitet Anfrage die auf den Registrierungsbereich der Website zielen. Hier können sich Kunde registrieren.
+     * Wird der Bereich per URL aufgerufen während der Benutzer angemeldet ist, werden die Attribute der HTTP-Session gelöscht.
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     *
+     * @author Sven Hornung
+     */
     //registration Page
     @RequestMapping("/registration")
     public void getRegistrationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().removeAttribute("username");
+        request.getSession().removeAttribute("password");
+        request.getSession().removeAttribute("token");
+        request.getSession().removeAttribute("userType");
+        request.setAttribute("loginLogoutText", "Login");
         request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp").forward(request, response);
     }
 
+    /**
+     * Diese Methode wird aufgerufen, wenn man auf der Registrierungsseite "Registrieren" klickt.
+     * Durch das Anwenden der POST-Methode im Formular, wird das Senden der Registrierungsdaten an den Server ermöglicht.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     //registration Page
     @RequestMapping(method = RequestMethod.POST, value = "/registration")
     public void postRegistrationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

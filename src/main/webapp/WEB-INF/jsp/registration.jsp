@@ -13,7 +13,7 @@
 
             <h1>Konto anlegen</h1>
 
-            <form name="RegistrationForm" onsubmit="return validateForm()" method="POST">
+            <form name="RegistrationForm" onsubmit="return validateRegistrationForm()" method="POST">
 
                 <div class="container-fluid">
 
@@ -22,33 +22,27 @@
                             <label>Benutzername</label>
                         </div>
                         <div class="col-md-4">
-                            <input id="username" name="username" required>
+                            <input class="w3-input w3-border w3-light-green" id="username" name="username" required>
                         </div>
                     </div>
-
-                    <!--<br>-->
 
                     <div class="row">
                         <div class="col-md-4">
                             <label>Passwort</label>
                         </div>
                         <div class="col-md-4">
-                            <input id="password" name="password" required>
+                            <input class="w3-input w3-border w3-light-green" id="password" name="password" required>
                         </div>
                     </div>
-
-                    <!--<br>-->
 
                     <div class="row">
                         <div class="col-md-4">
                             <label>Passwort wiederholen</label>
                         </div>
                         <div class="col-md-4">
-                            <input id="passwordRE" name="passwordRE" required>
+                            <input class="w3-input w3-border w3-light-green" id="passwordRE" name="passwordRE" required>
                         </div>
                     </div>
-
-                    <!--<br>-->
 
                     <div class="row">
                         <div class="col-md-4">
