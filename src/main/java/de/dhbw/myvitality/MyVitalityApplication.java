@@ -203,4 +203,17 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             }
         };
     }
+
+    @Bean
+    public CommandLineRunner demoTrainingschedule(TrainingScheduleRepository trainingScheduleRepository){
+        return args -> {
+            log.info("Erstellen eines Trainingsplans");
+            log.info("----------------------------------");
+            trainingScheduleRepository.save(new TrainingSchedule(0, 1, "Demobezeichnung", 3, 20, 90, null, new Integer[]{1,2,3}));
+            log.info("Trainingsplan wurde erzeugt");
+            for (TrainingSchedule trainingSchedule : trainingScheduleRepository.findAll()){
+                log.info(trainingSchedule.toString());
+            }
+        };
+    }
 }

@@ -2,6 +2,7 @@ package de.dhbw.myvitality.entities;
 
 import javax.persistence.*;
 import java.time.LocalTime;
+import java.util.Arrays;
 
 /**
  * Entityklasse für den Trainingsplan
@@ -14,7 +15,7 @@ public class TrainingSchedule {
 
     @Id
     @GeneratedValue
-    private String scheduleId;
+    private long scheduleId;
 
     private int exerciseNo;
 
@@ -34,7 +35,7 @@ public class TrainingSchedule {
 
     //Konstruktoren
 
-    public TrainingSchedule(String scheduleId, int exerciseNo, String exerciseDesc, int sets, int reps, int breakSec, FitnessLevel fitnessLevel, Integer[] heartFrequency) {
+    public TrainingSchedule(long scheduleId, int exerciseNo, String exerciseDesc, int sets, int reps, int breakSec, FitnessLevel fitnessLevel, Integer[] heartFrequency) {
         this.scheduleId = scheduleId;
         this.exerciseNo = exerciseNo;
         this.exerciseDesc = exerciseDesc;
@@ -49,11 +50,11 @@ public class TrainingSchedule {
 
     //Getter & Setter
 
-    public String getScheduleId() {
+    public long getScheduleId() {
         return scheduleId;
     }
 
-    public void setScheduleId(String scheduleId) {
+    public void setScheduleId(long scheduleId) {
         this.scheduleId = scheduleId;
     }
 
@@ -111,5 +112,19 @@ public class TrainingSchedule {
 
     public void setHeartFrequency(Integer[] heartFrequency) {
         this.heartFrequency = heartFrequency;
+    }
+
+    @Override
+    public String toString() {
+        return "TrainingSchedule{" +
+                "scheduleId=" + scheduleId +
+                ", exerciseNo=" + exerciseNo +
+                ", exerciseDesc='" + exerciseDesc + '\'' +
+                ", sets=" + sets +
+                ", reps=" + reps +
+                ", breakSec=" + breakSec +
+                ", fitnessLevel=" + fitnessLevel +
+                ", heartFrequency=" + Arrays.toString(heartFrequency) +
+                '}';
     }
 }
