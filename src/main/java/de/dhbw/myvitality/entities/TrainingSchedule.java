@@ -1,5 +1,7 @@
 package de.dhbw.myvitality.entities;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.time.LocalTime;
 import java.util.Arrays;
@@ -12,10 +14,10 @@ import java.util.Arrays;
 public class TrainingSchedule {
 
     //Felder der Klasse
-
     @Id
-    @GeneratedValue
-    private long scheduleId;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String scheduleId;
 
     private int exerciseNo;
 
@@ -35,8 +37,7 @@ public class TrainingSchedule {
 
     //Konstruktoren
 
-    public TrainingSchedule(long scheduleId, int exerciseNo, String exerciseDesc, int sets, int reps, int breakSec, FitnessLevel fitnessLevel, Integer[] heartFrequency) {
-        this.scheduleId = scheduleId;
+    public TrainingSchedule( int exerciseNo, String exerciseDesc, int sets, int reps, int breakSec, FitnessLevel fitnessLevel, Integer[] heartFrequency) {
         this.exerciseNo = exerciseNo;
         this.exerciseDesc = exerciseDesc;
         this.sets = sets;
@@ -50,11 +51,11 @@ public class TrainingSchedule {
 
     //Getter & Setter
 
-    public long getScheduleId() {
+    public String getScheduleId() {
         return scheduleId;
     }
 
-    public void setScheduleId(long scheduleId) {
+    public void setScheduleId(String scheduleId) {
         this.scheduleId = scheduleId;
     }
 

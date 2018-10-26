@@ -10,74 +10,68 @@
 
     <jsp:attribute name="main">
 
-        <h1> Traingsplan &Uumlbersicht</h1>
+        <div class="container-fluid">
 
-        <form action="">
-            Kunde wählen:
-            <input type="text" id="traingsschedule_name" maxlength="15">
-            <br>
-
-            <div class="dropdown">
-                Bisherige Trainingspl&aumlne:
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Auswahl
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Trainingsplan vom 01.01.2010</a></li>
-                    <li><a href="#">Trainingsplan vom 05.05.2015</a></li>
-                    <li><a href="#">Trainingsplan vom 10.10.2020</a></li>
-                </ul>
-
-                <button type="button"> Anzeigen</button>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Benutzername:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="w3-input w3-border w3-light-green" id="username" name="username" required>
+                </div>
             </div>
 
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Übungsnummer</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="w3-input w3-border w3-light-green" id="exNumber" name="exNumber" required>
+                </div>
+            </div
 
-            <div id="trainingsSchedule_OverviewTable">
-                <table>
-                    <tr>
-                        <th>Nummer</th>
-                        <th>&Uumlbung</th>
-                        <th>Satzzahl </th>
-                        <th>Wiederholungen</th>
-                        <th>Gewicht</th>
-                        <th>Information</th>
-
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Beispiel&uumlbung</td>
-                        <td>3</td>
-                        <td>15-20</td>
-                        <td>15</td>
-                        <td>Allgemeine Information</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Beispiel&uumlbung</td>
-                        <td>3</td>
-                        <td>15-20</td>
-                        <td>15</td>
-                        <td>Allgemeine Information</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Beispiel&uumlbung</td>
-                        <td>3</td>
-                        <td>15-20</td>
-                        <td>15</td>
-                        <td>Allgemeine Information</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Beispiel&uumlbung</td>
-                        <td>3</td>
-                        <td>15-20</td>
-                        <td>15</td>
-                        <td>Allgemeine Information</td>
-                    </tr>
-                </table>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Satzanzahl:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="w3-input w3-border w3-light-green" id="sets" name="sets" required>
+                </div>
             </div>
 
-        </form>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Wiederholungszahl:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="w3-input w3-border w3-light-green" id="reps" name="reps" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Gewicht:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="w3-input w3-border w3-light-green" id="weight" name="weight" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Information:</label>
+                </div>
+                <div class="col-md-4">
+                    <input class="w3-input w3-border w3-light-green" id="info" name="info" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <button id="btn-add-ts" onclick="addTrainingsschedule()">Daten senden</button>
+                </div>
+            </div>
+        </div>
 
     </jsp:attribute>
 </template:base>

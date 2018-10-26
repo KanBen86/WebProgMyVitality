@@ -19,7 +19,7 @@ public class Customer extends Person{
     @JoinColumn(name = "customer_goal_id")
     private Goal goal;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name = "customer_schedule_id")
     private List<TrainingSchedule> trainingSchedules;
 

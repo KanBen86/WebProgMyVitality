@@ -89,6 +89,11 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             Customer c = new Customer("11111", null, null, null, null, null, "Banküberweisung");
             c.setUsername("StaplerfahrerKlaus");
             c.setPassword("123");
+            ArrayList<TrainingSchedule> list = new ArrayList<>();
+            list.add(new TrainingSchedule(1, "Buttefly", 3, 20, 90, null, new Integer[]{80-200}));
+            list.add(new TrainingSchedule(1, "Hyperxtension", 3, 20, 90, null, new Integer[]{80-200}));
+            list.add(new TrainingSchedule(1, "BiCurl", 3, 20, 90, null, new Integer[]{80-200}));
+            c.setTrainingSchedules(list);
             customerRepository.save(c);
             log.info("Customer nach Id suchen");
             log.info("----------------------------------");
@@ -209,7 +214,7 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
         return args -> {
             log.info("Erstellen eines Trainingsplans");
             log.info("----------------------------------");
-            trainingScheduleRepository.save(new TrainingSchedule(0, 1, "Demobezeichnung", 3, 20, 90, null, new Integer[]{1,2,3}));
+            trainingScheduleRepository.save(new TrainingSchedule(1, "Demobezeichnung", 3, 20, 90, null, new Integer[]{1,2,3}));
             log.info("Trainingsplan wurde erzeugt");
             for (TrainingSchedule trainingSchedule : trainingScheduleRepository.findAll()){
                 log.info(trainingSchedule.toString());

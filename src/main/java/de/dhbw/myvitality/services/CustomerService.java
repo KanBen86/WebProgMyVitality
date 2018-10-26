@@ -1,12 +1,15 @@
 package de.dhbw.myvitality.services;
 
 import de.dhbw.myvitality.entities.Customer;
+import de.dhbw.myvitality.entities.TrainingSchedule;
 import de.dhbw.myvitality.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
 
 /***
  * Anwendungslogik für Kunden inkl. Datenbankzugriff per Repository
@@ -47,6 +50,20 @@ public class CustomerService {
             log.info("Username ex. bereits");
             return false;
         }
+    }
+
+    /**
+     *
+     * Wenn die Methode aufgerufen wird, übergeben wir ihr eine Liste von TrainingsSchedules. Diese soll bei dem entsprechenden
+     * Kunden gespeichert werden.
+     *
+     * @param list
+     * @author Moritz Kuttler
+     */
+    public void saveTrainingsScheduleList(String username, ArrayList<TrainingSchedule> list){
+        Customer customer = customerRepository.findCustomerByQuery(username).get(); // User wird geholt
+        customer.setTrainingSchedules(list);
+        customerRepository.save(customer);
     }
 
 }
