@@ -180,7 +180,21 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             list.add(articleRepository.findByQuery("Kreatin").get());
             list.add(articleRepository.findByQuery("Fischöl").get());
             list.add(articleRepository.findByQuery("Testo").get());
-            supplementConfigurationRepository.save(new SupplementConfiguration(list, "11111"));
+
+            ArrayList<Double> quantityList = new ArrayList<>();
+            quantityList.add(1.0);
+            quantityList.add(1.0);
+            quantityList.add(1.0);
+            quantityList.add(1.0);
+            quantityList.add(1.0);
+            ArrayList<String> informationList = new ArrayList<>();
+            informationList.add("s");
+            informationList.add("s");
+            informationList.add("s");
+            informationList.add("s");
+            informationList.add("s");
+
+            supplementConfigurationRepository.save(new SupplementConfiguration(list,quantityList,informationList ,"11111"));
             log.info("Supplement Configuration mit Query suchen");
             log.info("----------------------------------");
             Optional<SupplementConfiguration> supplementConfiguration = supplementConfigurationRepository.findByQuery("11111");

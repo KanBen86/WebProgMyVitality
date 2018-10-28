@@ -26,6 +26,13 @@ public class SupplementConfiguration {
     @CollectionTable(name="listOfArticles")
     private List<Article> articleList;
 
+
+    @ElementCollection
+    private List<Double> quantitList;
+
+    @ElementCollection
+    private List<String> informationList;
+
     private String customerId;
 
     //Getter & Setter
@@ -36,6 +43,22 @@ public class SupplementConfiguration {
 
     public void setSuppsId(String suppsId) {
         this.suppsId = suppsId;
+    }
+
+    public List<Double> getQuantitList() {
+        return quantitList;
+    }
+
+    public void setQuantitList(List<Double> quantitList) {
+        this.quantitList = quantitList;
+    }
+
+    public List<String> getInformationList() {
+        return informationList;
+    }
+
+    public void setInformationList(List<String> informationList) {
+        this.informationList = informationList;
     }
 
     public List<Article> getArticleList() {
@@ -56,7 +79,7 @@ public class SupplementConfiguration {
 
     //Konstruktoren
 
-    public SupplementConfiguration(List<Article> articleList, String customerId) {
+    public SupplementConfiguration(List<Article> articleList, List<Double> quantitList, List<String> informationList ,String customerId) {
         this.articleList = articleList;
         this.customerId = customerId;
     }
