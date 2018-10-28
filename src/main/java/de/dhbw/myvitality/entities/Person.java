@@ -126,4 +126,19 @@ public class Person {
     public void setAccounts(List<Bank> accounts) {
         this.accounts = accounts;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", adress=" + adress +
+                ", dateOfBirth=" + dateOfBirth +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNo='" + phoneNo + '\'' +
+                ", sex=" + sex +
+                '}';
+    }
 }

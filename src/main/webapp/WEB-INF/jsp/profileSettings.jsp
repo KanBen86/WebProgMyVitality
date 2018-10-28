@@ -34,6 +34,7 @@
                     <td>Profileinstellungen</td>
                 </tr>-->
                 <dl>
+                    <dt><input id="profileSettings_kundenID" ></dt>
                     <dt><label for="profileSettings_fullName">Vorname: </label>
                         <input type="text" id="profileSettings_fullName" name="profileSettings_fullName"></dt>
                     <dt><label for="profileSettings_fullName_two">Nachname: </label>
@@ -42,7 +43,7 @@
                         <input type="text" id="profileSettings_emailAddress" name="profileSettings_emailAddress"></dt>
                     <dt><label for="profileSettings_address">Adresse: </label>
                         <input type="text" id="profileSettings_address" name="profileSettings_address"></dt>
-                    <dt><label for="gebdat">Geburtsdatum:<input type="date" id="gebdat"></label></dt>
+                    <dt><label for="profileSettings_gebdat">Geburtsdatum:<input type="date" id="profileSettings_gebdat"></label></dt>
                     <dt><label for="profileSettings_username">Username: </label>
                         <input type="text" id="profileSettings_username" name="profileSettings_username"></dt>
                     <dt><label for="profileSettings_password">Passwort: </label>
@@ -52,7 +53,7 @@
                     <dt><label for="profileSettings_sex">Geschlecht: </label>
                         <input type="text" id="profileSettings_sex" name="profileSettings_sex"></dt>
                 </dl>
-                <button id="profileSettings_button" type="button">Änderungen übernehmen</button>
+                <button id="profileSettings_button" type="button" onclick="validiereDaten()">Änderungen übernehmen</button>
             </body>
         </html>
 

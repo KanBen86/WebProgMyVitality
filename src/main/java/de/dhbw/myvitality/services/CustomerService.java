@@ -66,4 +66,23 @@ public class CustomerService {
         customerRepository.save(customer);
     }
 
+    /**
+     * Liefert einen Customer anhand seiner ID
+     *
+     * @param id
+     * @return
+     * @author Fabian Lieb
+     */
+    public Customer findCustomerById(String id) {
+        return customerRepository.findById(id).get();
+    }
+
+    /**
+     * Diese Methode speichert einen Customer in die Datenbank
+     * @param customer
+     * @author Fabian Lieb
+     */
+    public void saveCustomer(Customer customer) {
+        customerRepository.save(customer);
+    }
 }
