@@ -1,6 +1,8 @@
 package de.dhbw.myvitality.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +41,6 @@ public class ServletController {
 
     @Autowired
     private ArticleService articleService;
-
 
     private static final Logger log = LoggerFactory.getLogger(ServletController.class);
 
@@ -243,6 +244,11 @@ public class ServletController {
      */
     @RequestMapping("/showStock")
     public void getShowStockPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Object[]> articleList = new ArrayList<>();
+        for (Storrage storrage : storrageService.findAll()) {
+            articleList.add(new Object[]{storrage, storrage.getArticle().getDescription()});
+        }
+        request.setAttribute("articleList", articleList);
         getPage(request, response, "employee", "showStock.jsp");
     }
 
