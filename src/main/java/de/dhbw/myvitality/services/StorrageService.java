@@ -26,4 +26,8 @@ public class StorrageService {
         }
         return storrageList;
     }
+
+    public Storrage findById(String id){
+        return storrageRepository.findById(id).get();
+    }
 }

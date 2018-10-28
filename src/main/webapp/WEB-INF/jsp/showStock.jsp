@@ -1,4 +1,5 @@
-<%--
+<%@ page import="de.dhbw.myvitality.services.ArticleService" %>
+<%@ page import="de.dhbw.myvitality.services.StorrageService" %><%--
   Created by IntelliJ IDEA.
   User: Benjamin Kanzler
   Date: 18.10.2018
@@ -13,21 +14,23 @@
         <script type="application/javascript" src="../../resources/js/warehouse.js"></script>
     </jsp:attribute>
     <jsp:attribute name="main">
-            <table class="w3-table w3-bordered w3-responsive w3-small w3-center" id="storrage">
-                <tr>
-                    <th>ID</th>
-                    <th>Bezeichnug</th>
-                    <th>Lagermenge</th>
-                </tr>
-                <c:forEach items="${map}" var="map">
-                        <tr>
-                            <td>${map.value.getArticleId()}</td>
-                            <td>${map.value.getDescription()}</td>
-                            <td>${map.key.getAmout()}</td>
-                        </tr>
+            <table class="w3-table w3-bordered w3-responsive w3-small w3-center w3-hoverable"
+                   id="storrage">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Bezeichnug</th>
+                        <!-- <th>Lagermenge</th> -->
+                    </tr>
+                </thead>
+                <c:forEach items="${articleList}" var="object">
+                    <tr>
+                        <td>${article[0].article}</td>
+                        <td>${article[1].description}</td>
+                    </tr>
                 </c:forEach>
             </table>
-            <button class="w3-button">Zurück</button>
+            <button class="w3-button w3-right" onclick="history.back()">Zurück</button>
 
     </jsp:attribute>
 </template:base>

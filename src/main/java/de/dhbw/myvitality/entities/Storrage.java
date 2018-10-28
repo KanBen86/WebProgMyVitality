@@ -1,17 +1,19 @@
 package de.dhbw.myvitality.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Storrage {
+public class Storrage implements Serializable {
 
     @Id
     @GeneratedValue
     private long storrageId;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "storrage_article_id")
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @MapsId("articleId")
+    @JoinColumn(name = "article_storrage_id")
     private Article article;
 
     private char rackSector;
@@ -38,14 +40,6 @@ public class Storrage {
 
     public void setAmount(int amount) {
         this.amount = amount;
-    }
-
-    public long getStorrageId() {
-        return storrageId;
-    }
-
-    public void setStorrageId(long storrageId) {
-        this.storrageId = storrageId;
     }
 
     public Article getArticle() {
@@ -83,8 +77,7 @@ public class Storrage {
     @Override
     public String toString() {
         return "Storrage{" +
-                "storrageId=" + storrageId +
-                ", article=" + article +
+                "article=" + article +
                 ", rackSector=" + rackSector +
                 ", rackcorridor=" + rackcorridor +
                 ", level=" + level +
@@ -97,8 +90,7 @@ public class Storrage {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Storrage storrage = (Storrage) o;
-        return storrageId == storrage.storrageId &&
-                rackSector == storrage.rackSector &&
+        return  rackSector == storrage.rackSector &&
                 rackcorridor == storrage.rackcorridor &&
                 level == storrage.level &&
                 amount == storrage.amount &&
@@ -107,6 +99,6 @@ public class Storrage {
 
     @Override
     public int hashCode() {
-        return Objects.hash(storrageId, article, rackSector, rackcorridor, level, amount);
+        return Objects.hash(article, rackSector, rackcorridor, level, amount);
     }
 }

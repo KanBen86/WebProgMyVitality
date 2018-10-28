@@ -5,6 +5,7 @@ import de.dhbw.myvitality.enums.ENUM_INGREDIENTS;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +14,7 @@ import java.util.Objects;
  * @author Benjamin Kanzler
  */
 @Entity
-public class Article {
+public class Article implements Serializable {
 
     //Felder der Klasse
 
@@ -23,8 +24,6 @@ public class Article {
     private String articleId;
 
     private String description;
-
-    private double quantity;
 
     private String information;
 
@@ -47,9 +46,8 @@ public class Article {
     public Article() {
     }
 
-    public Article(String description, Double quantity, String information, ArrayList<ENUM_INGREDIENTS> ingredients, int barcode, float price, Company supplier, ArrayList<ENUM_ALLERGEN> allergens) {
+    public Article(String description, String information, ArrayList<ENUM_INGREDIENTS> ingredients, int barcode, float price, Company supplier, ArrayList<ENUM_ALLERGEN> allergens) {
         this.description = description;
-        this.quantity = quantity;
         this.information = information;
         this.ingredients = ingredients;
         this.barcode = barcode;
@@ -74,14 +72,6 @@ public class Article {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public double getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
     }
 
     public String getInformation() {
@@ -140,7 +130,6 @@ public class Article {
         return "Article{" +
                 "articleId='" + articleId + '\'' +
                 ", description='" + description + '\'' +
-                ", quantity=" + quantity +
                 ", information='" + information + '\'' +
                 ", ingredients=" + ingredients +
                 ", barcode=" + barcode +
@@ -153,21 +142,20 @@ public class Article {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Article)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Article article = (Article) o;
-        return Double.compare(article.getQuantity(), getQuantity()) == 0 &&
-                getBarcode() == article.getBarcode() &&
-                Float.compare(article.getPrice(), getPrice()) == 0 &&
-                Objects.equals(getArticleId(), article.getArticleId()) &&
-                Objects.equals(getDescription(), article.getDescription()) &&
-                Objects.equals(getInformation(), article.getInformation()) &&
-                Objects.equals(getIngredients(), article.getIngredients()) &&
-                Objects.equals(getSupplier(), article.getSupplier()) &&
-                Objects.equals(getAllergens(), article.getAllergens());
+        return barcode == article.barcode &&
+                Float.compare(article.price, price) == 0 &&
+                Objects.equals(articleId, article.articleId) &&
+                Objects.equals(description, article.description) &&
+                Objects.equals(information, article.information) &&
+                Objects.equals(ingredients, article.ingredients) &&
+                Objects.equals(supplier, article.supplier) &&
+                Objects.equals(allergens, article.allergens);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getArticleId(), getDescription(), getQuantity(), getInformation(), getIngredients(), getBarcode(), getPrice(), getSupplier(), getAllergens());
+        return Objects.hash(articleId, description, information, ingredients, barcode, price, supplier, allergens);
     }
 }

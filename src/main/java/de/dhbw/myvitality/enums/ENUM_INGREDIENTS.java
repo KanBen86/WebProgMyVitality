@@ -2,7 +2,8 @@ package de.dhbw.myvitality.enums;
 
 public enum ENUM_INGREDIENTS {
 
-    ZUSATZSTOFF_EINS("E365", "Salpetersäure");
+    Salpetersäure("E365", "Salpetersäure"), Bananenpulver("E453", "Bananenpulver"),
+    Teufelskralle("E666", "Teufelskralle");
     private String number;
     private String description;
 
