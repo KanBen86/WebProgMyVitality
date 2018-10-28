@@ -11,7 +11,7 @@ public class Storrage implements Serializable {
     @GeneratedValue
     private long storrageId;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapsId("articleId")
     @JoinColumn(name = "article_storrage_id")
     private Article article;

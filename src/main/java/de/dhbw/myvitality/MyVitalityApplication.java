@@ -144,11 +144,11 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
         return (args) -> {
             log.info("Erzeuge Demoartikel");
             log.info("----------------------------------");
-            articleRepository.save(new Article("Salz",100.0, "Nach dem Trainng nehmen", null, 1, 1, null, null));
-            articleRepository.save(new Article("Protein",100.0, "Nach dem Trainng nehmen", null, 1, 1, null, null));
-            articleRepository.save(new Article("Kreatin",100.0, "Nach dem Trainng nehmen", null, 1, 1, null, null));
-            articleRepository.save(new Article("Fischöl",100.0, "Nach dem Trainng nehmen", null, 1, 1, null, null));
-            articleRepository.save(new Article("Testo",100.0, "Nach dem Trainng nehmen", null, 1, 1, null, null));
+            articleRepository.save(new Article("Salz", "Nach dem Trainng nehmen", null, 1, 1, null, null));
+            articleRepository.save(new Article("Protein", "Nach dem Trainng nehmen", null, 1, 1, null, null));
+            articleRepository.save(new Article("Kreatin", "Nach dem Trainng nehmen", null, 1, 1, null, null));
+            articleRepository.save(new Article("Fischöl", "Nach dem Trainng nehmen", null, 1, 1, null, null));
+            articleRepository.save(new Article("Testo", "Nach dem Trainng nehmen", null, 1, 1, null, null));
             log.info("Artikel mit Query suchen");
             log.info("----------------------------------");
             Optional<Article> article = articleRepository.findByQuery("Salz");
@@ -188,7 +188,7 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             log.info("----------------------------------");
         };
     }
-
+/*
     @Bean
     public CommandLineRunner demoStorrage(ArticleRepository articleRepository,
                                           StorrageRepository storrageRepository) {
@@ -207,7 +207,7 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
                 storrageRepository.save(storrage);
             }
         };
-    }
+    } */
 
     @Bean
     public CommandLineRunner demoTrainingschedule(TrainingScheduleRepository trainingScheduleRepository){
