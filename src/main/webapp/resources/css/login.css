@@ -4,6 +4,18 @@
     margin-right: auto;
 }
 
+.username{
+    position: center;
+}
+
+.password{
+    position: center;
+}
+
+.row{
+    position: center;
+}
+
 #loaderLogin {
     display: none;
     position: absolute;
