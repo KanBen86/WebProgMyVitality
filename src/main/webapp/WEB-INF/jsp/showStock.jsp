@@ -11,7 +11,8 @@
 <%@page pageEncoding="UTF-8" %>
 <template:base>
     <jsp:attribute name="head">
-        <script type="application/javascript" src="../../resources/js/warehouse.js"></script>
+        <script type="application/javascript"
+                src="../../resources/js/showStock.js"></script>
     </jsp:attribute>
     <jsp:attribute name="main">
             <table class="w3-table w3-bordered w3-responsive w3-small w3-center w3-hoverable"
@@ -27,7 +28,7 @@
                     </tr>
                 </thead>
                 <c:forEach items="${articleList}" var="article">
-                    <tr>
+                    <tr onclick="openArticleEditView(this)">
                         <td>${article.getArticleId()}</td>
                         <td>${article.getDescription()}</td>
                         <td>${article.getStorrage().getRackSector()}</td>
