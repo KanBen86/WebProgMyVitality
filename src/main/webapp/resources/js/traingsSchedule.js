@@ -1,10 +1,28 @@
 function addTrainingsschedule() {
 
-    let sets = document.getElementById("sets");
+    let benutzername = document.getElementById("benutzername");
+    let uebungsnummer = document.getElementById("uebungsnummer");
+    let uebungsname = document.getElementById("uebungsname");
+    let satzzahl = document.getElementById("satzzahl");
+    let wiederholung = document.getElementById("wiederholung");
+    let pausenzeit = document.getElementById("pausenzeit");
+    let informationen = document.getElementById("informationen");
 
-    let b = document.getElementById("btn-add-ts");
+    let username = document.getElementById("username").value;
+    let exerciseNo = document.getElementById("exerciseNo").value;
+    let exerciseDesc = document.getElementById("exerciseDesc").value;
+    let sets = document.getElementById("sets").value;
+    let reps = document.getElementById("reps").value;
+    let breakSec = document.getElementById("breakSec").value;
+    let info = document.getElementById("info").value;
 
-    b.innerText = sets.value;
+    benutzername.innerHTML = username;
+    uebungsnummer.innerHTML = exerciseNo;
+    uebungsname.innerHTML = exerciseDesc;
+    satzzahl.innerHTML = sets;
+    wiederholung.innerHTML = reps;
+    pausenzeit.innerHTML = breakSec;
+    informationen.innerHTML = info;
 
     let socket = 'http://localhost:8080';
     let request = new XMLHttpRequest();
@@ -34,11 +52,11 @@ function addTrainingsschedule() {
         '    "trainingSchedules": [\n' +
         '        {\n' +
         '            "scheduleId": "6992562a-0a40-4955-a9e5-a714af7f6fa0",\n' +
-        '            "exerciseNo": 1,\n' +
-        '            "exerciseDesc": "test",\n' +
+        '            "exerciseNo": '+ exerciseNo.value + ',\n' +
+        '            "exerciseDesc": '+ exerciseDesc.value +',\n' +
         '            "sets": '+ sets.value + ',\n' +
-        '            "reps": 20,\n' +
-        '            "breakSec": 90,\n' +
+        '            "reps": '+ reps.value + ',\n' +
+        '            "breakSec": '+ breakSec.value + ',\n' +
         '            "fitnessLevel": null,\n' +
         '            "heartFrequency": [\n' +
         '                -120\n' +
