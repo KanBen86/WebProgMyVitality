@@ -17,7 +17,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!-- benutzerdefinierte Styles und Scripte -->
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}resources/css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/main.css"/>
         <!-- Platzhalter für den Head-Inhalt -->
         <jsp:invoke fragment="head"/>
         <!-- Icon für den Tabreiter des Browsers -->
