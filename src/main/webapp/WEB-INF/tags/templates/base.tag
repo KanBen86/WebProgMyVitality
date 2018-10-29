@@ -62,23 +62,12 @@
 
         <div class="container-fluid text-center background-olivedrab" id="content-area">
             <div class="row content">
-                <div class="col-sm-2 sidenav">
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
-                    <p><a href="#">Link</a></p>
-                </div>
-                <div class="col-sm-8 text-left background-darkolivegreen">
+
+                <div class="col-sm-12 text-left">
                     <!-- Platzhalter für den main-Inhalt -->
                     <jsp:invoke fragment="main"/>
                 </div>
-                <div class="col-sm-2 sidenav">
-                    <div class="well">
-                        <p><img src="${pageContext.request.contextPath}/resources/img/under-construction_geek_man_01.png" class="img-responsive" style="max-width: 128px"></p>
-                    </div>
-                    <div class="well">
-                        <p>ADS</p>
-                    </div>
-                </div>
+
             </div>
         </div>
 

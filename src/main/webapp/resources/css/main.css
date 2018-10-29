@@ -1,11 +1,15 @@
 html{
-    background-color: black;
+    background-image: url(../img/bgImage.gif);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
     height: 100%;
 }
- #app {
-     height: 100%;
-     padding: 0;
- }
+#app {
+    height: 100%;
+    padding: 0;
+}
  #content-area {
      height: 100%;
  }
