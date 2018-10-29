@@ -11,11 +11,6 @@ public class Storrage implements Serializable {
     @GeneratedValue
     private long storrageId;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("articleId")
-    @JoinColumn(name = "article_storrage_id")
-    private Article article;
-
     private char rackSector;
 
     private char rackcorridor;
@@ -27,8 +22,7 @@ public class Storrage implements Serializable {
     public Storrage() {
     }
 
-    public Storrage(Article article, char rackSector, char rackcorridor, byte level) {
-        this.article = article;
+    public Storrage(char rackSector, char rackcorridor, byte level) {
         this.rackSector = rackSector;
         this.rackcorridor = rackcorridor;
         this.level = level;
@@ -40,14 +34,6 @@ public class Storrage implements Serializable {
 
     public void setAmount(int amount) {
         this.amount = amount;
-    }
-
-    public Article getArticle() {
-        return article;
-    }
-
-    public void setArticle(Article article) {
-        this.article = article;
     }
 
     public char getRackSector() {
@@ -75,30 +61,30 @@ public class Storrage implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Storrage storrage = (Storrage) o;
+        return storrageId == storrage.storrageId &&
+                rackSector == storrage.rackSector &&
+                rackcorridor == storrage.rackcorridor &&
+                level == storrage.level &&
+                amount == storrage.amount;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(storrageId, rackSector, rackcorridor, level, amount);
+    }
+
+    @Override
     public String toString() {
         return "Storrage{" +
-                "article=" + article +
+                "storrageId=" + storrageId +
                 ", rackSector=" + rackSector +
                 ", rackcorridor=" + rackcorridor +
                 ", level=" + level +
                 ", amount=" + amount +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Storrage storrage = (Storrage) o;
-        return  rackSector == storrage.rackSector &&
-                rackcorridor == storrage.rackcorridor &&
-                level == storrage.level &&
-                amount == storrage.amount &&
-                Objects.equals(article, storrage.article);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(article, rackSector, rackcorridor, level, amount);
     }
 }

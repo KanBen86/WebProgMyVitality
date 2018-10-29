@@ -4,6 +4,7 @@ import de.dhbw.myvitality.entities.Article;
 import de.dhbw.myvitality.entities.Storrage;
 import de.dhbw.myvitality.services.ArticleService;
 import de.dhbw.myvitality.services.StorrageService;
+import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class StorrageController {
     @Autowired
     public StorrageService storrageService;
 
+    @Autowired
+    public ArticleService articleService;
+
     /**
      * Diese Methode liefert eine Liste des Lagerinhalten, sobald von JavaScript ein
      * http-request auf die angegebene URI abgesetzt wird.
@@ -40,13 +44,7 @@ public class StorrageController {
      * @author Benjamin Kanzler
      */
     @RequestMapping("showStorrage/getAll")
-    public Map<Storrage, Article> findAll(){
-        Map<Storrage, Article> storrageArticleMap = new HashMap<>();
-        List<Storrage> storrageList = storrageService.findAll();
-        for (Storrage storrage : storrageList){
-            storrageArticleMap.put(storrage, storrage.getArticle());
-            LOG.info(storrage.getArticle().getArticleId());
-        }
-        return storrageArticleMap;
+    public List<Article> findAll(){
+        return articleService.findAll();
     }
 }

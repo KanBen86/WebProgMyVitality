@@ -20,13 +20,20 @@
                     <tr>
                         <th>ID</th>
                         <th>Bezeichnug</th>
-                        <!-- <th>Lagermenge</th> -->
+                        <th>Sektor</th>
+                        <th>Korridor</th>
+                        <th>Regalboden</th>
+                        <th>Menge</th>
                     </tr>
                 </thead>
-                <c:forEach items="${articleList}" var="object">
+                <c:forEach items="${articleList}" var="article">
                     <tr>
-                        <td>${article[0].article}</td>
-                        <td>${article[1].description}</td>
+                        <td>${article.getArticleId()}</td>
+                        <td>${article.getDescription()}</td>
+                        <td>${article.getStorrage().getRackSector()}</td>
+                        <td>${article.getStorrage().getRackcorridor()}</td>
+                        <td>${article.getStorrage().getLevel()}</td>
+                        <td>${article.getStorrage().getAmount()}</td>
                     </tr>
                 </c:forEach>
             </table>

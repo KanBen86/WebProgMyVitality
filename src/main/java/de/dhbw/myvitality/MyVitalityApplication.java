@@ -4,6 +4,7 @@ import de.dhbw.myvitality.entities.*;
 import de.dhbw.myvitality.enums.ENUM_DEPARTMENT;
 import de.dhbw.myvitality.enums.ENUM_ROLL;
 import de.dhbw.myvitality.repositories.*;
+import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -140,15 +141,31 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
     }
 
     @Bean
-    public CommandLineRunner demoArtikel(ArticleRepository articleRepository) {
+    public CommandLineRunner demoArtikel(ArticleRepository articleRepository,
+                                         StorrageRepository storrageRepository) {
         return (args) -> {
             log.info("Erzeuge Demoartikel");
             log.info("----------------------------------");
-            articleRepository.save(new Article("Salz", "Nach dem Trainng nehmen", null, 1, 1, null, null));
-            articleRepository.save(new Article("Protein", "Nach dem Trainng nehmen", null, 1, 1, null, null));
-            articleRepository.save(new Article("Kreatin", "Nach dem Trainng nehmen", null, 1, 1, null, null));
-            articleRepository.save(new Article("Fischöl", "Nach dem Trainng nehmen", null, 1, 1, null, null));
-            articleRepository.save(new Article("Testo", "Nach dem Trainng nehmen", null, 1, 1, null, null));
+            Storrage storrage = new Storrage();
+            storrageRepository.save(storrage);
+            articleRepository.save(new Article("Salz", "Nach dem Trainng nehmen", null, 1, 1,
+                    null, null, storrage));
+            storrage = new Storrage();
+            storrageRepository.save(storrage);
+            articleRepository.save(new Article("Protein", "Nach dem Trainng nehmen", null, 1, 1,
+                    null, null, storrage));
+            storrage = new Storrage();
+            storrageRepository.save(storrage);
+            articleRepository.save(new Article("Kreatin", "Nach dem Trainng nehmen", null, 1, 1,
+                    null, null, storrage));
+            storrage = new Storrage();
+            storrageRepository.save(storrage);
+            articleRepository.save(new Article("Fischöl", "Nach dem Trainng nehmen", null, 1, 1,
+                    null, null, storrage));
+            storrage = new Storrage();
+            storrageRepository.save(storrage);
+            articleRepository.save(new Article("Testo", "Nach dem Trainng nehmen", null, 1, 1,
+                    null, null, storrage));
             log.info("Artikel mit Query suchen");
             log.info("----------------------------------");
             Optional<Article> article = articleRepository.findByQuery("Salz");
@@ -183,18 +200,18 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 
             ArrayList<Double> quantityList = new ArrayList<>();
             quantityList.add(1.0);
-            quantityList.add(1.0);
-            quantityList.add(1.0);
-            quantityList.add(1.0);
-            quantityList.add(1.0);
+            quantityList.add(2.0);
+            quantityList.add(3.0);
+            quantityList.add(4.0);
+            quantityList.add(5.0);
             ArrayList<String> informationList = new ArrayList<>();
-            informationList.add("s");
-            informationList.add("s");
-            informationList.add("s");
-            informationList.add("s");
-            informationList.add("s");
+            informationList.add("Morgens nehmen");
+            informationList.add("Mittags nehmen");
+            informationList.add("Abends nehmen");
+            informationList.add("Nachts nehmen");
+            informationList.add("Nach dem Training nehmen");
 
-            supplementConfigurationRepository.save(new SupplementConfiguration(list,quantityList,informationList ,"11111"));
+            supplementConfigurationRepository.save(new SupplementConfiguration(list, quantityList, informationList,"11111"));
             log.info("Supplement Configuration mit Query suchen");
             log.info("----------------------------------");
             Optional<SupplementConfiguration> supplementConfiguration = supplementConfigurationRepository.findByQuery("11111");
@@ -202,26 +219,30 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             log.info("----------------------------------");
         };
     }
-/*
+
     @Bean
     public CommandLineRunner demoStorrage(ArticleRepository articleRepository,
                                           StorrageRepository storrageRepository) {
         return args -> {
             log.info("Auslesen der bestehenden Artikel aus der Datenbank");
             log.info("----------------------------------");
+            log.info("Für jeden Artikel wir ein Storrage-Feld angelegt.");
             for (Article article : articleRepository.findAll()) {
-                log.info("Für jeden Artikel wir ein Storrage-Feld angelegt.");
-                Storrage storrage = new Storrage();
-                storrage.setArticle(article);
+                Hibernate.initialize(article.getStorrage());
+                Storrage storrage = article.getStorrage();
                 storrage.setLevel((byte)1);
                 storrage.setRackcorridor('A');
                 storrage.setRackSector('B');
                 storrage.setAmount(100);
                 log.info("Speichern des Storrage Eintrages: " + storrage.toString());
                 storrageRepository.save(storrage);
+                log.info(storrage.toString());
+                article.setStorrage(storrage);
+                log.info(article.getStorrage().toString());
+                articleRepository.save(article);
             }
         };
-    } */
+    }
 
     @Bean
     public CommandLineRunner demoTrainingschedule(TrainingScheduleRepository trainingScheduleRepository){

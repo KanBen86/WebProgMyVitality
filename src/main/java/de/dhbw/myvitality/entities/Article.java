@@ -41,12 +41,18 @@ public class Article implements Serializable {
     @Transient //TODO
     private ArrayList<ENUM_ALLERGEN> allergens;
 
+    @OneToOne()
+    @JoinColumn()
+    private Storrage storrage;
+
     //Konstruktoren
 
     public Article() {
     }
 
-    public Article(String description, String information, ArrayList<ENUM_INGREDIENTS> ingredients, int barcode, float price, Company supplier, ArrayList<ENUM_ALLERGEN> allergens) {
+    public Article(String description, String information,
+                   ArrayList<ENUM_INGREDIENTS> ingredients, int barcode, float price,
+                   Company supplier, ArrayList<ENUM_ALLERGEN> allergens, Storrage storrage) {
         this.description = description;
         this.information = information;
         this.ingredients = ingredients;
@@ -54,9 +60,12 @@ public class Article implements Serializable {
         this.price = price;
         this.supplier = supplier;
         this.allergens = allergens;
+        this.storrage = storrage;
     }
 
+
     //Getter & Setter
+
 
     public String getArticleId() {
         return articleId;
@@ -82,7 +91,7 @@ public class Article implements Serializable {
         this.information = information;
     }
 
-    public List<ENUM_INGREDIENTS> getIngredients() {
+    public ArrayList<ENUM_INGREDIENTS> getIngredients() {
         return ingredients;
     }
 
@@ -114,7 +123,7 @@ public class Article implements Serializable {
         this.supplier = supplier;
     }
 
-    public List<ENUM_ALLERGEN> getAllergens() {
+    public ArrayList<ENUM_ALLERGEN> getAllergens() {
         return allergens;
     }
 
@@ -122,21 +131,12 @@ public class Article implements Serializable {
         this.allergens = allergens;
     }
 
-    //Override Methoden toString, hashCode, equals
+    public Storrage getStorrage() {
+        return storrage;
+    }
 
-
-    @Override
-    public String toString() {
-        return "Article{" +
-                "articleId='" + articleId + '\'' +
-                ", description='" + description + '\'' +
-                ", information='" + information + '\'' +
-                ", ingredients=" + ingredients +
-                ", barcode=" + barcode +
-                ", price=" + price +
-                ", supplier=" + supplier +
-                ", allergens=" + allergens +
-                '}';
+    public void setStorrage(Storrage storrage) {
+        this.storrage = storrage;
     }
 
     @Override
@@ -151,11 +151,27 @@ public class Article implements Serializable {
                 Objects.equals(information, article.information) &&
                 Objects.equals(ingredients, article.ingredients) &&
                 Objects.equals(supplier, article.supplier) &&
-                Objects.equals(allergens, article.allergens);
+                Objects.equals(allergens, article.allergens) &&
+                Objects.equals(storrage, article.storrage);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(articleId, description, information, ingredients, barcode, price, supplier, allergens);
+        return Objects.hash(articleId, description, information, ingredients, barcode, price, supplier, allergens, storrage);
+    }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "articleId='" + articleId + '\'' +
+                ", description='" + description + '\'' +
+                ", information='" + information + '\'' +
+                ", ingredients=" + ingredients +
+                ", barcode=" + barcode +
+                ", price=" + price +
+                ", supplier=" + supplier +
+                ", allergens=" + allergens +
+                ", storrage=" + storrage +
+                '}';
     }
 }

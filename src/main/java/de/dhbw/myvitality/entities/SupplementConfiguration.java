@@ -4,6 +4,7 @@ package de.dhbw.myvitality.entities;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -81,6 +82,8 @@ public class SupplementConfiguration {
 
     public SupplementConfiguration(List<Article> articleList, List<Double> quantitList, List<String> informationList ,String customerId) {
         this.articleList = articleList;
+        this.quantitList = quantitList;
+        this.informationList = informationList;
         this.customerId = customerId;
     }
 
@@ -90,12 +93,13 @@ public class SupplementConfiguration {
 
     //Override Methoden toString, equals, hashCode
 
+
     @Override
     public String toString() {
         return "SupplementConfiguration{" +
                 "suppsId='" + suppsId + '\'' +
                 ", articleList=" + articleList +
-                ", customerId=" + customerId +
+                ", customerId='" + customerId + '\'' +
                 '}';
     }
 
@@ -106,11 +110,13 @@ public class SupplementConfiguration {
         SupplementConfiguration that = (SupplementConfiguration) o;
         return Objects.equals(getSuppsId(), that.getSuppsId()) &&
                 Objects.equals(getArticleList(), that.getArticleList()) &&
+                Objects.equals(getQuantitList(), that.getQuantitList()) &&
+                Objects.equals(getInformationList(), that.getInformationList()) &&
                 Objects.equals(getCustomerId(), that.getCustomerId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getSuppsId(), getArticleList(), getCustomerId());
+        return Objects.hash(getSuppsId(), getArticleList(), getQuantitList(), getInformationList(), getCustomerId());
     }
 }

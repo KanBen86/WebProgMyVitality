@@ -5,11 +5,34 @@ IMPORTANT: Zum Starten der Anwendung bitte folgende Schritte beachten:
     1) H2 Datenbank downloaden und installieren
     http://www.h2database.com/html/download.html
 
-    2) ZipFile entpacken
+    2) Projekt clonen oder ZipFile herunterladen und entpacken
+    git@github.com:CodeWithFriendsKa/WebProgMyVitality.git
 
-    3) mvn package
+    3) Maven und Java 8+ installieren
+
+    4) Anwendung starten:
+       mvn package
        cd /target/
        java -jar MyVitality-0.0.1-SNAPSHOT.jar
 
 
 Zum Beenden einfach den Prozess mit crtl + c abbrechen.
+
+
+NOTE: Demo Accounts
+
+    Per default gibt es 2 Useraccounts.
+
+    Kundenaccount
+    Username: StaplerfaherKlaus
+    Paswort: 123
+
+    Mitarbeiteraccount
+    Username: Max93
+    Passwort: 123
+
+    Werden weitere Kundenaccounts benötigt, so kann man über die Registrierung weitere Accounts hinzufügen
+
+NOTE: Rest API Guide
+
+Beispiel zu den wichtigsten Controllern:
