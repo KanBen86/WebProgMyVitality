@@ -6,6 +6,12 @@ html{
     background-position: center;
     height: 100%;
 }
+
+html, body{
+    background-color: transparent;
+
+}
+
 #app {
     height: 100%;
     padding: 0;
@@ -43,7 +49,7 @@ html{
 }
 
 .background-olivedrab{
-    background-color: olivedrab;
+    /* background-color: olivedrab; */
     color: antiquewhite;
 }
 
