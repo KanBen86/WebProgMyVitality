@@ -211,7 +211,7 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             informationList.add("Nachts nehmen");
             informationList.add("Nach dem Training nehmen");
 
-            supplementConfigurationRepository.save(new SupplementConfiguration(list,quantityList,informationList ,"11111"));
+            supplementConfigurationRepository.save(new SupplementConfiguration(list, quantityList, informationList,"11111"));
             log.info("Supplement Configuration mit Query suchen");
             log.info("----------------------------------");
             Optional<SupplementConfiguration> supplementConfiguration = supplementConfigurationRepository.findByQuery("11111");

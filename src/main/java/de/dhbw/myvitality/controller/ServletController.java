@@ -311,6 +311,7 @@ public class ServletController {
                                 getAttribute("username").toString());
         request.setAttribute("artileList", supplementConfiguration.getArticleList());
         request.setAttribute("quantityList", supplementConfiguration.getQuantitList());
+        request.setAttribute("informationList", supplementConfiguration.getInformationList());
         getPage(request, response, "customer", "mySupplements.jsp");
     }
 
