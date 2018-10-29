@@ -1,11 +1,9 @@
 package de.dhbw.myvitality.entities;
 
 import org.hibernate.annotations.GenericGenerator;
-import sun.plugin2.message.Serializer;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalTime;
 import java.util.Arrays;
 
 /**
