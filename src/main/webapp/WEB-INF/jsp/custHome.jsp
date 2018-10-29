@@ -6,25 +6,10 @@
 
     <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/custHome.css"/>
-        <!--Meta-Tags für HTTP um das automatische Ablegen der Seite im Browser-Cache zu unterbinden
-        und somit Zurückspringen mit der Browsernavigation nach dem Logout zu verhindern(Sven)-->
-        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-        <meta http-equiv="Pragma" content="no-cache" />
-        <meta http-equiv="Expires" content="0" />
-
         <script src="../../resources/js/custHome.js"></script>
     </jsp:attribute>
 
     <jsp:attribute name="main">
-
-        <!--Funktion für HTTP um das automatische Ablegen der Seite im Browser-Cache zu unterbinden
-        und somit Zurückspringen mit der Browsernavigation nach dem Logout zu verhindern(Sven)
-
-            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-            response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-            response.setHeader("Expires", "0"); // Proxies
-
-        -->
 
         <div class="container-fluid">
 
