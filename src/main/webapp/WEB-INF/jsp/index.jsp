@@ -19,6 +19,6 @@
             <iframe class="embed-responsive-item" src="https://giphy.com/embed/1iTH1WIUjM0VATSw" allowfullscreen></iframe>
         </div>
         -->
-        
+
     </jsp:attribute>
 </template:base>
