@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import de.dhbw.myvitality.entities.Article;
 import de.dhbw.myvitality.entities.Storrage;
 import de.dhbw.myvitality.services.*;
+import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -253,11 +254,7 @@ public class ServletController {
      */
     @RequestMapping("/showStock")
     public void getShowStockPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Object[]> articleList = new ArrayList<>();
-        for (Storrage storrage : storrageService.findAll()) {
-            articleList.add(new Object[]{storrage, storrage.getArticle().getDescription()});
-        }
-        request.setAttribute("articleList", articleList);
+        request.setAttribute("articleList", articleService.findAll());
         getPage(request, response, "employee", "showStock.jsp");
     }
 
