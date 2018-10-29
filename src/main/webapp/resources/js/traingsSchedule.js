@@ -11,7 +11,6 @@ function addTrainingsschedule() {
     let request = new XMLHttpRequest();
 
     // öffnen des Socket für den POST
-    alert("Der Username ist:"+ username);
     request.open('POST', socket + '/saveSchedule/'+ username, false);
 
     // definieren, dass es sich um ein JSON im Body handelt

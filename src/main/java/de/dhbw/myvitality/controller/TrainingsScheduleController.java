@@ -44,4 +44,10 @@ public class TrainingsScheduleController {
 
     }
 
+    @RequestMapping("/getScheduleById/{customerId}")
+    public Iterable<TrainingSchedule> getTrainingsScheduleByCustomerId(@PathVariable("customerId") String customerId){
+        Customer customer = customerService.findCustomerById(customerId);
+        return trainingScheduleService.findByCustomer(customer);
+    }
+
 }
