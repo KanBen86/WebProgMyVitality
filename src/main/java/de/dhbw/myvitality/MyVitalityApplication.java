@@ -200,16 +200,16 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
 
             ArrayList<Double> quantityList = new ArrayList<>();
             quantityList.add(1.0);
-            quantityList.add(1.0);
-            quantityList.add(1.0);
-            quantityList.add(1.0);
-            quantityList.add(1.0);
+            quantityList.add(2.0);
+            quantityList.add(3.0);
+            quantityList.add(4.0);
+            quantityList.add(5.0);
             ArrayList<String> informationList = new ArrayList<>();
-            informationList.add("s");
-            informationList.add("s");
-            informationList.add("s");
-            informationList.add("s");
-            informationList.add("s");
+            informationList.add("Morgens nehmen");
+            informationList.add("Mittags nehmen");
+            informationList.add("Abends nehmen");
+            informationList.add("Nachts nehmen");
+            informationList.add("Nach dem Training nehmen");
 
             supplementConfigurationRepository.save(new SupplementConfiguration(list,quantityList,informationList ,"11111"));
             log.info("Supplement Configuration mit Query suchen");

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import de.dhbw.myvitality.entities.Article;
 import de.dhbw.myvitality.entities.Storrage;
+import de.dhbw.myvitality.entities.SupplementConfiguration;
 import de.dhbw.myvitality.services.*;
 import org.hibernate.Hibernate;
 import org.slf4j.Logger;
@@ -173,6 +174,8 @@ public class ServletController {
                 log.info("Setze Token aus active");
                 httpSession.setAttribute("userType", "customer");
                 log.info("setze userType auf customer");
+                httpSession.setAttribute("username", request.getParameter("username"));
+                log.info("speichere username in der Session" +request.getParameter("username") );
                 response.sendRedirect("/customerhome");
             }
             else {
@@ -302,7 +305,12 @@ public class ServletController {
      */
     @RequestMapping("/mysupplements")
     public void getMySupplementsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("list", supplementConfigurationService.findArticleListByCustomerId("11111"));
+        SupplementConfiguration supplementConfiguration =
+                supplementConfigurationService.
+                        findSupplementConfigurationByUsername(request.getSession().
+                                getAttribute("username").toString());
+        request.setAttribute("artileList", supplementConfiguration.getArticleList());
+        request.setAttribute("quantityList", supplementConfiguration.getQuantitList());
         getPage(request, response, "customer", "mySupplements.jsp");
     }
 
