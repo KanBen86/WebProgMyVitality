@@ -29,13 +29,6 @@ public class CustomerController {
         return customerService.findCustomerByUsername(username);
     }
 
-    // Bei einem http-Request post mit username und trainingsliste wird die Trainingsliste beim entsprechenden User gespeichert
-    @RequestMapping(method = RequestMethod.POST, value = "/customer")
-    public void setCustomerTrainingsschedule(@RequestBody Customer customer){
-        ArrayList<TrainingSchedule> list = new ArrayList<TrainingSchedule>(customer.getTrainingSchedules());
-        customerService.saveTrainingsScheduleList(customer.getUsername(), list);
-    }
-
     /**
      * Diese Methode holt via Http-Request einen Costumer zur übertragenden Id aus der Datenbank und liefert ihn an den Browser zurück
      * @author Fabian Lieb
@@ -75,7 +68,6 @@ public class CustomerController {
         if(customer.getPhoneNo()!=null);
         if(customer.getSex()!=null);
         if(customer.getUsername()!=null);
-        if(customer.getTrainingSchedules()!=null);
         if(customer.getBillAdress()!=null);
         if(customer.getDelivieryAddress()!=null);
         if(customer.getFitnessLevel()!=null);
