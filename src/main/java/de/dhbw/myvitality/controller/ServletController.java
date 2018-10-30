@@ -130,14 +130,16 @@ public class ServletController {
     //post Registration Page
     @RequestMapping(method = RequestMethod.POST, value = "/registration")
     public void postRegistrationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //Nutzername und Passwort abspeichern
+        //Nutzername, Passwort und E-Mail abspeichern
         String username = request.getParameter("username");
         log.info(username);
         String password = request.getParameter("password");
         log.info(password);
+        String email = request.getParameter("email");
+        log.info(email);
 
         //Durch Übergeben der Parameter prüfen ob der Benutzer schon existiert und registriert werden kann, ansonsten Errormessage (Sven)
-        if (customerService.registerCustomer(username, password)) {
+        if (customerService.registerCustomer(username, password, email)) {
             response.sendRedirect("/login");
         } else {
             request.setAttribute("error", "Username bereits vergeben!");

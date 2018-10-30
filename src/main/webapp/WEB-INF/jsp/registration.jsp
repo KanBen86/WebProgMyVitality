@@ -46,6 +46,24 @@
 
                     <div class="row">
                         <div class="col-md-4">
+                            <label>E-Mail</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input class="w3-input w3-border w3-light-green" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>E-Mail wiederholen</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input class="w3-input w3-border w3-light-green" id="emailRE" name="emailRE" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
                             <input id="btn" type="submit" value="Registrieren"/>
                         </div>
                     </div>

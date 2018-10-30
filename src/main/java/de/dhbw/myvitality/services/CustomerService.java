@@ -35,13 +35,14 @@ public class CustomerService {
 
     //Wenn Username noch nicht vergeben -> Neuen Customer in der DB speichern und true zurückgeben
     //Wenn USername schon vergeben false zurückgeben
-    public boolean registerCustomer(String username, String password){
+    public boolean registerCustomer(String username, String password, String email){
         Customer customer = findCustomerByUsername(username);
         if (customer == null){
             log.info("Username noch nicht vergeben");
             customer = new Customer("11111", null, null, null, null, "Banküberweisung");
             customer.setUsername(username);
             customer.setPassword(password);
+            customer.setEmailAddress(email);
             customerRepository.save(customer);
             log.info("Neuer User angelegt");
             return true;
