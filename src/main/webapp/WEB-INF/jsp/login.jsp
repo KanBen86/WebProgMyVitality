@@ -13,7 +13,7 @@
     <jsp:attribute name="main">
 
                 <p>
-                <img src="/resources/img/Logo_MV.png" class="img-responsive" id="loginLogo" style="max-width: 245px">
+                <img src="/resources/img/Logo_MV.png" class="img-responsive" id="loginLogo" alt="MyVitality-Logo" style="max-width: 245px">
                 </p>
 
                 <!-- Eingabeform für die Logindaten und mögliche Alternativen ("Registrieren"/ "Passwort vergessen?")-->
