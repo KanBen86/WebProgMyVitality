@@ -72,10 +72,7 @@ public class ServletController {
         if (request.getSession().getAttribute("token") == "active" && request.getSession().getAttribute("userType") == userType) {
             request.setAttribute("loginLogoutText", "Logout");
 
-            /**
-             * Funktion für HTTP um das automatische Ablegen der Seite im Browser-Cache zu unterbinden
-             * und somit Zurückspringen mit der Browsernavigation nach dem Logout zu verhindern(Sven)
-             */
+            //HTTP-Funktion um das automatische Ablegen der Seite im Browser-Cache zu unterbinden (Sven)
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
             response.setHeader("Pragma", "no-cache"); // HTTP 1.0
             response.setHeader("Expires", "0"); // Proxies
@@ -89,7 +86,7 @@ public class ServletController {
     //Index Page
     @RequestMapping("/")
     public void getIndexPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //In der HHTP-Session abfragen ob der Benutzer der Website angemeldet ist
+        //In der HHTP-Session abfragen ob der Benutzer der Website angemeldet ist (Sven)
         if (request.getSession().getAttribute("token") == "active") {
             request.setAttribute("loginLogoutText", "Logout");
         } else {
@@ -99,9 +96,8 @@ public class ServletController {
     }
 
     /**
-     * Diese Methode bearbeitet Anfrage die auf den Registrierungsbereich der Website zielen. Hier können sich Kunde registrieren.
+     * Diese Methode empfängt den http-request des Registrierungsbereichs der Website. Hier können sich Kunde registrieren.
      * Wird der Bereich per URL aufgerufen während der Benutzer angemeldet ist, werden die Attribute der HTTP-Session gelöscht.
-     *
      * @param request
      * @param response
      * @throws ServletException
@@ -121,21 +117,25 @@ public class ServletController {
     }
 
     /**
-     * Diese Methode wird aufgerufen, wenn man auf der Registrierungsseite "Registrieren" klickt.
+     * Empfänger des http-post beim Senden der Registrierungsdaten.
      * Durch das Anwenden der POST-Methode im Formular, wird das Senden der Registrierungsdaten an den Server ermöglicht.
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
+     *
+     * @author Sven Hornung
      */
-    //registration Page
+    //post Registration Page
     @RequestMapping(method = RequestMethod.POST, value = "/registration")
     public void postRegistrationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Nutzername und Passwort abspeichern
         String username = request.getParameter("username");
         log.info(username);
         String password = request.getParameter("password");
         log.info(password);
 
+        //Durch Übergeben der Parameter prüfen ob der Benutzer schon existiert und registriert werden kann, ansonsten Errormessage (Sven)
         if(customerService.registerCustomer(username, password)){
             response.sendRedirect("/login");
         }
@@ -145,7 +145,16 @@ public class ServletController {
         }
     }
 
-    //Login Page senden
+    /**
+     * Diese Methode empfängt den http-request des Loginbereichs der Website. Hier kann sich der Kunde anmelden.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     *
+     * @author Sven Hornung
+     */
+    //Login Page
     @RequestMapping("/login")
     public void getLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Abfragen ob RememberMe ausgewählt und die Session beibehalten oder gelöscht werden soll
@@ -170,7 +179,16 @@ public class ServletController {
         }
     }
 
-    //Login Daten senden und verarbeiten
+    /**
+     * Empfänger des http-post beim Senden der Logindaten
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     *
+     * @author Sven Hornung
+     */
+    //post Login Page
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public void postLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("Post logincredentials");
@@ -193,7 +211,7 @@ public class ServletController {
             httpSession.setAttribute("rememberME", "no");
         }
 
-        //Aufruf der Serviceklasse "UserAuthentificationService", welche die Authentifizierung durchführt
+        //Aufruf der Serviceklasse "UserAuthentificationService", welche die Authentifizierung durchführt (Tamin & Sven)
         boolean[] authentification = userAuthentificationService.userAuthentification(httpSession);
         if(authentification[0]){
             if (authentification[1]){

@@ -51,9 +51,8 @@
                             </div>
                         </div>
 
-                        <div id="loaderLogin"></div>
-
                         <div id="error">${error}</div>
+
                     </div>
                 </form>
     </jsp:attribute>
