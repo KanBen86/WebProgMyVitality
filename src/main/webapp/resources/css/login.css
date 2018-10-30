@@ -4,16 +4,12 @@
     margin-right: auto;
 }
 
-.username{
-    position: center;
+#register{
+    float: left;
 }
 
-.password{
-    position: center;
-}
-
-.row{
-    position: center;
+#forgot{
+    float: right;
 }
 
 #loaderLogin {

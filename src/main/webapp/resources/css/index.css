@@ -1,4 +1,43 @@
 h1 {
     text-align: center;
+    color: white;
+    text-shadow: 1px 1px 1px black;
 }
 
+
+h2 {
+    position: relative;
+    font-size: 150%;
+    font-family: Georgia, 'Comic Sans', serif;
+    font-weight: normal;
+    margin-bottom: 10em;
+}
+h2 span {
+    position: absolute;
+}
+
+#eins {
+    color: red;
+    font-size: 400%;
+    top: 0em;
+    left: 0;
+}
+
+#zwei {
+    font-size: 800%;
+    top: -0.1em;
+    left: 1.5em;
+}
+
+#drei {
+    font-size: 400%;
+    color: blue;
+    top: 0em;
+    left: 4.5em;
+}
+
+#vier {
+    font-size: 200%;
+    top: 2em;
+    left: 9em;
+}

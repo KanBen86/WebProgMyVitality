@@ -13,12 +13,7 @@
     </jsp:attribute>
     <jsp:attribute name="main">
 
-        <!--
-        <h1>OUR PAIN YOUR GAIN!</h1>
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://giphy.com/embed/1iTH1WIUjM0VATSw" allowfullscreen></iframe>
-        </div>
-        -->
+        <h1>MyVitality - Du bist nur ein Training von guter Laune entfernt.</h1>
 
     </jsp:attribute>
 </template:base>

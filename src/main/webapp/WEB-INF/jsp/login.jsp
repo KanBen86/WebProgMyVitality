@@ -46,13 +46,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <a class="links" href="/registration">Registrieren</a>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a class="links" href="">Passwort vergessen?</a>
+                                <a class="links" id="register" href="/registration">Registrieren</a>
+                                <a class="links" id="forgot" href="">Passwort vergessen?</a>
                             </div>
                         </div>
 
