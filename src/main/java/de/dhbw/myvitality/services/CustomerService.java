@@ -39,7 +39,7 @@ public class CustomerService {
         Customer customer = findCustomerByUsername(username);
         if (customer == null){
             log.info("Username noch nicht vergeben");
-            customer = new Customer("11111", null, null, null, null, null, "Banküberweisung");
+            customer = new Customer("11111", null, null, null, null, "Banküberweisung");
             customer.setUsername(username);
             customer.setPassword(password);
             customerRepository.save(customer);
@@ -50,20 +50,6 @@ public class CustomerService {
             log.info("Username ex. bereits");
             return false;
         }
-    }
-
-    /**
-     *
-     * Wenn die Methode aufgerufen wird, übergeben wir ihr eine Liste von TrainingsSchedules. Diese soll bei dem entsprechenden
-     * Kunden gespeichert werden.
-     *
-     * @param list
-     * @author Moritz Kuttler
-     */
-    public void saveTrainingsScheduleList(String username, ArrayList<TrainingSchedule> list){
-        Customer customer = customerRepository.findCustomerByQuery(username).get(); // User wird geholt
-        customer.setTrainingSchedules(list);
-        customerRepository.save(customer);
     }
 
     /**

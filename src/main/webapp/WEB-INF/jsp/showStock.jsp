@@ -11,11 +11,12 @@
 <%@page pageEncoding="UTF-8" %>
 <template:base>
     <jsp:attribute name="head">
-        <script type="application/javascript" src="../../resources/js/warehouse.js"></script>
+        <script type="application/javascript"
+                src="../../resources/js/showStock.js"></script>
     </jsp:attribute>
     <jsp:attribute name="main">
             <table class="w3-table w3-bordered w3-responsive w3-small w3-center w3-hoverable"
-                   id="storrage">
+                   id="storrage" name="lager">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -28,7 +29,7 @@
                 </thead>
                 <c:forEach items="${articleList}" var="article">
                     <tr>
-                        <td>${article.getArticleId()}</td>
+                        <td onclick="openArticleEditView(this.innerHTML)">${article.getArticleId()}</td>
                         <td>${article.getDescription()}</td>
                         <td>${article.getStorrage().getRackSector()}</td>
                         <td>${article.getStorrage().getRackcorridor()}</td>

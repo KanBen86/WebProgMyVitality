@@ -20,26 +20,22 @@
                     <div class="container-fluid">
 
                         <div class="row">
+
                             <div class="col-md-4">
-                                <label>Benutzername</label>
+                                <input class="w3-input w3-border w3-light-green" id="username" name="username" placeholder="Benutzername" required>
                             </div>
+                        </div>
+
+                        <div class="row">
+
                             <div class="col-md-4">
-                                <input class="w3-input w3-border w3-light-green" id="username" name="username" required>
+                                <input type="password" class="w3-input w3-border w3-light-green" id="password" name="password" placeholder="Passwort" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
-                                <label>Passwort</label>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="password" class="w3-input w3-border w3-light-green" id="password" name="password" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <input type="checkbox" id="rememberMe" name="rememberMe">Remember me</label>
+                                <input type="checkbox" id="rememberMe" name="rememberMe" value="remember">Remember me</label>
                             </div>
                         </div>
 
@@ -50,13 +46,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <a class="links" href="/registration">Registrieren</a>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a class="links" href="">Passwort vergessen?</a>
+                                <a class="links" id="register" href="/registration">Registrieren</a>
+                                <a class="links" id="forgot" href="">Passwort vergessen?</a>
                             </div>
                         </div>
 

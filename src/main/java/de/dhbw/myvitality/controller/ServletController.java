@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 
 import de.dhbw.myvitality.entities.Article;
 import de.dhbw.myvitality.entities.Storrage;
@@ -147,16 +148,26 @@ public class ServletController {
     //Login Page senden
     @RequestMapping("/login")
     public void getLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        //Wenn Remeber me angehakt ist -> remove nicht
-        //Wenn Remember me nicht angehakt ist-> remove
-
-        request.getSession().removeAttribute("username");
-        request.getSession().removeAttribute("password");
-        request.getSession().removeAttribute("token");
-        request.getSession().removeAttribute("userType");
-        request.setAttribute("loginLogoutText", "Login");
-        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+        //Abfragen ob RememberMe ausgewählt und die Session beibehalten oder gelöscht werden soll
+        try{
+            if(request.getParameter("rememberME").equals("yes")){
+                request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+            }else {
+                request.getSession().removeAttribute("username");
+                request.getSession().removeAttribute("password");
+                request.getSession().removeAttribute("token");
+                request.getSession().removeAttribute("userType");
+                request.setAttribute("loginLogoutText", "Login");
+                request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+            }
+        }catch (Exception e){
+            request.getSession().removeAttribute("username");
+            request.getSession().removeAttribute("password");
+            request.getSession().removeAttribute("token");
+            request.getSession().removeAttribute("userType");
+            request.setAttribute("loginLogoutText", "Login");
+            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+        }
     }
 
     //Login Daten senden und verarbeiten
@@ -166,6 +177,22 @@ public class ServletController {
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("username", request.getParameter("username"));
         httpSession.setAttribute("password", request.getParameter("password"));
+        //Wert der Checkbox abspeichern: Wenn die Checkbox ausgewählt ist -> rememberMe; Wenn die Checkbox nicht ausgewählt ist -> null
+        String [] rememberMe = request.getParameterValues("rememberMe");
+
+        try {
+            if (rememberMe[0] != null && rememberMe[0].isEmpty()) {
+                log.info("rememberMe = no");
+                httpSession.setAttribute("rememberME", "no");
+            } else {
+                log.info("rememberMe = yes");
+                httpSession.setAttribute("rememberME", "yes");
+            }
+        }catch(Exception e){
+            log.info("rememberMe = no");
+            httpSession.setAttribute("rememberME", "no");
+        }
+
         //Aufruf der Serviceklasse "UserAuthentificationService", welche die Authentifizierung durchführt
         boolean[] authentification = userAuthentificationService.userAuthentification(httpSession);
         if(authentification[0]){
@@ -209,7 +236,7 @@ public class ServletController {
     }
 
     /**
-     * Diese Mehode liefert die Seite addArticle zu einem bestimmten Artikel
+     * Diese Mehode liefert die Seite addArticle zu einem neuen Artikel
      *
      * @param request
      * @param response
@@ -218,7 +245,29 @@ public class ServletController {
      * @author Benjamin Kanzler
      */
     @RequestMapping("/addArticle")
-    public void getArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void getArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+            IOException {
+        getPage(request, response, "employee", "addArticle.jsp");
+    }
+
+    /**
+     * Diese Mehode liefert die Seite addArticle zu einem bestimmten Artikel
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @author Benjamin Kanzler
+     */
+    @RequestMapping("/addArticle/{articleId}")
+    public void getArticlePage(HttpServletRequest request, HttpServletResponse response,
+                               @PathVariable("articleId") String articleId) throws ServletException,
+            IOException {
+        if (articleId != null && articleId != ""){
+            request.setAttribute("article", articleService.findById(articleId).get());
+        } else {
+            request.setAttribute("article", new Article());
+        }
         getPage(request, response, "employee", "addArticle.jsp");
     }
 

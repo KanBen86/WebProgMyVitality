@@ -4,6 +4,14 @@
     margin-right: auto;
 }
 
+#register{
+    float: left;
+}
+
+#forgot{
+    float: right;
+}
+
 #loaderLogin {
     display: none;
     position: absolute;

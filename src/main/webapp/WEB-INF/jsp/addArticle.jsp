@@ -14,22 +14,25 @@
         <script type="application/javascript" src="../../resources/js/addArticle.js"></script>
     </jsp:attribute>
     <jsp:attribute name="main">
+        <c:set var="article" value="${article}"></c:set>
         <form class="w3-container background-darkolivegreen">
             <div class="w3-container w3-green">
                 <h2>Artikel hinzuf&uumlgen</h2>
             </div>
 
+            <label class="w3-text-black"><b>ArtikelId: </b>${article.getArticleId()}</label>
+
             <label class="w3-text-black"><b>Bar-Code</b></label>
-            <input id="barcode" class="w3-input w3-border" type="number"
-                placeholder="Barcode">
+            <input id="barcode" class="w3-input w3-border w3-text-black" type="number"
+                   placeholder="Barcode" value="${article.getBarcode()}">
 
             <label class="w3-text-black"><b>Artikel-Bezeichnung</b></label>
-            <input id="bezeichung" class="w3-input w3-border" type="text"
-                placeholder="Bezeichnung">
+            <input id="bezeichung" class="w3-input w3-border w3-text-black" type="text"
+                placeholder="Bezeichnung" value="${article.getDescription()}">
 
             <label class="w3-text-black"><b>Preis</b></label>
-            <input id="preis" class="w3-input w3-border" type="number"
-                   placeholder="11.11">
+            <input id="preis" class="w3-input w3-border w3-text-black" type="number"
+                   placeholder="11.11" value="${article.getPrice()}">
 
             <label class="w3-text-white"><b>Inhaltsstoffe</b></label>
             <table id="inhaltsstoffe"

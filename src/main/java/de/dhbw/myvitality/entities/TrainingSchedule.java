@@ -3,7 +3,7 @@ package de.dhbw.myvitality.entities;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.time.LocalTime;
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -11,7 +11,7 @@ import java.util.Arrays;
  * @author Fabian Lieb
  */
 @Entity
-public class TrainingSchedule {
+public class TrainingSchedule implements Serializable {
 
     //Felder der Klasse
     @Id
@@ -30,10 +30,14 @@ public class TrainingSchedule {
     private int breakSec;
 
     @OneToOne
-    @JoinColumn(name = "schedule_fitness_level_id")
+    @JoinColumn()
     private FitnessLevel fitnessLevel;
 
     private Integer[] heartFrequency = new Integer[2];
+
+    @OneToOne
+    @JoinColumn()
+    private Customer customer;
 
     //Konstruktoren
 
@@ -115,10 +119,18 @@ public class TrainingSchedule {
         this.heartFrequency = heartFrequency;
     }
 
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
     @Override
     public String toString() {
         return "TrainingSchedule{" +
-                "scheduleId=" + scheduleId +
+                "scheduleId='" + scheduleId + '\'' +
                 ", exerciseNo=" + exerciseNo +
                 ", exerciseDesc='" + exerciseDesc + '\'' +
                 ", sets=" + sets +
@@ -126,6 +138,7 @@ public class TrainingSchedule {
                 ", breakSec=" + breakSec +
                 ", fitnessLevel=" + fitnessLevel +
                 ", heartFrequency=" + Arrays.toString(heartFrequency) +
+                ", customer=" + customer +
                 '}';
     }
 }

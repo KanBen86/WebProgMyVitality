@@ -19,22 +19,17 @@ public class Customer extends Person{
     @JoinColumn(name = "customer_goal_id")
     private Goal goal;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinColumn(name = "customer_schedule_id")
-    private List<TrainingSchedule> trainingSchedules;
-
     @OneToOne
     @JoinColumn(name = "customer_fitness_level_id")
     private FitnessLevel fitnessLevel;
 
     private String preferredTypeOfPayment;
 
-    public Customer(String customerId, Adress deliveryAdress, Adress billAdress, Goal goal, List<TrainingSchedule> trainingSchedules, FitnessLevel fitnessLevel, String preferredTypeOfPayment) {
+    public Customer(String customerId, Adress deliveryAdress, Adress billAdress, Goal goal, FitnessLevel fitnessLevel, String preferredTypeOfPayment) {
         this.customerId = customerId;
         this.deliveryAdress = deliveryAdress;
         this.billAdress = billAdress;
         this.goal = goal;
-        this.trainingSchedules = trainingSchedules;
         this.fitnessLevel = fitnessLevel;
         this.preferredTypeOfPayment = preferredTypeOfPayment;
     }
@@ -74,14 +69,6 @@ public class Customer extends Person{
         this.goal = goal;
     }
 
-    public List<TrainingSchedule> getTrainingSchedules() {
-        return trainingSchedules;
-    }
-
-    public void setTrainingSchedules(List<TrainingSchedule> trainingSchedules) {
-        this.trainingSchedules = trainingSchedules;
-    }
-
     public FitnessLevel getFitnessLevel() {
         return fitnessLevel;
     }
@@ -106,7 +93,6 @@ public class Customer extends Person{
                 ", deliveryAdress=" + deliveryAdress +
                 ", billAdress=" + billAdress +
                 ", goal=" + goal +
-                ", trainingSchedules=" + trainingSchedules +
                 ", fitnessLevel=" + fitnessLevel +
                 ", preferredTypeOfPayment='" + preferredTypeOfPayment + '\'' +
                 '}';
