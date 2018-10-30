@@ -16,7 +16,7 @@
     </jsp:attribute>
     <jsp:attribute name="main">
             <table class="w3-table w3-bordered w3-responsive w3-small w3-center w3-hoverable"
-                   id="storrage">
+                   id="storrage" name="lager">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -28,8 +28,8 @@
                     </tr>
                 </thead>
                 <c:forEach items="${articleList}" var="article">
-                    <tr onclick="openArticleEditView(this)">
-                        <td>${article.getArticleId()}</td>
+                    <tr>
+                        <td onclick="openArticleEditView(this.innerHTML)">${article.getArticleId()}</td>
                         <td>${article.getDescription()}</td>
                         <td>${article.getStorrage().getRackSector()}</td>
                         <td>${article.getStorrage().getRackcorridor()}</td>

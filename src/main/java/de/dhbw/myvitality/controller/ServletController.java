@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 
 import de.dhbw.myvitality.entities.Article;
 import de.dhbw.myvitality.entities.Storrage;
@@ -235,7 +236,7 @@ public class ServletController {
     }
 
     /**
-     * Diese Mehode liefert die Seite addArticle zu einem bestimmten Artikel
+     * Diese Mehode liefert die Seite addArticle zu einem neuen Artikel
      *
      * @param request
      * @param response
@@ -244,7 +245,29 @@ public class ServletController {
      * @author Benjamin Kanzler
      */
     @RequestMapping("/addArticle")
-    public void getArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void getArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+            IOException {
+        getPage(request, response, "employee", "addArticle.jsp");
+    }
+
+    /**
+     * Diese Mehode liefert die Seite addArticle zu einem bestimmten Artikel
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * @author Benjamin Kanzler
+     */
+    @RequestMapping("/addArticle/{articleId}")
+    public void getArticlePage(HttpServletRequest request, HttpServletResponse response,
+                               @PathVariable("articleId") String articleId) throws ServletException,
+            IOException {
+        if (articleId != null && articleId != ""){
+            request.setAttribute("article", articleService.findById(articleId).get());
+        } else {
+            request.setAttribute("article", new Article());
+        }
         getPage(request, response, "employee", "addArticle.jsp");
     }
 

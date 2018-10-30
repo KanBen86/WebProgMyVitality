@@ -1,3 +1,3 @@
-function openArticleEditView(element){
-    alert(""+ element.children[0].value);
+function openArticleEditView(id){
+    window.location.href= "/addArticle/"+id;
 }
