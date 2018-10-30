@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * ServletController: Mappt die Http Anfragen auf eine JSP
+ *
  * @author Tamino Fischer alias CodeKeks
  */
 @Controller
@@ -98,11 +99,11 @@ public class ServletController {
     /**
      * Diese Methode empfängt den http-request des Registrierungsbereichs der Website. Hier können sich Kunde registrieren.
      * Wird der Bereich per URL aufgerufen während der Benutzer angemeldet ist, werden die Attribute der HTTP-Session gelöscht.
+     *
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
-     *
      * @author Sven Hornung
      */
     //registration Page
@@ -119,11 +120,11 @@ public class ServletController {
     /**
      * Empfänger des http-post beim Senden der Registrierungsdaten.
      * Durch das Anwenden der POST-Methode im Formular, wird das Senden der Registrierungsdaten an den Server ermöglicht.
+     *
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
-     *
      * @author Sven Hornung
      */
     //post Registration Page
@@ -136,10 +137,9 @@ public class ServletController {
         log.info(password);
 
         //Durch Übergeben der Parameter prüfen ob der Benutzer schon existiert und registriert werden kann, ansonsten Errormessage (Sven)
-        if(customerService.registerCustomer(username, password)){
+        if (customerService.registerCustomer(username, password)) {
             response.sendRedirect("/login");
-        }
-        else {
+        } else {
             request.setAttribute("error", "Username bereits vergeben!");
             request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp").forward(request, response);
         }
@@ -147,45 +147,31 @@ public class ServletController {
 
     /**
      * Diese Methode empfängt den http-request des Loginbereichs der Website. Hier kann sich der Kunde anmelden.
+     *
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
-     *
      * @author Sven Hornung
      */
     //Login Page
     @RequestMapping("/login")
     public void getLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //Abfragen ob RememberMe ausgewählt und die Session beibehalten oder gelöscht werden soll
-        try{
-            if(request.getParameter("rememberME").equals("yes")){
-                request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
-            }else {
-                request.getSession().removeAttribute("username");
-                request.getSession().removeAttribute("password");
-                request.getSession().removeAttribute("token");
-                request.getSession().removeAttribute("userType");
-                request.setAttribute("loginLogoutText", "Login");
-                request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
-            }
-        }catch (Exception e){
-            request.getSession().removeAttribute("username");
-            request.getSession().removeAttribute("password");
-            request.getSession().removeAttribute("token");
-            request.getSession().removeAttribute("userType");
-            request.setAttribute("loginLogoutText", "Login");
-            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
-        }
+        request.getSession().removeAttribute("username");
+        request.getSession().removeAttribute("password");
+        request.getSession().removeAttribute("token");
+        request.getSession().removeAttribute("userType");
+        request.setAttribute("loginLogoutText", "Login");
+        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
     }
 
     /**
      * Empfänger des http-post beim Senden der Logindaten
+     *
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
-     *
      * @author Sven Hornung
      */
     //post Login Page
@@ -195,57 +181,38 @@ public class ServletController {
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("username", request.getParameter("username"));
         httpSession.setAttribute("password", request.getParameter("password"));
-        //Wert der Checkbox abspeichern: Wenn die Checkbox ausgewählt ist -> rememberMe; Wenn die Checkbox nicht ausgewählt ist -> null
-        String [] rememberMe = request.getParameterValues("rememberMe");
-
-        try {
-            if (rememberMe[0] != null && rememberMe[0].isEmpty()) {
-                log.info("rememberMe = no");
-                httpSession.setAttribute("rememberME", "no");
-            } else {
-                log.info("rememberMe = yes");
-                httpSession.setAttribute("rememberME", "yes");
-            }
-        }catch(Exception e){
-            log.info("rememberMe = no");
-            httpSession.setAttribute("rememberME", "no");
-        }
 
         //Aufruf der Serviceklasse "UserAuthentificationService", welche die Authentifizierung durchführt (Tamin & Sven)
         boolean[] authentification = userAuthentificationService.userAuthentification(httpSession);
-        if(authentification[0]){
-            if (authentification[1]){
+        if (authentification[0]) {
+            if (authentification[1]) {
                 httpSession.setAttribute("token", "active");
                 log.info("Setze Token aus active");
                 httpSession.setAttribute("userType", "customer");
                 log.info("setze userType auf customer");
                 httpSession.setAttribute("username", request.getParameter("username"));
-                log.info("speichere username in der Session" +request.getParameter("username") );
+                log.info("speichere username in der Session" + request.getParameter("username"));
                 response.sendRedirect("/customerhome");
-            }
-            else {
+            } else {
                 httpSession.setAttribute("token", "active");
                 log.info("setze token auf active");
                 httpSession.setAttribute("userType", "employee");
                 log.info("setze userType auf employee");
                 response.sendRedirect("employeehome");
             }
-        }
-        else {
+        } else {
             request.setAttribute("error", "Falscher Username oder falsches Passwort");
             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
         }
     }
 
     /**
-     *
      * Dies ist der Empfänger des <b>http-request</b> für die warehouse-Seite
      *
      * @param request
      * @param response
      * @throws ServletException
      * @throws IOException
-     *
      * @author KANBEN86
      */
     @RequestMapping("/warehouse")
@@ -263,8 +230,7 @@ public class ServletController {
      * @author Benjamin Kanzler
      */
     @RequestMapping("/addArticle")
-    public void getArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-            IOException {
+    public void getArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         getPage(request, response, "employee", "addArticle.jsp");
     }
 
@@ -281,7 +247,7 @@ public class ServletController {
     public void getArticlePage(HttpServletRequest request, HttpServletResponse response,
                                @PathVariable("articleId") String articleId) throws ServletException,
             IOException {
-        if (articleId != null && articleId != ""){
+        if (articleId != null && articleId != "") {
             request.setAttribute("article", articleService.findById(articleId).get());
         } else {
             request.setAttribute("article", new Article());
@@ -304,7 +270,7 @@ public class ServletController {
         HttpSession session = request.getSession();
         String articleId = request.getParameter("articleId");
         Article article = null;
-        if (articleId != null){
+        if (articleId != null) {
             article = new Article();
             article = articleService.findById(articleId).get();
         }
@@ -392,18 +358,18 @@ public class ServletController {
     //preexerciselevel Page
     @RequestMapping("/preexerciselevel")
     public void getPreExerciseLevelPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getPage(request, response, "customer","preexerciselevel.jsp");
+        getPage(request, response, "customer", "preexerciselevel.jsp");
     }
 
     //scheduleOverview Page
     @RequestMapping("/scheduleoverview")
     public void getTraingsScheduleOverview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getPage(request, response, "customer","scheduleOverview1.jsp");
+        getPage(request, response, "customer", "scheduleOverview1.jsp");
     }
 
     //profileSettings Page
     @RequestMapping("/profilesettings")
     public void getProfileSettingsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getPage(request, response, "customer","profileSettings.jsp");
+        getPage(request, response, "customer", "profileSettings.jsp");
     }
 }

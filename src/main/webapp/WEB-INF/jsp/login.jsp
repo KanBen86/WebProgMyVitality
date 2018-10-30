@@ -35,12 +35,6 @@
 
                         <div class="row">
                             <div class="col-md-4">
-                                <input type="checkbox" id="rememberMe" name="rememberMe" value="remember">Remember me</label>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
                                 <input id="btn" type="submit" value="Login">
                             </div>
                         </div>
