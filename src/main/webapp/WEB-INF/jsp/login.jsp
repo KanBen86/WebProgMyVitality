@@ -6,6 +6,7 @@
 <template:base>
     <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/login.css"/>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="application/javascript" src="${pageContext.request.contextPath}/resources/js/login.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </jsp:attribute>
@@ -15,6 +16,7 @@
                 <img src="/resources/img/Logo_MV.png" class="img-responsive" id="loginLogo" style="max-width: 245px">
                 </p>
 
+                <!-- Eingabeform für die Logindaten und mögliche Alternativen ("Registrieren"/ "Passwort vergessen?")-->
                 <form name="LoginForm" onsubmit="validateLoginForm()" method="POST">
 
                     <div class="container-fluid">
@@ -41,7 +43,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <a class="links" id="register" href="/registration">Registrieren</a>
-                                <a class="links" id="forgot" href="">Passwort vergessen?</a>
+                                <p class="links" id="forgot" onclick="forgottenPassword()">Passwort vergessen?</p>
                             </div>
                         </div>
 
@@ -49,5 +51,27 @@
 
                     </div>
                 </form>
+
+                <form id="passwordForgottenForm" name="passwordForgottenForm" onsubmit="sendMail()" method="POST" style="display: none;">
+
+                    <div class="container-fluid">
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <input class="w3-input w3-border w3-light-green" id="usernameFP" name="usernameFP" placeholder="Benutzername" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input id="btnFP" type="submit" value="Passwort per Mail senden">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+
     </jsp:attribute>
 </template:base>

@@ -4,10 +4,24 @@
     margin-right: auto;
 }
 
+.links{
+    color: black;
+}
+
 #register{
     float: left;
 }
 
+#register:hover{
+    color: black;
+    text-underline: none;
+}
+
 #forgot{
     float: right;
+}
+
+
+#error{
+    color: darkred;
 }

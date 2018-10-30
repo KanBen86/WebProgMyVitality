@@ -177,33 +177,49 @@ public class ServletController {
     //post Login Page
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public void postLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        log.info("Post logincredentials");
-        HttpSession httpSession = request.getSession();
-        httpSession.setAttribute("username", request.getParameter("username"));
-        httpSession.setAttribute("password", request.getParameter("password"));
+        //Passwort versuchen auszulesen, um zu prüfen, ob der Benutzer auf Passwort vergessen gegangen ist
 
-        //Aufruf der Serviceklasse "UserAuthentificationService", welche die Authentifizierung durchführt (Tamin & Sven)
-        boolean[] authentification = userAuthentificationService.userAuthentification(httpSession);
-        if (authentification[0]) {
-            if (authentification[1]) {
-                httpSession.setAttribute("token", "active");
-                log.info("Setze Token aus active");
-                httpSession.setAttribute("userType", "customer");
-                log.info("setze userType auf customer");
+        try{
+            if(request.getParameter("password") != null){
+                HttpSession httpSession = request.getSession();
                 httpSession.setAttribute("username", request.getParameter("username"));
-                log.info("speichere username in der Session" + request.getParameter("username"));
-                response.sendRedirect("/customerhome");
-            } else {
-                httpSession.setAttribute("token", "active");
-                log.info("setze token auf active");
-                httpSession.setAttribute("userType", "employee");
-                log.info("setze userType auf employee");
-                response.sendRedirect("employeehome");
+                log.info("Post logincredentials");
+                httpSession.setAttribute("password", request.getParameter("password"));
+
+                //Aufruf der Serviceklasse "UserAuthentificationService", welche die Authentifizierung durchführt (Tamin & Sven)
+                boolean[] authentification = userAuthentificationService.userAuthentification(httpSession);
+                if (authentification[0]) {
+                    if (authentification[1]) {
+                        httpSession.setAttribute("token", "active");
+                        log.info("Setze Token aus active");
+                        httpSession.setAttribute("userType", "customer");
+                        log.info("setze userType auf customer");
+                        httpSession.setAttribute("username", request.getParameter("username"));
+                        log.info("speichere username in der Session" + request.getParameter("username"));
+                        response.sendRedirect("/customerhome");
+                    } else {
+                        httpSession.setAttribute("token", "active");
+                        log.info("setze token auf active");
+                        httpSession.setAttribute("userType", "employee");
+                        log.info("setze userType auf employee");
+                        response.sendRedirect("employeehome");
+                    }
+                } else {
+                    request.setAttribute("error", "Falscher Username oder falsches Passwort");
+                    request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+                }
+            }else{
+                //HIER GEHTS MORGEN WEITER!!!
+                log.info("Post passwordForgotten");
+                request.setAttribute("error", "E-Mail wurde versendet");
+                request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
             }
-        } else {
-            request.setAttribute("error", "Falscher Username oder falsches Passwort");
+        }catch(Exception ex){
+            log.info("Post passwordForgotten");
             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
         }
+
+
     }
 
     /**
