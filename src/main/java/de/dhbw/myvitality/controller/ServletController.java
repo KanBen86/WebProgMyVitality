@@ -309,6 +309,7 @@ public class ServletController {
                 supplementConfigurationService.
                         findSupplementConfigurationByUsername(request.getSession().
                                 getAttribute("username").toString());
+        request.setAttribute("customerId", supplementConfiguration.getCustomerId());
         request.setAttribute("artileList", supplementConfiguration.getArticleList());
         request.setAttribute("quantityList", supplementConfiguration.getQuantitList());
         request.setAttribute("informationList", supplementConfiguration.getInformationList());

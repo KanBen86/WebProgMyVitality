@@ -14,7 +14,9 @@
 
     <jsp:attribute name="main">
 
-    <h1>Deine Nahrungserzänzung</h1>
+    <h1 id="titleid">Deine Nahrungserzänzung</h1>
+
+        <h5 id="customerId">${customerId}</h5>
 
         <div id="piechart"></div>
 
@@ -38,7 +40,7 @@
         </div>
 
     <br>
-    <button onclick="refreshTable()" id="aktualisieren">Aktualisieren</button>
+    <button onclick="refreshTable()" id="aktualisieren">Aktualisiere Tabelle und Chart durch REST API</button>
 
     </jsp:attribute>
 </template:base>
