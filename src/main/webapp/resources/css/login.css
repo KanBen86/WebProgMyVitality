@@ -2,12 +2,56 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    animation-name: spin;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+
+    -webkit-animation-name: spin;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 10s;
+}
+
+@keyframes spin {
+    from{
+        transform: rotateY(0deg);
+        moz-transform: rotateY(0deg); //Firefox
+        ms-transform: rotateY(0deg); //Microsoft
+        o-transform: rotateY(0deg); //Opera
+
+    }
+    to{
+        transform: rotateY(360deg);
+        moz-transform: rotateY(360deg); //Firefox
+        ms-transform: rotateY(360deg); //Microsoft
+        o-transform: rotateY(360deg); //Opera
+    }
+}
+
+@-webkit-keyframes spin {
+    from{-webkit-transform: rotateY(0deg);}
+    to{-webkit-transform: rotateY(360deg);}
+}
+
+.links{
+    color: black;
 }
 
 #register{
     float: left;
 }
 
+#register:hover{
+    color: black;
+    text-underline: none;
+}
+
 #forgot{
     float: right;
+}
+
+
+#error{
+    color: darkred;
 }

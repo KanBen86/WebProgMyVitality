@@ -13,7 +13,7 @@
     </jsp:attribute>
     <jsp:attribute name="main">
 
-        <h1>MyVitality - Du bist nur ein Training von guter Laune entfernt.</h1>
+        <h1>Du bist nur ein Training von guter Laune entfernt - MyVitality</h1>
 
     </jsp:attribute>
 </template:base>
