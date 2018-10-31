@@ -27,7 +27,6 @@ public class TrainingsScheduleController {
 
     /**
      * Http Request vom Typ Post, bekommt einen Trainingsplan übergeben
-     *
      * @author Moritz Kuttler
      */
     @RequestMapping(method = RequestMethod.POST, value = "/saveSchedule/{username}")
