@@ -4,16 +4,15 @@ IMPORTANT: Zum Starten der Anwendung bitte folgende Schritte beachten:
 
     1) H2 Datenbank downloaden und installieren
     http://www.h2database.com/html/download.html
+    ! Achtung H2 ist eine filebasierte Datenbank, es darf keine Connetion etabliert sein, wenn der Server gestartet wird
 
     2) Projekt clonen oder ZipFile herunterladen und entpacken
     git@github.com:CodeWithFriendsKa/WebProgMyVitality.git
 
-    3) Maven und Java 8+ installieren
+    3) Maven und Java 8 oder höher installieren
 
     4) Anwendung starten:
-       mvn package
-       cd /target/
-       java -jar MyVitality-0.0.1-SNAPSHOT.jar
+       mvn spring-boot:run
 
 
 Zum Beenden einfach den Prozess mit crtl + c abbrechen.
