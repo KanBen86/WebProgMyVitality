@@ -7,7 +7,9 @@ function forgottenPassword(){
     document.getElementById("passwordForgottenForm").style.display = "block";
 }
 
+/*
 function sendMail(){
     document.getElementById("error").innerHTML = "E-Mail wird versendet...";
     window.document.location.href = "/login";
 }
+*/

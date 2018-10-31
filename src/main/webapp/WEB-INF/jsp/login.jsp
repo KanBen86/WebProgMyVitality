@@ -52,6 +52,7 @@
                     </div>
                 </form>
 
+                <!-- Zunächst versteckte Eingabeform für den Kundennutzernamen, im Fall "Passwort vergessen?")-->
                 <form id="passwordForgottenForm" name="passwordForgottenForm" onsubmit="sendMail()" method="POST" style="display: none;">
 
                     <div class="container-fluid">
@@ -59,7 +60,7 @@
                         <div class="row">
 
                             <div class="col-md-4">
-                                <input class="w3-input w3-border w3-light-green" id="usernameFP" name="usernameFP" placeholder="Benutzername" required>
+                                <input class="w3-input w3-border w3-light-green" id="usernameFP" name="usernameFP" placeholder="Kundennutzername" required>
                             </div>
                         </div>
 

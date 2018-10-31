@@ -177,14 +177,17 @@ public class ServletController {
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public void postLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession httpSession = request.getSession();
+        log.info("Post logincredentials");
+        log.info("------------------------");
+        httpSession.setAttribute("username", request.getParameter("username"));
+        httpSession.setAttribute("password", request.getParameter("password"));
+        httpSession.setAttribute("usernameFP", request.getParameter("usernameFP"));
+
         try{
             //Passwort versuchen auszulesen, um zu prüfen, ob der Benutzer "Passwort vergessen?" ausgewählt hat
             if(request.getParameter("password") != null){
-                HttpSession httpSession = request.getSession();
-                log.info("Post logincredentials");
-                log.info("------------------------");
-                httpSession.setAttribute("username", request.getParameter("username"));
-                httpSession.setAttribute("password", request.getParameter("password"));
+                //Hier wars
 
                 //Aufruf der Serviceklasse "UserAuthentificationService", welche die Authentifizierung durchführt (Tamin & Sven)
                 boolean[] authentification = userAuthentificationService.userAuthentification(httpSession);
@@ -209,18 +212,20 @@ public class ServletController {
                     request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
                 }
             }else{
-                //HIER GEHTS MORGEN WEITER!!!
                 log.info("Post passwordForgotten");
                 log.info("--------------------------");
-                log.info(request.getParameter("username"));
+                String user = httpSession.getAttribute("usernameFP").toString();
+                log.info("Nutzer " +"'" +user +"'" +" möchte sein Passwort gesendet bekommen");
                 //prüfen ob es den Nutzer überhaupt gibt, falls ja E-Mail versenden, falls nein auf Seite bleiben
-                if(customerService.checkExistingCustomerByUsername(request.getParameter("username"))){
-                    request.setAttribute("error", "E-Mail wurde versendet");
+                if(customerService.checkExistingCustomerByUsername(request.getParameter("usernameFP"))){
+                    //HIER NOCH IRGENDWIE DIE MAIL DES KUNDEN SUCHEN UND IN 'ERROR' miteinbauen!!!!!!!!!!!!!!!!!!!
+                    request.setAttribute("error", "E-Mail wurde an versendet");
+                    //Zum Login zurück um sich dort mit neuem Passwort anmelden zu können
                     request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
                 }else {
-                    log.info("Auf Seite bleiben weil Nutzer nicht gefunden");
+                    log.info("Auf Seite bleiben weil Nutzer nicht gefunden wurde");
                     request.setAttribute("error", "Nutzer nicht bekannt");
-                    //Auf der Loginseite bleiben
+                    //Auf der Loginseite bleiben und DOM beibehalten!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     response.sendRedirect("login");
                 }
             }
