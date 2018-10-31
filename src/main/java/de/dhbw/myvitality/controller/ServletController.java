@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 
-import de.dhbw.myvitality.entities.Article;
-import de.dhbw.myvitality.entities.Storrage;
-import de.dhbw.myvitality.entities.SupplementConfiguration;
+import de.dhbw.myvitality.entities.*;
 import de.dhbw.myvitality.services.*;
 import org.hibernate.Hibernate;
 import org.slf4j.Logger;
@@ -45,6 +43,9 @@ public class ServletController {
 
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private TrainingScheduleService trainingScheduleService;
 
     private static final Logger log = LoggerFactory.getLogger(ServletController.class);
 
@@ -396,6 +397,14 @@ public class ServletController {
     //scheduleOverview Page
     @RequestMapping("/scheduleoverview")
     public void getTraingsScheduleOverview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getSession().getAttribute("username").toString();
+        log.info("Der Ausgewählte User ist:" + username);
+        Customer customer = customerService.findCustomerByUsername(username);
+        log.info(customer.toString());
+        Iterable<TrainingSchedule> trainingSchedule = trainingScheduleService.findByCustomer(customer);
+        log.info(trainingSchedule.toString());
+        request.setAttribute("trainingScheduleList", trainingSchedule);
+
         getPage(request, response, "customer", "scheduleOverview1.jsp");
     }
 
