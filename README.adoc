@@ -14,13 +14,31 @@ IMPORTANT: Zum Starten der Anwendung bitte folgende Schritte beachten:
     4) Anwendung starten:
        mvn spring-boot:run
 
+    5) Indexseite: http://localhost:8080/
 
-Zum Beenden einfach den Prozess mit crtl + c abbrechen.
+NOTE: Seitenübersicht
 
+Ohne Anmeldung kann die Indexseite, die Loginseite sowie die Registrationseite erreicht werden.
+Insgesamt enthält die Wenanwendung enthält folgende Seiten:
+
+Indexseite: http://localhost:8080 +
+Loginseite: http://localhost:8080/login +
+Registrierungsseite: http://localhost:8080/registration +
+
+Kunden Home Bereich: http://localhost:8080/customerhome +
+Profileinstellungen: http://localhost:8080/profilesettings +
+Übersicht der Nahrungsergänzungen: http://localhost:8080/mysupplements +
+Überscht Trainingsplan: http://localhost:8080/scheduleoverview +
+
+Mitarbeiter Home Bereich: http://localhost:8080/employeehome +
+Trainingsplan für für Kunden erstellen: http://localhost:8080/trainingsschedule +
+Warenwirtschaft: http://localhost:8080/warehouse +
+Lager anzeigen: http://localhost:8080/showStock +
+Artikel hinzufügen: http://localhost:8080/addArticle +
 
 NOTE: Demo Accounts
 
-    Per default gibt es 2 Useraccounts.
+    Per Default gibt es 2 Useraccounts.
 
     Kundenaccount
     Username: StaplerfaherKlaus
