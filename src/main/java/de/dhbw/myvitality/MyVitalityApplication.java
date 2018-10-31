@@ -90,6 +90,7 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
             Customer c = new Customer("11111", null, null, null, null, "Banküberweisung");
             c.setUsername("StaplerfahrerKlaus");
             c.setPassword("123");
+            c.setEmailAddress("klaus@staplerfahrer.de");
             customerRepository.save(c);
             log.info("Customer nach Id suchen");
             log.info("----------------------------------");

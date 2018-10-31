@@ -130,15 +130,12 @@ public class ServletController {
     //post Registration Page
     @RequestMapping(method = RequestMethod.POST, value = "/registration")
     public void postRegistrationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //Nutzername, Passwort und E-Mail abspeichern
+        //Nutzername, Passwort und E-Mail zunächst abfragen (Sven)
         String username = request.getParameter("username");
-        log.info(username);
         String password = request.getParameter("password");
-        log.info(password);
         String email = request.getParameter("email");
-        log.info(email);
 
-        //Durch Übergeben der Parameter prüfen ob der Benutzer schon existiert und registriert werden kann, ansonsten Errormessage (Sven)
+        //Durch Übergeben der Parameter prüfen ob der Benutzer schon existiert und registriert werden kann, ansonsten Errormessage ausgeben (Sven)
         if (customerService.registerCustomer(username, password, email)) {
             response.sendRedirect("/login");
         } else {
@@ -179,13 +176,14 @@ public class ServletController {
     //post Login Page
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public void postLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //Passwort versuchen auszulesen, um zu prüfen, ob der Benutzer auf Passwort vergessen gegangen ist
 
         try{
+            //Passwort versuchen auszulesen, um zu prüfen, ob der Benutzer "Passwort vergessen?" ausgewählt hat
             if(request.getParameter("password") != null){
                 HttpSession httpSession = request.getSession();
-                httpSession.setAttribute("username", request.getParameter("username"));
                 log.info("Post logincredentials");
+                log.info("------------------------");
+                httpSession.setAttribute("username", request.getParameter("username"));
                 httpSession.setAttribute("password", request.getParameter("password"));
 
                 //Aufruf der Serviceklasse "UserAuthentificationService", welche die Authentifizierung durchführt (Tamin & Sven)
@@ -213,8 +211,18 @@ public class ServletController {
             }else{
                 //HIER GEHTS MORGEN WEITER!!!
                 log.info("Post passwordForgotten");
-                request.setAttribute("error", "E-Mail wurde versendet");
-                request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+                log.info("--------------------------");
+                log.info(request.getParameter("username"));
+                //prüfen ob es den Nutzer überhaupt gibt, falls ja E-Mail versenden, falls nein auf Seite bleiben
+                if(customerService.checkExistingCustomerByUsername(request.getParameter("username"))){
+                    request.setAttribute("error", "E-Mail wurde versendet");
+                    request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+                }else {
+                    log.info("Auf Seite bleiben weil Nutzer nicht gefunden");
+                    request.setAttribute("error", "Nutzer nicht bekannt");
+                    //Auf der Loginseite bleiben
+                    response.sendRedirect("login");
+                }
             }
         }catch(Exception ex){
             log.info("Post passwordForgotten");
