@@ -50,6 +50,11 @@ NOTE: Demo Accounts
 
     Werden weitere Kundenaccounts benötigt, so kann man über die Registrierung weitere Accounts hinzufügen
 
-NOTE: Rest API Guide
+NOTE: REST API Guide
 
-Beispiel zu den wichtigsten Controllern:
+    Usere Anwendung kann neben dem ,,building" von Java Server Pages
+    auch Programmlogik direkt im Browser ausführen. Werden für diese
+    Logik Daten benötigt, so wird die öffentlich zugängliche REST API verwendet.
+
+    Für manuelle HTTP-Requests stehen Ihnen folgende Routen zur Verfügung:
+
