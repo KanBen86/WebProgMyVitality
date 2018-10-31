@@ -219,15 +219,16 @@ public class ServletController {
                 log.info("Nutzer " +"'" +user +"'" +" möchte sein Passwort gesendet bekommen");
                 //prüfen ob es den Nutzer überhaupt gibt, falls ja E-Mail versenden, falls nein auf Seite bleiben
                 if(customerService.checkExistingCustomerByUsername(request.getParameter("usernameFP"))){
-                    //HIER NOCH IRGENDWIE DIE MAIL DES KUNDEN SUCHEN UND IN 'ERROR' miteinbauen!!!!!!!!!!!!!!!!!!!
-                    request.setAttribute("error", "E-Mail wurde an versendet");
+                    //MailAdresse des Kunden abspeichern
+                    String email = customerService.findCustomerByUsername(request.getSession().getAttribute("usernameFP").toString()).getEmailAddress();
+                    request.setAttribute("error", "E-Mail wurde an " +email +" versendet");
                     //Zum Login zurück um sich dort mit neuem Passwort anmelden zu können
                     request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
                 }else {
                     log.info("Auf Seite bleiben weil Nutzer nicht gefunden wurde");
                     request.setAttribute("error", "Nutzer nicht bekannt");
-                    //Auf der Loginseite bleiben und DOM beibehalten!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    response.sendRedirect("login");
+                    //Auf der Loginseite bleiben
+                    request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
                 }
             }
         }catch(Exception ex){

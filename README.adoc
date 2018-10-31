@@ -4,24 +4,41 @@ IMPORTANT: Zum Starten der Anwendung bitte folgende Schritte beachten:
 
     1) H2 Datenbank downloaden und installieren
     http://www.h2database.com/html/download.html
+    ! Achtung H2 ist eine filebasierte Datenbank, es darf keine Connetion etabliert sein, wenn der Server gestartet wird
 
     2) Projekt clonen oder ZipFile herunterladen und entpacken
     git@github.com:CodeWithFriendsKa/WebProgMyVitality.git
 
-    3) Maven und Java 8+ installieren
+    3) Maven und Java 8 oder höher installieren
 
     4) Anwendung starten:
-       mvn package
-       cd /target/
-       java -jar MyVitality-0.0.1-SNAPSHOT.jar
+       mvn spring-boot:run
 
+    5) Indexseite: http://localhost:8080/
 
-Zum Beenden einfach den Prozess mit crtl + c abbrechen.
+NOTE: Seitenübersicht
 
+Ohne Anmeldung kann die Indexseite, die Loginseite sowie die Registrationseite erreicht werden.
+Insgesamt enthält die Wenanwendung enthält folgende Seiten:
+
+Indexseite: http://localhost:8080 +
+Loginseite: http://localhost:8080/login +
+Registrierungsseite: http://localhost:8080/registration +
+
+Kunden Home Bereich: http://localhost:8080/customerhome +
+Profileinstellungen: http://localhost:8080/profilesettings +
+Übersicht der Nahrungsergänzungen: http://localhost:8080/mysupplements +
+Überscht Trainingsplan: http://localhost:8080/scheduleoverview +
+
+Mitarbeiter Home Bereich: http://localhost:8080/employeehome +
+Trainingsplan für für Kunden erstellen: http://localhost:8080/trainingsschedule +
+Warenwirtschaft: http://localhost:8080/warehouse +
+Lager anzeigen: http://localhost:8080/showStock +
+Artikel hinzufügen: http://localhost:8080/addArticle +
 
 NOTE: Demo Accounts
 
-    Per default gibt es 2 Useraccounts.
+    Per Default gibt es 2 Useraccounts.
 
     Kundenaccount
     Username: StaplerfaherKlaus
@@ -33,6 +50,11 @@ NOTE: Demo Accounts
 
     Werden weitere Kundenaccounts benötigt, so kann man über die Registrierung weitere Accounts hinzufügen
 
-NOTE: Rest API Guide
+NOTE: REST API Guide
 
-Beispiel zu den wichtigsten Controllern:
+    Usere Anwendung kann neben dem ,,building" von Java Server Pages
+    auch Programmlogik direkt im Browser ausführen. Werden für diese
+    Logik Daten benötigt, so wird die öffentlich zugängliche REST API verwendet.
+
+    Für manuelle HTTP-Requests stehen Ihnen folgende Routen zur Verfügung:
+
