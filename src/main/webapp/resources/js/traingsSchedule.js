@@ -18,4 +18,18 @@ function addTrainingsschedule() {
 
     // hier wird der JSON-Datensatz in den Body der POST-URI übergeben
     request.send('{"scheduleId": null,"exerciseNo": '+exerciseNo+',"exerciseDesc": "'+exerciseDesc+'","sets": '+sets+',"reps": '+reps+',"breakSec": '+breakSec+',"fitnessLevel": null,"heartFrequency": [1,2,3],"customer": null}');
+
+    deleteInput();
+}
+
+function deleteInput() {
+    document.getElementById("username").value = "";
+    document.getElementById("exerciseNo").value = "";
+    document.getElementById("exerciseDesc").value = "";
+    document.getElementById("sets").value = "";
+    document.getElementById("reps").value = "";
+    document.getElementById("breakSec").value = "";
+
+    alert("Daten wurden hinzugefügt");
+
 }
