@@ -22,9 +22,12 @@ public class CustomerService {
     @Autowired
     public CustomerRepository customerRepository;
 
+    @Autowired
+    public EmployeeService employeeService;
+
     private static final Logger log = LoggerFactory.getLogger(CustomerService.class);
 
-    // Sucht einen Kunden in der Datenbank und gibt ihn als Instanz einer Entityklasse zurück
+    //Sucht einen Kunden in der Datenbank und gibt ihn als Instanz einer Entityklasse zurück
     public Customer findCustomerByUsername(String username){
         try {
             return customerRepository.findCustomerByQuery(username).get();
@@ -33,11 +36,22 @@ public class CustomerService {
         }
     }
 
-    //Wenn Username noch nicht vergeben -> Neuen Customer in der DB speichern und true zurückgeben
-    //Wenn USername schon vergeben false zurückgeben
     public boolean registerCustomer(String username, String password, String email){
         Customer customer = findCustomerByUsername(username);
-        if (customer == null){
+        Boolean employeeExists;
+
+        //Prüfen ob der gewünschte Nutzername bereits für einen Mitarbeiter vergeben ist (Sven)
+        if(employeeService.findEmployeeByUsername(username) == null){
+            log.info("Mitarbeitername nicht gefunden");
+            employeeExists = false;
+        }else{
+            log.info("Mitarbeitername gefunden");
+            employeeExists = true;
+        }
+
+        //Prüfen ob der Nutzername bereits für einen Kunden oder Mitarbeiter vergeben ist (Sven)
+        if (customer == null && !employeeExists){
+            //Username noch nicht für einen Kunden oder Mitarbeiter vergeben -> Neuen Customer in der DB speichern und true zurückgeben
             log.info("Username noch nicht vergeben -> User anlegen");
             log.info("-------------------------------");
             customer = new Customer("11111", null, null, null, null, "Banküberweisung");
@@ -52,12 +66,13 @@ public class CustomerService {
             return true;
         }
         else{
+            //Username schon vergeben -> false zurückgeben
             log.info("Username ex. bereits");
             return false;
         }
     }
 
-    // Sucht einen Kunden in der Datenbank und liefert true oder false zurück
+    //Kunden in der Datenbank suchen ggf. true oder false zurückliefern
     public boolean checkExistingCustomerByUsername(String username){
         try {
             customerRepository.findCustomerByQuery(username).get();

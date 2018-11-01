@@ -88,7 +88,7 @@ public class ServletController {
     //Index Page
     @RequestMapping("/")
     public void getIndexPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //In der HHTP-Session abfragen ob der Benutzer der Website angemeldet ist (Sven)
+        //In der HHTP-Session abfragen ob der Benutzer der Website angemeldet ist, um Text in Login/ Logout anzupassen (Sven)
         if (request.getSession().getAttribute("token") == "active") {
             request.setAttribute("loginLogoutText", "Logout");
         } else {
@@ -98,7 +98,7 @@ public class ServletController {
     }
 
     /**
-     * Diese Methode empfängt den http-request des Registrierungsbereichs der Website. Hier können sich Kunde registrieren.
+     * Diese Methode empfängt den http-request für den Registrierungsbereichs der Website. Hier kann sich der Kunde registrieren.
      * Wird der Bereich per URL aufgerufen während der Benutzer angemeldet ist, werden die Attribute der HTTP-Session gelöscht.
      *
      * @param request
@@ -136,7 +136,7 @@ public class ServletController {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
-        //Durch Übergeben der Parameter prüfen ob der Benutzer schon existiert und registriert werden kann, ansonsten Errormessage ausgeben (Sven)
+        //Durch Übergeben der Parameter prüfen ob der Benutzername schon vergeben wurde und registriert werden kann, ansonsten Errormessage ausgeben (Sven)
         if (customerService.registerCustomer(username, password, email)) {
             response.sendRedirect("/login");
         } else {
@@ -146,7 +146,7 @@ public class ServletController {
     }
 
     /**
-     * Diese Methode empfängt den http-request des Loginbereichs der Website. Hier kann sich der Kunde anmelden.
+     * Diese Methode empfängt den http-request für den Loginbereich der Website. Hier kann sich der Kunde anmelden.
      *
      * @param request
      * @param response
@@ -186,10 +186,8 @@ public class ServletController {
         httpSession.setAttribute("usernameFP", request.getParameter("usernameFP"));
 
         try{
-            //Passwort versuchen auszulesen, um zu prüfen, ob der Benutzer "Passwort vergessen?" ausgewählt hat
+            //Passwort versuchen auszulesen, um zu prüfen ob der Benutzer sich im normalen Loginbereich befindet oder "Passwort vergessen?" ausgewählt hat (Sven)
             if(request.getParameter("password") != null){
-                //Hier wars
-
                 //Aufruf der Serviceklasse "UserAuthentificationService", welche die Authentifizierung durchführt (Tamin & Sven)
                 boolean[] authentification = userAuthentificationService.userAuthentification(httpSession);
                 if (authentification[0]) {
@@ -217,7 +215,7 @@ public class ServletController {
                 log.info("--------------------------");
                 String user = httpSession.getAttribute("usernameFP").toString();
                 log.info("Nutzer " +"'" +user +"'" +" möchte sein Passwort gesendet bekommen");
-                //prüfen ob es den Nutzer überhaupt gibt, falls ja E-Mail versenden, falls nein auf Seite bleiben
+                //prüfen ob es den Nutzer überhaupt gibt, falls true: E-Mail versenden, falls false: auf Seite bleiben
                 if(customerService.checkExistingCustomerByUsername(request.getParameter("usernameFP"))){
                     //MailAdresse des Kunden abspeichern
                     String email = customerService.findCustomerByUsername(request.getSession().getAttribute("usernameFP").toString()).getEmailAddress();
@@ -226,7 +224,7 @@ public class ServletController {
                     request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
                 }else {
                     log.info("Auf Seite bleiben weil Nutzer nicht gefunden wurde");
-                    request.setAttribute("error", "Nutzer nicht bekannt");
+                    request.setAttribute("error", "Kundenkonto nicht bekannt");
                     //Auf der Loginseite bleiben
                     request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
                 }
@@ -235,8 +233,6 @@ public class ServletController {
             log.info("Post passwordForgotten");
             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
         }
-
-
     }
 
     /**
