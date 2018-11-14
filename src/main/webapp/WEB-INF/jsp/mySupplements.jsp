@@ -14,7 +14,10 @@
 
     <jsp:attribute name="main">
 
-    <h1 id="titleid">Deine Nahrungserzänzung</h1>
+        <div class="w3-container w3-green">
+            <h2>Deine Nahrungser&auml;nzung</h2>
+        </div>
+
 
         <h5 id="customerId">${customerId}</h5>
 
