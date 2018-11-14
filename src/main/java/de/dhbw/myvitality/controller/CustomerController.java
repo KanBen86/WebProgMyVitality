@@ -45,7 +45,7 @@ public class CustomerController {
     @RequestMapping(method = RequestMethod.POST, value = "/profileSettings")
     public void editCustomerProfileSettings(@RequestBody Customer customer){
         //Alten Datensatz zum Kunden aus Datenbank auslesen
-        log.info("VorhandenenDatensatzAusDatenbankLesen");
+        log.info("Vorhandenen Datensatz aus Datenbank lesen");
         Customer oldCustomer=customerService.findCustomerById(customer.getCustomerId());
         log.info(oldCustomer.toString());
         //Felder des neuen Customers auf Befüllung prüfen
