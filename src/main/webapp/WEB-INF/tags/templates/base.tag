@@ -44,7 +44,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/">Home</a></li>
+                        <li><a id="tester" href="/">Home</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Projects</a></li>
                         <li><a href="#">Contact</a></li>
@@ -74,7 +74,7 @@
         <footer class="container-fluid text-center">
             <!-- Platzhalter für den Footer-Inhalt -->
             <jsp:invoke fragment="footer"/>
-            <nav class="navbar navbar-inverse" style="background-color: #555555">
+            <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-footer">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbarFooter">
