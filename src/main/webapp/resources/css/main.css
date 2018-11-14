@@ -49,18 +49,6 @@ html, body{
     height: 100%;
 }
 
-/* Set main background color, and text*/
-.background-darkolivegreen {
-    background-color: lightgrey;
-    color: antiquewhite;
-    padding: 15px;
-}
-
-.background-olivedrab{
-    /* background-color: olivedrab; */
-    color: blue;
-}
-
 /* Set black background color, white text and some padding */
 footer {
     background-color: lightgrey;
