@@ -14,14 +14,17 @@
          <h1>Dein Trainingsplan</h1>
 
         <div id="tableArea">
-            <table id="table">
-                <tr>
-                    <th>Übungsnummer</th>
-                    <th>Übungsname</th>
-                    <th>Sets</th>
-                    <th>Reps</th>
-                    <th>Pausenzeit</th>
-                </tr>
+            <table id="table" class="w3-table w3-bordered w3-responsive w3-center w3-hoverable">
+                <thead>
+                    <tr>
+                        <th>Übungsnummer</th>
+                        <th>Übungsname</th>
+                        <th>Sets</th>
+                        <th>Reps</th>
+                        <th>Pausenzeit</th>
+                    </tr>
+                </thead>
+
 
                 <c:forEach var="i" begin="0" end= "${fn:length(trainingScheduleList)-1}" step="1">
                         <tr>
