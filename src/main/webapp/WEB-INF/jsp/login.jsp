@@ -44,7 +44,7 @@
                         <div class="row">
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <input id="btn" class="w3-input w3-border w3-light-grey" type="submit" value="Login">
+                                <input id="btn" class="w3-button w3-section w3-grey w3-padding w3-left" type="submit" value="Login">
                             </div>
                         </div>
 
@@ -79,7 +79,7 @@
                             <div class="col-md-4"></div>
 
                             <div class="col-md-4">
-                                <input class="w3-input w3-border w3-light-grey" id="btnFP" type="submit" value="Passwort per Mail senden">
+                                <input class="w3-button w3-section w3-grey w3-padding w3-left" id="btnFP" type="submit" value="Passwort per Mail senden">
                             </div>
                         </div>
 
