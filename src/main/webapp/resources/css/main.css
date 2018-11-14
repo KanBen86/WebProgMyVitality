@@ -4,8 +4,7 @@ html{
 
 html, body{
     background-color: transparent;
-
-}
+    font-family: "Segoe UI",Arial,sans-serif;}
 
 #app {
     width: 100%;
