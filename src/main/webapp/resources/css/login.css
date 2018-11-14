@@ -38,6 +38,10 @@
     color: black;
 }
 
+.loginCenter{
+    position: center;
+}
+
 #register{
     float: left;
 }

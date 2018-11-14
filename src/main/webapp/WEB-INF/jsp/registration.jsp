@@ -22,7 +22,7 @@
                             <label>Benutzername</label>
                         </div>
                         <div class="col-md-4">
-                            <input 	class="w3-input w3-border w3-light-grey" id="username" name="username" required>
+                            <input 	class="w3-input w3-border w3-light-grey" id="username" name="username" placeholder="Benutzername" required>
                         </div>
                     </div>
 
@@ -31,7 +31,7 @@
                             <label>Passwort</label>
                         </div>
                         <div class="col-md-4">
-                            <input 	class="w3-input w3-border w3-light-grey" id="password" name="password" required>
+                            <input 	class="w3-input w3-border w3-light-grey" id="password" name="password" placeholder="Passwort" required>
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@
                             <label>Passwort wiederholen</label>
                         </div>
                         <div class="col-md-4">
-                            <input 	class="w3-input w3-border w3-light-grey" id="passwordRE" name="passwordRE" required>
+                            <input 	class="w3-input w3-border w3-light-grey" id="passwordRE" name="passwordRE" placeholder="Passwort wiederholen" required>
                         </div>
                     </div>
 
@@ -49,7 +49,7 @@
                             <label>E-Mail</label>
                         </div>
                         <div class="col-md-4">
-                            <input 	class="w3-input w3-border w3-light-grey" id="email" name="email" required>
+                            <input 	class="w3-input w3-border w3-light-grey" id="email" name="email" placeholder="E-Mail" required>
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@
                             <label>E-Mail wiederholen</label>
                         </div>
                         <div class="col-md-4">
-                            <input 	class="w3-input w3-border w3-light-grey" id="emailRE" name="emailRE" required>
+                            <input 	class="w3-input w3-border w3-light-grey" id="emailRE" name="emailRE" placeholder="E-Mail wiederholen" required>
                         </div>
                     </div>
 

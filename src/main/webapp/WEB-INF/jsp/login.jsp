@@ -16,31 +16,41 @@
                 <img src="/resources/img/Logo_MV.png" class="img-responsive" id="loginLogo" alt="MyVitality-Logo" style="max-width: 245px">
                 </p>
 
+        <div class="loginCenter">
                 <!-- Eingabeform für die Logindaten und mögliche Alternativen ("Registrieren"/ "Passwort vergessen?")-->
                 <form name="LoginForm" onsubmit="validateLoginForm()" method="POST">
 
                     <div class="container-fluid">
 
+                        <!-- Feld für Benutzername -->
                         <div class="row">
+                            <div class="col-md-4"></div>
 
                             <div class="col-md-4">
                                 <input class="w3-input w3-border w3-light-grey" id="username" name="username" placeholder="Benutzername" required>
                             </div>
                         </div>
 
+                        <!-- Feld für Passwort -->
                         <div class="row">
+                            <div class="col-md-4"></div>
 
                             <div class="col-md-4">
                                 <input type="password" class="w3-input w3-border w3-light-grey" id="password" name="password" placeholder="Passwort" required>
                             </div>
                         </div>
 
+                        <!-- Button -->
                         <div class="row">
+                            <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <input id="btn" class="w3-button w3-section w3-grey w3-padding" type="submit" value="Login">
+                                <input id="btn" class="w3-input w3-border w3-light-grey" type="submit" value="Login">
                             </div>
                         </div>
+
+                        <!-- Links -->
                         <div class="row">
+                            <div class="col-md-4"></div>
                             <div class="col-md-4">
                                 <a class="links" id="register" href="/registration">Registrieren</a>
                                 <p class="links" id="forgot" onclick="forgottenPassword()">Passwort vergessen?</p>
@@ -58,21 +68,24 @@
                     <div class="container-fluid">
 
                         <div class="row">
+                            <div class="col-md-4"></div>
 
                             <div class="col-md-4">
-                                <input class="w3-input w3-border w3-light-green" id="usernameFP" name="usernameFP" placeholder="Kundennutzername" required>
+                                <input class="w3-input w3-border w3-light-grey" id="usernameFP" name="usernameFP" placeholder="Kundennutzername" required>
                             </div>
                         </div>
 
                         <div class="row">
+                            <div class="col-md-4"></div>
+
                             <div class="col-md-4">
-                                <input id="btnFP" type="submit" value="Passwort per Mail senden">
+                                <input class="w3-input w3-border w3-light-grey" id="btnFP" type="submit" value="Passwort per Mail senden">
                             </div>
                         </div>
 
                     </div>
 
                 </form>
-
+        </div>
     </jsp:attribute>
 </template:base>
