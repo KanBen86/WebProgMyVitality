@@ -37,7 +37,7 @@
 
                         <div class="row">
                             <div class="col-md-4">
-                                <input id="btn" class="w3-button w3-section w3-green w3-padding w3-left" type="submit" value="Login">
+                                <input id="btn" class="w3-button w3-section w3-grey w3-padding" type="submit" value="Login">
                             </div>
                         </div>
                         <div class="row">

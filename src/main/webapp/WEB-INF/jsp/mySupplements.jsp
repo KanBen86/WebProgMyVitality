@@ -40,7 +40,7 @@
         </div>
 
     <br>
-    <button onclick="refreshTable()" id="aktualisieren">Aktualisiere Tabelle und Chart durch REST API</button>
+    <button class="w3-button w3-section w3-grey w3-padding w3-left" onclick="refreshTable()" id="aktualisieren">Aktualisiere Tabelle und Chart durch REST API</button>
 
     </jsp:attribute>
 </template:base>

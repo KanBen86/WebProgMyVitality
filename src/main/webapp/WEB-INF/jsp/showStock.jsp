@@ -38,7 +38,7 @@
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-button w3-right" onclick="history.back()">Zurück</button>
+            <button class="w3-button w3-section w3-grey w3-padding w3-right" onclick="history.back()">Zurück</button>
 
     </jsp:attribute>
 </template:base>

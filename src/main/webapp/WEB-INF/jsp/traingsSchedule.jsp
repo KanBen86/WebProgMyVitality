@@ -18,7 +18,7 @@
                     <label id="benutzername">Benutzername:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="w3-input w3-border w3-light-green" id="username" name="username" required>
+                    <input class="w3-input w3-border w3-light-grey" id="username" name="username" required>
                 </div>
             </div>
 
@@ -27,7 +27,7 @@
                     <label id="uebungsnummer">Übungsnummer</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="w3-input w3-border w3-light-green" id="exerciseNo" name="exNumber" required>
+                    <input class="w3-input w3-border w3-light-grey" id="exerciseNo" name="exNumber" required>
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                     <label id="uebungsname">Übungsname:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="w3-input w3-border w3-light-green" id="exerciseDesc" name="exerciseDesc" required>
+                    <input class="w3-input w3-border w3-light-grey" id="exerciseDesc" name="exerciseDesc" required>
                 </div>
             </div>
 
@@ -45,7 +45,7 @@
                     <label id="satzzahl">Satzanzahl:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="w3-input w3-border w3-light-green" id="sets" name="sets" required>
+                    <input class="w3-input w3-border w3-light-grey" id="sets" name="sets" required>
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
                     <label id="wiederholung">Wiederholungszahl:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="w3-input w3-border w3-light-green" id="reps" name="reps" required>
+                    <input class="w3-input w3-border w3-light-grey" id="reps" name="reps" required>
                 </div>
             </div>
 
@@ -63,22 +63,13 @@
                     <label id="pausenzeit">Pausenzeit:</label>
                 </div>
                 <div class="col-md-4">
-                    <input class="w3-input w3-border w3-light-green" id="breakSec" name="weight" required>
+                    <input class="w3-input w3-border w3-light-grey" id="breakSec" name="weight" required>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-4">
-                    <label id="informationen">Information:</label>
-                </div>
-                <div class="col-md-4">
-                    <input class="w3-input w3-border w3-light-green" id="info" name="info" required>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <button id="btn-add-ts" onclick="addTrainingsschedule()">Daten senden</button>
+                    <button class="w3-button w3-section w3-grey w3-padding w3-left" id="btn-add-ts" onclick="addTrainingsschedule()">Daten senden</button>
                 </div>
             </div>
         </div>

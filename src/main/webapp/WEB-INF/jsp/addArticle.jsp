@@ -23,15 +23,15 @@
             <label class="w3-text-black"><b>ArtikelId: </b>${article.getArticleId()}</label>
 
             <label class="w3-text-black"><b>Bar-Code</b></label>
-            <input id="barcode" class="w3-input w3-border w3-text-black" type="number"
+            <input id="barcode" class="w3-input w3-border w3-light-grey" type="number"
                    placeholder="Barcode" value="${article.getBarcode()}">
 
             <label class="w3-text-black"><b>Artikel-Bezeichnung</b></label>
-            <input id="bezeichung" class="w3-input w3-border w3-text-black" type="text"
+            <input id="bezeichung" class="w3-input w3-border w3-light-grey" type="text"
                 placeholder="Bezeichnung" value="${article.getDescription()}">
 
             <label class="w3-text-black"><b>Preis</b></label>
-            <input id="preis" class="w3-input w3-border w3-text-black" type="number"
+            <input id="preis" class="w3-input w3-border w3-light-grey" type="number"
                    placeholder="11.11" value="${article.getPrice()}">
 
             <label class="w3-text-white"><b>Inhaltsstoffe</b></label>
@@ -49,15 +49,15 @@
                             ${ingredient.name()}
                         </td>
                         <td>
-                            <input type="checkbox"/>
+                            <input class="w3-input w3-border w3-light-grey" type="checkbox"/>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
 
-            <button id="btn-add" class="w3-button w3-section w3-green w3-padding w3-left"
+            <button id="btn-add" class="w3-button w3-section w3-grey w3-padding w3-left"
                     onclick="addArticle()">Daten senden</button>
-            <button id="btn-back" class="w3-button w3-section w3-green w3-padding w3-right"
+            <button id="btn-back" class="w3-button w3-section w3-grey w3-padding w3-right"
                     type="button" onclick="history.back()">zurück</button>
         </form>
     </jsp:attribute>
