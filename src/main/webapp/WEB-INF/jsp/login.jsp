@@ -24,20 +24,20 @@
                         <div class="row">
 
                             <div class="col-md-4">
-                                <input class="w3-input w3-border w3-light-green" id="username" name="username" placeholder="Benutzername" required>
+                                <input class="w3-input w3-border w3-light-grey" id="username" name="username" placeholder="Benutzername" required>
                             </div>
                         </div>
 
                         <div class="row">
 
                             <div class="col-md-4">
-                                <input type="password" class="w3-input w3-border w3-light-green" id="password" name="password" placeholder="Passwort" required>
+                                <input type="password" class="w3-input w3-border w3-light-grey" id="password" name="password" placeholder="Passwort" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
-                                <input id="btn" type="submit" value="Login">
+                                <input id="btn" class="w3-button w3-section w3-green w3-padding w3-left" type="submit" value="Login">
                             </div>
                         </div>
                         <div class="row">

@@ -76,3 +76,10 @@ footer {
     }
     .row.content {height:auto;}
 }
+
+/* Title and text*/
+h4, p{
+    color: black;
+    text-decoration: none;
+}
+
