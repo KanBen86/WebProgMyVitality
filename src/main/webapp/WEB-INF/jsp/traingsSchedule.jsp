@@ -11,6 +11,10 @@
     <jsp:attribute name="main">
 
 
+         <div class="w3-container w3-green">
+             <h2>Trainingsplan</h2>
+         </div>
+
         <div class="container-fluid">
 
             <div class="row">

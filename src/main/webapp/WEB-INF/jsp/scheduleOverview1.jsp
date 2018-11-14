@@ -11,7 +11,9 @@
 
     <jsp:attribute name="main">
 
-         <h1>Dein Trainingsplan</h1>
+        <div class="w3-container w3-green">
+            <h2>Dein Trainingsplan</h2>
+        </div>
 
         <div id="tableArea">
             <table id="table" class="w3-table w3-bordered w3-responsive w3-center w3-hoverable">
