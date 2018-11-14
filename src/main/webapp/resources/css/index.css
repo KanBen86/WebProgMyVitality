@@ -1,3 +1,7 @@
+html, body {
+    background-color:transparent;
+}
+
 html{
     background-image: url(../img/game.gif);
     background-repeat: no-repeat;
