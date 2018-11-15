@@ -18,8 +18,8 @@ public class FitnessLevel {
     //Felder der Klasse
 
     @Id
-    @GeneratedValue
-    //@GenericGenerator(name = , strategy = )
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String fitnessLevelId;
 
     private String sex;
@@ -52,8 +52,8 @@ public class FitnessLevel {
 
     //Konstruktoren
 
-    public FitnessLevel(String fitnessLevelId, String sex, String weight, String height, String experience, String job, String arm, String chest, String stomach, String waist, String thigh, String calf, String foodIntolerance, String injury, String medicine) {
-        this.fitnessLevelId=fitnessLevelId;
+    public FitnessLevel(String sex, String weight, String height, String experience, String job, String arm, String chest, String stomach, String waist, String thigh, String calf, String foodIntolerance, String injury, String medicine) {
+
         this.sex=sex;
         this.weight=weight;
         this.height=height;
@@ -68,6 +68,10 @@ public class FitnessLevel {
         this.foodIntolerance=foodIntolerance;
         this.injury=injury;
         this.medicine=medicine;
+    }
+
+    public FitnessLevel(){
+
     }
 
     //Getter & Setter

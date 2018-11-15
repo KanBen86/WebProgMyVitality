@@ -104,6 +104,25 @@ public class MyVitalityApplication extends SpringBootServletInitializer {
         };
     }
 
+    //FitnessLevel testen
+    @Bean
+    public CommandLineRunner demoFitnessLevel(FitnessLevelRepository fitnessLevelRepository) {
+        return (args) -> {
+            //save a couple of customers
+            log.info("Erzeuge FitnessLevel und speichere es");
+            log.info("----------------------------------");
+            FitnessLevel f = new FitnessLevel(null, null, null, null, "Banküberweisung", null, null,null,null,null,null,null,null,null);
+            f.setWeight("100");
+            f.setHeight("200");
+            fitnessLevelRepository.save(f);
+            log.info("FitnessLevel nach Id suchen");
+            log.info("----------------------------------");
+            Optional<FitnessLevel> fitnessLevel = fitnessLevelRepository.findById(f.getFitnessLevelId());
+            log.info(fitnessLevel.get().toString());
+            log.info("----------------------------------");
+        };
+    }
+
     @Bean
     public CommandLineRunner demoAdress(AdressRepository adressRepository) {
         return (args) -> {
