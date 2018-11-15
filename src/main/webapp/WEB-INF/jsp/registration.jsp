@@ -11,9 +11,11 @@
     <jsp:attribute name="main">
         <div class="col-md">
 
-            <h1>Konto anlegen</h1>
-
             <form name="RegistrationForm" onsubmit="return validateRegistrationForm()" method="POST">
+
+                <div class="w3-container w3-green">
+                    <h2>Konto anlegen</h2>
+                </div>
 
                 <div class="container-fluid">
 
@@ -64,7 +66,11 @@
 
                     <div class="row">
                         <div class="col-md-4">
+                        </div>
+
+                        <div class="col-md-4">
                             <input class="w3-button w3-section w3-grey w3-padding w3-left" id="btn" type="submit" value="Registrieren"/>
+                            <button class="w3-button w3-section w3-grey w3-padding w3-right" onclick="history.back()">Zurück</button>
                         </div>
                     </div>
 
