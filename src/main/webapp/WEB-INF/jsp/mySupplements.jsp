@@ -15,7 +15,7 @@
     <jsp:attribute name="main">
 
         <div class="w3-container w3-green">
-            <h2>Deine Nahrungser&auml;nzung</h2>
+            <h2>Deine Nahrungserg&auml;nzung</h2>
         </div>
 
 

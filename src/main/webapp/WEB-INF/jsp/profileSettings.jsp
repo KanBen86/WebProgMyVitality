@@ -15,7 +15,9 @@
                 <title>Profileinstellungen</title>
             </head>
             <body>
+            <div class="w3-container w3-green">
                 <h2>Profileinstellungen</h2>
+            </div>
                 <table>
                 <thead>
                 <tr>

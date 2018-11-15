@@ -16,8 +16,10 @@
                 <title>Ausgangslevel</title>
             </head>
             <body>
+            <div class="w3-container w3-green">
                 <h2>Ausgangslevel</h2>
-
+            </div>
+            
                 <dl>
                     <dt><label for="preexerciselevel_sex">Geschlecht: </label>
                         <select class="w3-input w3-border w3-light-grey" id="preexerciselevel_sex"><option value="op0">Männlich</option><option value="op1">Weiblich</option></select></dt>
