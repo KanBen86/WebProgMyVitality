@@ -45,12 +45,12 @@ public class Customer extends Person{
         this.customerId = customerId;
     }
 
-    public Adress getDelivieryAddress() {
+    public Adress getDeliveryAdress() {
         return deliveryAdress;
     }
 
-    public void setDelivieryAddress(Adress delivieryAdress) {
-        this.deliveryAdress = delivieryAdress;
+    public void setDeliveryAdress(Adress deliveryAdress) {
+        this.deliveryAdress = deliveryAdress;
     }
 
     public Adress getBillAdress() {

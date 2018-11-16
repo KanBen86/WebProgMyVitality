@@ -19,7 +19,7 @@
             <div class="w3-container w3-green">
                 <h2>Ausgangslevel</h2>
             </div>
-            
+
                 <dl>
                     <dt><label for="preexerciselevel_sex">Geschlecht: </label>
                         <select class="w3-input w3-border w3-light-grey" id="preexerciselevel_sex"><option value="op0">Männlich</option><option value="op1">Weiblich</option></select></dt>
@@ -62,7 +62,8 @@
                     <input type="range" id="range">
                 </form>-->
 
-                <button class="w3-button w3-section w3-grey w3-padding w3-left" id="preexerciselevel_button_save" type="button">Speichern</button>
+                <button class="w3-button w3-section w3-grey w3-padding w3-left" id="preexerciselevel_button_save" type="button" onclick="validiereDaten()">Speichern</button>
+                <button id="btn-back" class="w3-button w3-section w3-grey w3-padding w3-right" type="button" onclick="history.back()">zurück</button>
             </body>
         </html>
     </jsp:attribute>

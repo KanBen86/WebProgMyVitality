@@ -31,7 +31,7 @@ public class Employee extends Person{
         this.superior = (superior!=null)?"mvu" + superior : superior;
     }
 
-    public Employee(String firstname, String lastname, Adress adress, LocalDateTime dateOfBirth, String emailAddress, String username, String password, String phoneNo, ENUM_SEX sex, List<Bank> accounts, String employeeId, ENUM_DEPARTMENT department, ENUM_ROLL authorities, String superior) {
+    public Employee(String firstname, String lastname, Adress adress, String dateOfBirth, String emailAddress, String username, String password, String phoneNo, ENUM_SEX sex, List<Bank> accounts, String employeeId, ENUM_DEPARTMENT department, ENUM_ROLL authorities, String superior) {
         super(firstname, lastname, adress, dateOfBirth, emailAddress, username, password, phoneNo, sex, accounts);
         this.employeeId = "mvu" + employeeId;
         this.department = department;

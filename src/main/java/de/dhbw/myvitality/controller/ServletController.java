@@ -407,6 +407,8 @@ public class ServletController {
     //profileSettings Page
     @RequestMapping("/profilesettings")
     public void getProfileSettingsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Customer customer = customerService.findCustomerByUsername(request.getSession().getAttribute("username").toString());
+        request.setAttribute("customer",customer);
         getPage(request, response, "customer", "profileSettings.jsp");
     }
 }
