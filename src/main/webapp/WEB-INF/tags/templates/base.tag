@@ -70,9 +70,9 @@
 
             </div>
         </div>
-        <!-- Platzhalter für den Footer-Inhalt
+        <!-- Platzhalter für den Footer-Inhalt -->
         <footer class="container-fluid text-center">
-            <!-- Platzhalter für den Footer-Inhalt
+            Platzhalter für den Footer-Inhalt
             <jsp:invoke fragment="footer"/>
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
@@ -93,6 +93,5 @@
                 </div>
             </nav>
         </footer>
--->
     </body>
 </html>

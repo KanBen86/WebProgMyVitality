@@ -28,7 +28,7 @@ public class Article implements Serializable {
     private String information;
 
     @Transient
-    private ArrayList<ENUM_INGREDIENTS> ingredients;
+    private String ingredients;
 
     private int barcode;
 
@@ -51,7 +51,7 @@ public class Article implements Serializable {
     }
 
     public Article(String description, String information,
-                   ArrayList<ENUM_INGREDIENTS> ingredients, int barcode, float price,
+                   String ingredients, int barcode, float price,
                    Company supplier, ArrayList<ENUM_ALLERGEN> allergens, Storrage storrage) {
         this.description = description;
         this.information = information;
@@ -91,11 +91,11 @@ public class Article implements Serializable {
         this.information = information;
     }
 
-    public ArrayList<ENUM_INGREDIENTS> getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(ArrayList<ENUM_INGREDIENTS> ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
 
