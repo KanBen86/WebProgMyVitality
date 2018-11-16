@@ -16,7 +16,7 @@ public class Person {
     @JoinColumn(name = "person_address_id")
     private Adress adress;
 
-    private LocalDateTime dateOfBirth;
+    private String dateOfBirth;
 
     private String emailAddress;
 
@@ -34,7 +34,7 @@ public class Person {
 
     public Person (){}
 
-    public Person(String firstname, String lastname, Adress adress, LocalDateTime dateOfBirth, String emailAddress, String username, String password, String phoneNo, ENUM_SEX sex, List<Bank> accounts) {
+    public Person(String firstname, String lastname, Adress adress, String dateOfBirth, String emailAddress, String username, String password, String phoneNo, ENUM_SEX sex, List<Bank> accounts) {
     this.firstname = firstname;
         this.lastname = lastname;
         this.adress = adress;
@@ -71,11 +71,11 @@ public class Person {
         this.adress = adress;
     }
 
-    public LocalDateTime getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDateTime dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

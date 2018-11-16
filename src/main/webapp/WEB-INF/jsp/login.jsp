@@ -57,7 +57,13 @@
                             </div>
                         </div>
 
-                        <div id="error">${error}</div>
+                        <!-- Error- und Statusmeldungen-->
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <div id="error">${error}</div>
+                            </div>
+                        </div>
 
                     </div>
                 </form>
@@ -80,6 +86,7 @@
 
                             <div class="col-md-4">
                                 <input class="w3-button w3-section w3-grey w3-padding w3-left" id="btnFP" type="submit" value="Passwort per Mail senden">
+                                <button class="w3-button w3-section w3-grey w3-padding w3-right" onclick="loginBack()">Zurück</button>
                             </div>
                         </div>
 

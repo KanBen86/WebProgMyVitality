@@ -8,8 +8,13 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+
 public interface TrainingScheduleRepository extends CrudRepository<TrainingSchedule, String> {
 
+    /***
+     * CRUD Repository + eigene Query
+     * @author Moritz Lang
+     */
     @Query("select t from TrainingSchedule t where t.customer = :customer")
     public Iterable<TrainingSchedule> findbyCustomer(@Param("customer") Customer customer);
 }

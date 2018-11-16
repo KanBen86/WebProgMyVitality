@@ -6,6 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
+/***
+ * CRUD Repository
+ * @author Tamino Fischer alias CodeKeks
+ */
 public interface StorrageRepository extends CrudRepository<Storrage, String> {
 
 }

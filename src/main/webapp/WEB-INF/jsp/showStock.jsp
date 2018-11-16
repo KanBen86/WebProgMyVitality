@@ -15,6 +15,11 @@
                 src="../../resources/js/showStock.js"></script>
     </jsp:attribute>
     <jsp:attribute name="main">
+
+        <div class="w3-container w3-green">
+            <h2>Lagerinhalt</h2>
+        </div>
+
             <table class="w3-table w3-bordered w3-responsive w3-small w3-center w3-hoverable"
                    id="storrage" name="lager">
                 <thead>

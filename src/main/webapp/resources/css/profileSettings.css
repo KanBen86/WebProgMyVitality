@@ -1,15 +1,4 @@
-#gebdat{
-    color:black;
-}
 
-#profileSettings_button{
-    color:black;
-    background-color:green;
-    border-color:green;
-    cursor:pointer;
-}
-
-#profileSettings_button:hover{
-    border-color:black;
-
+#profileSettings_header_profileSettings{
+    padding-left:15px;
 }
