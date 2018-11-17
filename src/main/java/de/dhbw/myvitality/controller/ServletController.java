@@ -91,6 +91,7 @@ public class ServletController {
     //Index Page
     @RequestMapping("/")
     public void getIndexPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("home", "/");
         //In der HHTP-Session abfragen ob der Benutzer der Website angemeldet ist, um Text in Login/ Logout anzupassen (Sven)
         if (request.getSession().getAttribute("token") == "active") {
             request.setAttribute("loginLogoutText", "Logout");
@@ -113,6 +114,7 @@ public class ServletController {
     //registration Page
     @RequestMapping("/registration")
     public void getRegistrationPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("home", "/");
         request.getSession().removeAttribute("username");
         request.getSession().removeAttribute("password");
         request.getSession().removeAttribute("token");
@@ -163,6 +165,7 @@ public class ServletController {
     //Login Page
     @RequestMapping("/login")
     public void getLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("home", "/");
         request.getSession().removeAttribute("username");
         request.getSession().removeAttribute("password");
         request.getSession().removeAttribute("token");
@@ -252,6 +255,8 @@ public class ServletController {
      */
     @RequestMapping("/warehouse")
     public void getWarehousePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Home-Attribut passend für den Mitarbeiter setzen
+        request.setAttribute("home", "employeehome");
         getPage(request, response, "employee", "warehouse.jsp");
     }
 
@@ -266,6 +271,8 @@ public class ServletController {
      */
     @RequestMapping("/addArticle")
     public void getArticlePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Home-Attribut passend für den Mitarbeiter setzen
+        request.setAttribute("home", "employeehome");
         getPage(request, response, "employee", "addArticle.jsp");
     }
 
@@ -287,6 +294,8 @@ public class ServletController {
         } else {
             request.setAttribute("article", new Article());
         }
+        //Home-Attribut passend für den Mitarbeiter setzen
+        request.setAttribute("home", "employeehome");
         getPage(request, response, "employee", "addArticle.jsp");
     }
 
@@ -325,6 +334,8 @@ public class ServletController {
      */
     @RequestMapping("/showStock")
     public void getShowStockPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Home-Attribut passend für den Mitarbeiter setzen
+        request.setAttribute("home", "employeehome");
         request.setAttribute("articleList", articleService.findAll());
         getPage(request, response, "employee", "showStock.jsp");
     }
@@ -357,6 +368,8 @@ public class ServletController {
      */
     @RequestMapping("/employeehome")
     public void getEmployeeHomePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Home-Attribut passend für den Mitarbeiter setzen
+        request.setAttribute("home", "employeehome");
         getPage(request, response, "employee", "emplHome.jsp");
     }
 
@@ -373,6 +386,8 @@ public class ServletController {
      */
     @RequestMapping("/mysupplements")
     public void getMySupplementsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Home-Attribut passend für den Kunden setzen
+        request.setAttribute("home", "customerhome");
         SupplementConfiguration supplementConfiguration =
                 supplementConfigurationService.
                         findSupplementConfigurationByUsername(request.getSession().
@@ -387,12 +402,16 @@ public class ServletController {
     //traingsSchedule Page
     @RequestMapping("/trainingsschedule")
     public void getTraingsSchedulePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Home-Attribut passend für den Mitarbeiter setzen
+        request.setAttribute("home", "employeehome");
         getPage(request, response, "employee", "traingsSchedule.jsp");
     }
 
     //preexerciselevel Page
     @RequestMapping("/preexerciselevel")
     public void getPreExerciseLevelPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Home-Attribut passend für den Kunden setzen
+        request.setAttribute("home", "customerhome");
         FitnessLevel fitnessLevel = fitneslevelService.findFitnessLevelByUsername(request.getSession().getAttribute("username").toString());
         request.setAttribute("fitnessLevel",fitnessLevel);
         request.setAttribute("preexercise_username",request.getSession().getAttribute("username").toString());
@@ -402,6 +421,8 @@ public class ServletController {
     //scheduleOverview Page
     @RequestMapping("/scheduleoverview")
     public void getTraingsScheduleOverview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Home-Attribut passend für den Kunden setzen
+        request.setAttribute("home", "customerhome");
         String username = request.getSession().getAttribute("username").toString();
         log.info("Der Ausgewählte User ist:" + username);
         Customer customer = customerService.findCustomerByUsername(username);
@@ -416,8 +437,11 @@ public class ServletController {
     //profileSettings Page
     @RequestMapping("/profilesettings")
     public void getProfileSettingsPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Home-Attribut passend für den Kunden setzen
+        request.setAttribute("home", "customerhome");
         Customer customer = customerService.findCustomerByUsername(request.getSession().getAttribute("username").toString());
         request.setAttribute("customer",customer);
         getPage(request, response, "customer", "profileSettings.jsp");
     }
+
 }
