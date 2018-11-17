@@ -45,6 +45,9 @@ public class ServletController {
     private ArticleService articleService;
 
     @Autowired
+    private FitneslevelService fitneslevelService;
+
+    @Autowired
     private TrainingScheduleService trainingScheduleService;
 
     private static final Logger log = LoggerFactory.getLogger(ServletController.class);
@@ -387,6 +390,9 @@ public class ServletController {
     //preexerciselevel Page
     @RequestMapping("/preexerciselevel")
     public void getPreExerciseLevelPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        FitnessLevel fitnessLevel = fitneslevelService.findFitnessLevelByUsername(request.getSession().getAttribute("username").toString());
+        request.setAttribute("fitnessLevel",fitnessLevel);
+        request.setAttribute("preexercise_username",request.getSession().getAttribute("username").toString());
         getPage(request, response, "customer", "preexerciselevel.jsp");
     }
 

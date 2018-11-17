@@ -39,10 +39,68 @@ public class FitnesslevelController {
      * Diese Methode editiert das FitnessLevel eines Kunden
      * @author Fabian Lieb
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/preexerciselevel")
-    public void editFitnessLevel(@RequestBody FitnessLevel fitnessLevel){
+    @RequestMapping(method = RequestMethod.POST, value = "/savePreexerciselevel/{username}")
+    public void editFitnessLevel(@RequestBody FitnessLevel fitnessLevel, @PathVariable("username") String username ){
+        log.info("------------------");
+        log.info("Serveraufruf Fitnesslevel via ReST");
+        Customer customer = customerService.findCustomerByUsername(username);
+        FitnessLevel oldFitnessLevel = customer.getFitnessLevel();
+        if(oldFitnessLevel==null){
+            log.info("Neues Fitnesslevel wird angelegt");
+            oldFitnessLevel=fitnessLevel;
+            fitneslevelService.saveFitnessLevel(oldFitnessLevel);
+            customer.setFitnessLevel(oldFitnessLevel);
+            customerService.saveCustomer(customer);
+            return;
+        }
+        else {
+            if (fitnessLevel.getSex() != null) {
+                if (fitnessLevel.getSex() != oldFitnessLevel.getSex()) oldFitnessLevel.setSex(fitnessLevel.getSex());
+            }
+            if (fitnessLevel.getWeight() != null) {
+                if (fitnessLevel.getWeight() != oldFitnessLevel.getWeight()) oldFitnessLevel.setWeight(fitnessLevel.getWeight());
+            }
+            if (fitnessLevel.getHeight() != null) {
+                if (fitnessLevel.getHeight() != oldFitnessLevel.getHeight()) oldFitnessLevel.setHeight(fitnessLevel.getHeight());
+            }
+            if (fitnessLevel.getExperience() != null) {
+                if (fitnessLevel.getExperience() != oldFitnessLevel.getExperience()) oldFitnessLevel.setExperience(fitnessLevel.getExperience());
+            }
+            if (fitnessLevel.getJob() != null) {
+                if (fitnessLevel.getJob() != oldFitnessLevel.getJob()) oldFitnessLevel.setJob(fitnessLevel.getJob());
+            }
+            if (fitnessLevel.getArm() != null) {
+                if (fitnessLevel.getArm() != oldFitnessLevel.getArm()) oldFitnessLevel.setArm(fitnessLevel.getArm());
+            }
+            if (fitnessLevel.getChest() != null) {
+                if (fitnessLevel.getChest() != oldFitnessLevel.getChest()) oldFitnessLevel.setChest(fitnessLevel.getChest());
+            }
+            if (fitnessLevel.getStomach() != null) {
+                if (fitnessLevel.getStomach() != oldFitnessLevel.getStomach()) oldFitnessLevel.setStomach(fitnessLevel.getStomach());
+            }
+            if (fitnessLevel.getWaist() != null) {
+                if (fitnessLevel.getWaist() != oldFitnessLevel.getWaist()) oldFitnessLevel.setWaist(fitnessLevel.getWaist());
+            }
+            if (fitnessLevel.getThigh() != null) {
+                if (fitnessLevel.getThigh() != oldFitnessLevel.getThigh()) oldFitnessLevel.setThigh(fitnessLevel.getThigh());
+            }
+            if (fitnessLevel.getCalf() != null) {
+                if (fitnessLevel.getCalf() != oldFitnessLevel.getCalf()) oldFitnessLevel.setCalf(fitnessLevel.getCalf());
+            }
+            if (fitnessLevel.getFoodIntolerance() != null) {
+                if (fitnessLevel.getFoodIntolerance() != oldFitnessLevel.getFoodIntolerance()) oldFitnessLevel.setFoodIntolerance(fitnessLevel.getFoodIntolerance());
+            }
+            if (fitnessLevel.getInjury() != null) {
+                if (fitnessLevel.getInjury() != oldFitnessLevel.getInjury()) oldFitnessLevel.setInjury(fitnessLevel.getInjury());
+            }
+            if (fitnessLevel.getMedicine() != null) {
+                if (fitnessLevel.getMedicine() != oldFitnessLevel.getMedicine()) oldFitnessLevel.setMedicine(fitnessLevel.getMedicine());
+            }
 
+        }
         //Neues FitnessLevel speichern
-        fitneslevelService.saveFitnessLevel(fitnessLevel);
+        log.info("Fitnesslevel"+oldFitnessLevel);
+        fitneslevelService.saveFitnessLevel(oldFitnessLevel);
+
     }
 }
