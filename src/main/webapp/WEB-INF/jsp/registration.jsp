@@ -11,6 +11,7 @@
     <jsp:attribute name="main">
         <div class="col-md">
 
+            <!-- Eingabeform für die Registrierungsdaten -->
             <form name="RegistrationForm" onsubmit="return validateRegistrationForm()" method="POST">
 
                 <div class="w3-container w3-green">
@@ -19,6 +20,7 @@
 
                 <div class="container-fluid">
 
+                    <!-- Feld für Benutzername -->
                     <div class="row">
                         <div class="col-md-4">
                             <label>Benutzername</label>
@@ -28,6 +30,7 @@
                         </div>
                     </div>
 
+                    <!-- Feld für Passwort -->
                     <div class="row">
                         <div class="col-md-4">
                             <label>Passwort</label>
@@ -37,6 +40,7 @@
                         </div>
                     </div>
 
+                    <!-- Feld für Passwort wiederholen-->
                     <div class="row">
                         <div class="col-md-4">
                             <label>Passwort wiederholen</label>
@@ -46,6 +50,7 @@
                         </div>
                     </div>
 
+                    <!-- Feld für E-Mail -->
                     <div class="row">
                         <div class="col-md-4">
                             <label>E-Mail</label>
@@ -55,6 +60,7 @@
                         </div>
                     </div>
 
+                    <!-- Feld für E-Mail wiederholen -->
                     <div class="row">
                         <div class="col-md-4">
                             <label>E-Mail wiederholen</label>
@@ -64,6 +70,7 @@
                         </div>
                     </div>
 
+                    <!-- Button -->
                     <div class="row">
                         <div class="col-md-4">
                         </div>
@@ -74,7 +81,15 @@
                         </div>
                     </div>
 
-                    <div id="error">${error}</div>
+                    <!-- Error- und Statusmeldungen-->
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div>
+
+                        <div class="col-md-4">
+                            <div id="error">${error}</div>
+                        </div>
+                    </div>
 
                 </div>
             </form>

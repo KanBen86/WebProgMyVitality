@@ -12,15 +12,20 @@
     </jsp:attribute>
     <jsp:attribute name="main">
 
-                <p>
-                <img src="/resources/img/Logo_MV.png" class="img-responsive" id="loginLogo" alt="MyVitality-Logo" style="max-width: 245px">
-                </p>
-
         <div class="loginCenter">
                 <!-- Eingabeform für die Logindaten und mögliche Alternativen ("Registrieren"/ "Passwort vergessen?")-->
                 <form name="LoginForm" onsubmit="validateLoginForm()" method="POST">
 
                     <div class="container-fluid">
+
+                        <!-- Logo -->
+                        <div class="row">
+                            <div class="col-md-4"></div>
+
+                            <div class="col-md-4">
+                                <p><img src="/resources/img/Logo_MV.png" class="img-responsive" id="loginLogo" alt="MyVitality-Logo" style="max-width: 245px"></p>
+                            </div>
+                        </div>
 
                         <!-- Feld für Benutzername -->
                         <div class="row">
@@ -85,7 +90,7 @@
                             <div class="col-md-4"></div>
 
                             <div class="col-md-4">
-                                <input class="w3-button w3-section w3-grey w3-padding w3-left" id="btnFP" type="submit" value="Passwort per Mail senden">
+                                <input class="w3-button w3-section w3-grey w3-padding w3-left" id="btnFP" type="submit" value="Passwort per Mail">
                                 <button class="w3-button w3-section w3-grey w3-padding w3-right" onclick="loginBack()">Zurück</button>
                             </div>
                         </div>
