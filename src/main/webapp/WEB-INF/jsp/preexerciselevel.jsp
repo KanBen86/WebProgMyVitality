@@ -45,15 +45,15 @@
                         <input class="w3-input w3-border w3-light-grey" type="text" id="thigh" name="thigh" value="${fitnessLevel.getThigh()}"></dt>
                     <dt><label for="calves">Waden: </label>
                         <input class="w3-input w3-border w3-light-grey" type="text" id="calves" name="calves" value="${fitnessLevel.getCalf()}"></dt>
-                    <dt id="foodIntolerance">Nahrungsmittelunverträglichkeit <button id="button_plus_one" type="button">+</button></dt>
-                    <dt><label for="foodIntolerance_firstText">1.) </label>
-                        <input class="w3-input w3-border w3-light-grey" type="text" id="foodIntolerance_firstText" name="foodIntolerance_firstText" value="${fitnessLevel.getFoodIntolerance()}"></dt>
-                    <dt id="injuries">Verletzungen <button id="button_plus_two" type="button">+</button></dt>
-                    <dt><label for="injuries_firstText">1.) </label>
-                        <input class="w3-input w3-border w3-light-grey" type="text" id="injuries_firstText" name="injuries_firstText" value="${fitnessLevel.getInjury()}"></dt>
-                    <dt id="medicine">Medikamente <button id="button_plus_three" type="button">+</button></dt>
-                    <dt><label for="medicine_firstText">1.) </label>
-                        <input class="w3-input w3-border w3-light-grey" type="text" id="medicine_firstText" name="medicine_firstText" value="${fitnessLevel.getMedicine()}"></dt>
+                    <dt>Nahrungsmittelunverträglichkeit (Komma separiert)</dt>
+                    <dt>
+                        <input class="w3-input w3-border w3-light-grey" type="text" id="foodIntolerance" name="foodIntolerance" value="${fitnessLevel.getFoodIntolerance()}"></dt>
+                    <dt>Verletzungen (Komma separiert)</dt>
+                    <dt>
+                        <input class="w3-input w3-border w3-light-grey" type="text" id="injuries" name="injuries" value="${fitnessLevel.getInjury()}"></dt>
+                    <dt>Medikamente (Komma separiert)</dt>
+                    <dt>
+                        <input class="w3-input w3-border w3-light-grey" type="text" id="medicine" name="medicine" value="${fitnessLevel.getMedicine()}"></dt>
                 </dl>
 
                 <!--<form>

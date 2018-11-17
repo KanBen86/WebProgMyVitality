@@ -1,5 +1,4 @@
 function speichereExerciseDaten(){
-    var fitnessLevelId=document.getElementById("fitnessLevelId");
     var username=document.getElementById("username");
     var sex=document.getElementById("sex");
     var weight=document.getElementById("weight");
@@ -20,13 +19,12 @@ function speichereExerciseDaten(){
     var request= new XMLHttpRequest();
 
         //Auslesen der Daten vom DOM
-    var username=document.getElementById("username");
     //Request öffnen durch Angaben der URI und Methode, Mapping im CustomerController
     request.open('POST','http://localhost:8080/savePreexerciselevel/'+username.innerText,false);
     //Übertragungsmethode definieren
     request.setRequestHeader('Content-Type', 'application/json');
     //Objekt übertragen
-    request.send('{"fitnessLevelId":"'+fitnessLevelId.value+'",'+
+    request.send('{"fitnessLevelId":null,'+
         '"sex":"'+sex.value+'",'+
         '"weight":"'+weight.value+'",' +
         '"height":"'+height.value+'",' +
