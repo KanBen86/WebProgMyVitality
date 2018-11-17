@@ -24,6 +24,7 @@
                 <div class="col-md-4">
                     <input class="w3-input w3-border w3-light-grey" id="username" name="username" required>
                 </div>
+                <div id="error">${error}</div>
             </div>
 
             <div class="row">

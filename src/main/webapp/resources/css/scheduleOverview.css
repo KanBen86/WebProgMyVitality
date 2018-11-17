@@ -1,4 +1,4 @@
-/*Kommentar*/
+/*Überschrift*/
 
 h1 {
     font-family: Arial;
@@ -7,6 +7,7 @@ h1 {
     color: black;
 }
 
+/*Tabelleneigenschaften*/
 .w3-responsive{
     display: table;
 }
