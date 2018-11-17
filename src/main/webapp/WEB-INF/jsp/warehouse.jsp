@@ -4,7 +4,6 @@
 <template:base>
     <jsp:attribute name="head">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/warehouse.css">
-        <script type="application/javascript" src="../../resources/js/warehouse.js"></script>
     </jsp:attribute>
     <jsp:attribute name="main">
         <div class="main">

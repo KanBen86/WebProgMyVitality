@@ -6,7 +6,6 @@
 
     <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/custHome.css"/>
-        <script src="../../resources/js/custHome.js"></script>
     </jsp:attribute>
 
     <jsp:attribute name="main">

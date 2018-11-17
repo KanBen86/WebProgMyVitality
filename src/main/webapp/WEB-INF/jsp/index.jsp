@@ -6,7 +6,6 @@
     <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css"
               href="${pageContext.request.contextPath}resources/css/index.css"/>
-        <script src="../../resources/js/index.js"></script>
     </jsp:attribute>
     <jsp:attribute name="header">
         <label>Index-Page</label>

@@ -6,7 +6,6 @@
 <template:base>
     <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/scheduleOverview.css"/>
-        <script src="../../resources/js/scheduleOverview.js"></script>
     </jsp:attribute>
 
     <jsp:attribute name="main">
