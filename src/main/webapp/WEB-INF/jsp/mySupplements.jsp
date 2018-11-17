@@ -19,7 +19,7 @@
         </div>
 
 
-        <h5 id="customerId">${customerId}</h5>
+        <h5 id="customerId" hidden="true">${customerId}</h5>
 
         <div id="piechart"></div>
 
