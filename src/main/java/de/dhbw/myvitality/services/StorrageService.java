@@ -30,4 +30,8 @@ public class StorrageService {
     public Storrage findById(String id){
         return storrageRepository.findById(id).get();
     }
+
+    public void save(Storrage storrage) {
+        storrageRepository.save(storrage);
+    }
 }
