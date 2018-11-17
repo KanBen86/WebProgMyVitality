@@ -1,7 +1,9 @@
 html, body{
     font-family: "Segoe UI",Arial,sans-serif;
     background-color: lightgreen;
-    height: 100%;
+}
+#fid{
+    position: relative;
 }
 
 #myNavbar a{

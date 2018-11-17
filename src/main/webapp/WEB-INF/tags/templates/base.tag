@@ -71,8 +71,7 @@
             </div>
         </div>
         <!-- Platzhalter für den Footer-Inhalt -->
-        <footer class="container-fluid text-center">
-            Platzhalter für den Footer-Inhalt
+        <footer id="fid" class="container-fluid text-center">
             <jsp:invoke fragment="footer"/>
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">

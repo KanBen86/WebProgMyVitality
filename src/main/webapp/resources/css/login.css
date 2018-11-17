@@ -1,3 +1,7 @@
+#content-area {
+    height: 140vw;
+}
+
 #loginLogo {
     display: block;
     margin-left: auto;

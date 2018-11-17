@@ -6,6 +6,8 @@
 <template:base>
     <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/scheduleOverview.css"/>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </jsp:attribute>
 
     <jsp:attribute name="main">
