@@ -27,7 +27,6 @@ public class Article implements Serializable {
 
     private String information;
 
-    @Transient
     private String ingredients;
 
     private int barcode;

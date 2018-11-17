@@ -14,13 +14,17 @@
     <script type="application/javascript" src="../../resources/js/addArticle.js"></script>
     </jsp:attribute>
     <jsp:attribute name="main">
+        <div class="w3-panel w3-green" hidden="true" id="success">
+            <h3>Gespeichert!</h3>
+            <p>Die Änderungen wurden erfolgreich in der Datenbank abgelegt.</p>
+        </div>
         <form class="w3-container background-darkolivegreen">
             <div class="w3-container w3-green">
                 <h2>Artikel hinzuf&uumlgen</h2>
             </div>
 
-            <label class="w3-text-black"
-                   id="articleId"><b>ArtikelId: </b>${article.getArticleId()}</label>
+            <label class="w3-text-black"><b>ArtikelId: </b></label>
+            <label class="w3-text-black" id="articleId">${article.getArticleId()}</label>
             <br>
             <label class="w3-text-black"><b>Bar-Code</b></label>
             <input id="barcode" class="w3-input w3-border w3-light-grey" type="text"

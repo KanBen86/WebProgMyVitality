@@ -13,15 +13,26 @@ function addArticle() {
     let socket = 'http://localhost:8080';
     let request = new XMLHttpRequest();
 
-    // öffnen des Socket für den POST
-    request.open('POST', socket + '/Artikel', false);
+    window.location.assign("http://localhost:8080/warehouse");
 
+    // Zurück zur Inhaltsübersicht des Lagers wenn der Request den richtigen Wert liefert
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            alert("readyState 4 und status 200");
+            document.getElementById("success").hidden=false;
+        }
+    };
+    // öffnen des Socket für den POST
     // definieren, dass es sich um ein JSON im Body handelt
+    // hier wird der JSON-Datensatz in den Body des Request geschrieben. Wichtig ist die
+    // richtige Struktur
+
+    request.open('POST', socket + '/saveArtikel/' + articleId.innerText, false);
+
     request.setRequestHeader('Content-Type', 'application/json');
 
-    // hier wird der JSON-Datensatz in den Body der POST-URI übergeben
-    request.send('{"articleId":"'+ articleId.value +
-        '","description":"' + description.value +
+    request.send('{"articleId":null' +
+        ',"description":"' + description.value +
         '","information":"' + information.value +
         '","ingredients":"'+ ingredients.value +
         '","barcode":'+ barcode.value+
@@ -29,8 +40,11 @@ function addArticle() {
         ',"supplier":null'+
         ',"allergens":null'+
         ',"storrage":{'+
-            '"rackSector":"'+ rackSector.value +
-            '","rackcorridor":"' + rackCorridor.value +
-            '","level":'+ level.value +
-            ',"amount":'+ amount.value +'}}');
+        '"rackSector":"'+ rackSector.value +
+        '","rackcorridor":"' + rackCorridor.value +
+        '","level":'+ level.value +
+        ',"amount":'+ amount.value +'}}');
+    request.abort();
+
+
 }
