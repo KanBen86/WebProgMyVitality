@@ -29,8 +29,7 @@ public class FitnesslevelController {
     public FitnessLevel getFitnessLevelByUsername(@PathVariable("username") String username){
         log.info("abrufen des Fitnesslevels");
         Customer customer = customerService.findCustomerByUsername(username);
-
-        customer.setFitnessLevel(new FitnessLevel());
+        if(customer.getFitnessLevel()==null) customer.setFitnessLevel(new FitnessLevel());
         FitnessLevel fitnessLevel = customer.getFitnessLevel();
             return fitnessLevel;
     }
@@ -43,11 +42,14 @@ public class FitnesslevelController {
     public void editFitnessLevel(@RequestBody FitnessLevel fitnessLevel, @PathVariable("username") String username ){
         log.info("------------------");
         log.info("Serveraufruf Fitnesslevel via ReST");
+        log.info(""+fitnessLevel);
         Customer customer = customerService.findCustomerByUsername(username);
         FitnessLevel oldFitnessLevel = customer.getFitnessLevel();
         if(oldFitnessLevel==null){
             log.info("Neues Fitnesslevel wird angelegt");
             oldFitnessLevel=fitnessLevel;
+            log.info("Altes Fitnesslevel"+oldFitnessLevel);
+            log.info("Altes Fitnesslevel speichern");
             fitneslevelService.saveFitnessLevel(oldFitnessLevel);
             customer.setFitnessLevel(oldFitnessLevel);
             customerService.saveCustomer(customer);

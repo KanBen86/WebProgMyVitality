@@ -23,7 +23,7 @@ public class FitnessLevel {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String fitnessLevelId;
 
-    private ENUM_SEX sex;
+    private String sex;
 
     private String weight;
 
@@ -53,7 +53,7 @@ public class FitnessLevel {
 
     //Konstruktoren
 
-    public FitnessLevel(ENUM_SEX sex, String weight, String height, String experience, String job, String arm, String chest, String stomach, String waist, String thigh, String calf, String foodIntolerance, String injury, String medicine) {
+    public FitnessLevel(String sex, String weight, String height, String experience, String job, String arm, String chest, String stomach, String waist, String thigh, String calf, String foodIntolerance, String injury, String medicine) {
 
         this.sex=sex;
         this.weight=weight;
@@ -85,9 +85,9 @@ public class FitnessLevel {
         this.fitnessLevelId = fitnessLevelId;
     }
 
-    public ENUM_SEX getSex() { return sex; }
+    public String getSex() { return sex; }
 
-    public void setSex(ENUM_SEX sex) { this.sex = sex; }
+    public void setSex(String sex) { this.sex = sex; }
 
     public String getWeight() { return weight; }
 
