@@ -143,9 +143,9 @@ public class ServletController {
 
         //Durch Übergeben der Parameter prüfen ob der Benutzername schon vergeben wurde und registriert werden kann (Sven)
         if (customerService.registerCustomer(username, password, email)) {
-            //Bei erfolgreicher Registrierung auf die Loginseite weiterleiten und die Meldung ausgeben, dass die Registrierung erfolgreich war
-            request.setAttribute("error", "Die Registrierung war erfolgreich!");
-            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+            //Bei erfolgreicher Registrierung auf die Loginseite weiterleiten
+            response.sendRedirect("login");
+
         } else {
             //Bei fehlgeschlagener Registrierung auf der Registrierungsseite bleiben und die Meldung ausgeben, dass die Registrierung fehlgeschlagen ist
             request.setAttribute("error", "Die Registrierung ist fehlgechlagen (Username schon vergeben)");
